@@ -1,0 +1,116 @@
+{%- for block in section.blocks -%}
+  {%- if block.type == 'logo' -%}
+
+    {%- liquid
+      assign has_logo = true
+      assign header_logo_size = block.settings.desktop_logo_width | append: 'x'
+      assign header_logo_size_mobile = block.settings.mobile_logo_width | append: 'x'
+    -%}
+
+    {%- style -%}
+    .header-item--logo,
+    .header-layout--left-center .header-item--logo,
+    .header-layout--left-center .header-item--icons {
+      -webkit-box-flex: 0 1 {{ block.settings.mobile_logo_width }}px;
+      -ms-flex: 0 1 {{ block.settings.mobile_logo_width }}px;
+      flex: 0 1 {{ block.settings.mobile_logo_width }}px;
+    }
+
+    @media only screen and (min-width: 769px) {
+      .header-item--logo,
+      .header-layout--left-center .header-item--logo,
+      .header-layout--left-center .header-item--icons {
+        -webkit-box-flex: 0 0 {{ block.settings.desktop_logo_width }}px;
+        -ms-flex: 0 0 {{ block.settings.desktop_logo_width }}px;
+        flex: 0 0 {{ block.settings.desktop_logo_width }}px;
+      }
+    }
+
+    .site-header__logo a {
+      max-width: {{ block.settings.mobile_logo_width }}px;
+    }
+    .is-light .site-header__logo .logo--inverted {
+      max-width: {{ block.settings.mobile_logo_width }}px;
+    }
+    @media only screen and (min-width: 769px) {
+      .site-header__logo a {
+        max-width: {{ block.settings.desktop_logo_width }}px;
+      }
+
+      .is-light .site-header__logo .logo--inverted {
+        max-width: {{ block.settings.desktop_logo_width }}px;
+      }
+    }
+    {%- endstyle -%}
+
+    {%- if template == 'index' -%}
+      <h1 id="LogoContainer" class="site-header__logo" itemscope itemtype="http://schema.org/Organization">
+        <span class="visually-hidden">{{ shop.name }}</span>
+    {%- else -%}
+      <div id="LogoContainer" class="h1 site-header__logo" itemscope itemtype="http://schema.org/Organization">
+    {%- endif -%}
+    {%- if block.settings.logo -%}
+      {% comment %}
+        .logo--has-inverted is only applied to the default logo if the inverted logo exists. That way it'll only be hidden on the slider when it has a backup.
+      {% endcomment %}
+      <a
+        href="{{ routes.root_url }}"
+        itemprop="url"
+        class="site-header__logo-link{% if block.settings.logo-inverted %} logo--has-inverted{% endif %}">
+        <img
+          class="small--hide"
+          src="{{ block.settings.logo | img_url: header_logo_size }}"
+          srcset="{{ block.settings.logo | img_url: header_logo_size }} 1x, {{ block.settings.logo | img_url: header_logo_size, scale: 2 }} 2x"
+          alt="{{ block.settings.logo.alt | default: shop.name }}"
+          itemprop="logo">
+        <img
+          class="medium-up--hide"
+          src="{{ block.settings.logo | img_url: header_logo_size_mobile }}"
+          srcset="{{ block.settings.logo | img_url: header_logo_size_mobile }} 1x, {{ block.settings.logo | img_url: header_logo_size_mobile, scale: 2 }} 2x"
+          alt="{{ block.settings.logo.alt | default: shop.name }}">
+      </a>
+      {%- if block.settings.logo-inverted -%}
+        <a
+          href="{{ routes.root_url }}"
+          itemprop="url"
+          class="site-header__logo-link logo--inverted">
+          <img
+            class="small--hide"
+            src="{{ block.settings.logo-inverted | img_url: header_logo_size }}"
+            srcset="{{ block.settings.logo-inverted | img_url: header_logo_size }} 1x, {{ block.settings.logo-inverted | img_url: header_logo_size, scale: 2 }} 2x"
+            alt="{{ block.settings.logo-inverted.alt | default: shop.name }}"
+            itemprop="logo">
+          <img
+            class="medium-up--hide"
+            src="{{ block.settings.logo-inverted | img_url: header_logo_size_mobile }}"
+            srcset="{{ block.settings.logo-inverted | img_url: header_logo_size_mobile }} 1x, {{ block.settings.logo-inverted | img_url: header_logo_size_mobile, scale: 2 }} 2x"
+            alt="{{ block.settings.logo.alt | default: shop.name }}">
+        </a>
+      {%- endif -%}
+    {%- else -%}
+      <a href="{{ routes.root_url }}" itemprop="url">{{ shop.name }}</a>
+    {%- endif -%}
+    {%- if template == 'index' -%}
+      </h1>
+    {%- else -%}
+      </div>
+    {%- endif -%}
+
+  {%- endif -%}
+{%- endfor -%}
+
+{%- unless has_logo -%}
+  {%- if template == 'index' -%}
+    <h1 class="site-header__logo" itemscope itemtype="http://schema.org/Organization">
+  {%- else -%}
+    <div class="h1 site-header__logo" itemscope itemtype="http://schema.org/Organization">
+  {%- endif -%}
+  <a href="{{ routes.root_url }}" itemprop="url" class="site-header__logo-link">
+    {{ shop.name }}
+  </a>
+  {%- if template == 'index' -%}
+    </h1>
+  {%- else -%}
+    </div>
+  {%- endif -%}
+{%- endunless -%}

@@ -1,0 +1,1688 @@
+{%- render 'product-template',
+  product: product,
+  description_style: section.settings.description_style,
+  image_container_width: section.settings.image_size,
+  section_id: product.id,
+  social: section.settings.social_enable,
+  thumbnail_position: section.settings.thumbnail_position,
+  thumbnail_arrows: section.settings.thumbnail_arrows,
+  video_looping: section.settings.enable_video_looping,
+  video_style: section.settings.product_video_style
+-%}
+
+{%- if settings.enable_product_reviews and settings.reviews_layout == 'full' -%}
+  <div class="product-reviews product-reviews--full" id="Reviews-{{ product.id }}">
+    <div class="page-width">
+      <div id="shopify-product-reviews" data-id="{{ product.id }}">{{ product.metafields.spr.reviews }}</div>
+    </div>
+  </div>
+{%- endif -%}
+
+{%- render 'page-template-blocks', section: section -%}
+
+{% schema %}
+  {
+    "name": "Product.sections page",
+    "settings": [
+      {
+        "type": "select",
+        "id": "description_style",
+        "label": "Description position",
+        "default": "default",
+        "options": [
+          {
+            "value": "default",
+            "label": "Next to media"
+          },
+          {
+            "value": "full",
+            "label": "Below media"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "social_enable",
+        "label": "Enable social sharing",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Media"
+      },
+      {
+        "type": "paragraph",
+        "content": "Learn more about [media types](https://help.shopify.com/en/manual/products/product-media)"
+      },
+      {
+        "type": "select",
+        "id": "image_size",
+        "label": "Image size",
+        "default": "medium",
+        "options": [
+          {
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "medium",
+            "label": "Medium"
+          },
+          {
+            "value": "large",
+            "label": "Large"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "thumbnail_position",
+        "label": "Thumbnail position",
+        "default": "beside",
+        "options": [
+          {
+            "value": "beside",
+            "label": "Next to media"
+          },
+          {
+            "value": "below",
+            "label": "Below media"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "thumbnail_arrows",
+        "label": "Show thumbnail arrows"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_video_looping",
+        "label": "Enable video looping",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "product_video_style",
+        "label": "Video style",
+        "default": "muted",
+        "options": [
+          {
+            "value": "muted",
+            "label": "Video without sound"
+          },
+          {
+            "value": "unmuted",
+            "label": "Video with sound"
+          }
+        ],
+        "info": "Video with sound will not autoplay"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "contact-form",
+        "name": "Contact form",
+        "settings": [
+          {
+            "type": "paragraph",
+            "content": "All submissions are sent to the customer email address of your store. [Learn more](https://help.shopify.com/en/manual/using-themes/change-the-layout/add-contact-form#view-contact-form-submissions)."
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "checkbox",
+            "id": "show_phone",
+            "label": "Show phone number"
+          },
+          {
+            "type": "checkbox",
+            "id": "narrow_column",
+            "label": "Narrow column",
+            "default": true
+          }
+        ]
+      },
+      {
+        "type": "custom-html",
+        "name": "Custom HTML",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "full_width",
+            "label": "Full page width",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "space_around",
+            "label": "Add spacing above and below",
+            "default": true
+          },
+          {
+            "type": "textarea",
+            "id": "code",
+            "label": "HTML",
+            "default": "<h2>Custom HTML</h2><p>Use this advanced section to build your own layouts or to add custom HTML or scripts.</p>"
+          }
+        ]
+      },
+      {
+        "type": "fading-images",
+        "name": "Fading image hero",
+        "settings": [
+          {
+            "type": "select",
+            "id": "title_lines",
+            "label": "Title style",
+            "default": "2",
+            "options": [
+              {
+                "label": "1 line",
+                "value": "1"
+              },
+              {
+                "label": "2 lines",
+                "value": "2"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "title_font",
+            "label": "Title font",
+            "default": "body",
+            "options": [
+              {
+                "value": "body",
+                "label": "Body"
+              },
+              {
+                "value": "heading",
+                "label": "Heading"
+              }
+            ]
+          },
+          {
+            "type": "range",
+            "id": "title_size",
+            "label": "Title size",
+            "default": 45,
+            "min": 30,
+            "max": 100,
+            "unit": "px"
+          },
+          {
+            "type": "color",
+            "id": "title_color",
+            "label": "Text color",
+            "default": "#ffffff"
+          },
+          {
+            "type": "color",
+            "id": "title_bg_color",
+            "label": "Text background color",
+            "default": "rgba(0,0,0,0)"
+          },
+          {
+            "type": "select",
+            "id": "text_align",
+            "label": "Text alignment",
+            "default": "vertical-center horizontal-center",
+            "options": [
+              {
+                "value": "vertical-center horizontal-left",
+                "label": "Center left"
+              },
+              {
+                "value": "vertical-center horizontal-center",
+                "label": "Center"
+              },
+              {
+                "value": "vertical-center horizontal-right",
+                "label": "Center right"
+              },
+              {
+                "value": "vertical-bottom horizontal-left",
+                "label": "Bottom left"
+              },
+              {
+                "value": "vertical-bottom horizontal-center",
+                "label": "Bottom center"
+              },
+              {
+                "value": "vertical-bottom horizontal-right",
+                "label": "Bottom right"
+              }
+            ]
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Section link"
+          },
+          {
+            "type": "range",
+            "id": "slide_speed",
+            "label": "Change images every",
+            "default": 5,
+            "min": 3,
+            "max": 10,
+            "step": 1,
+            "unit": "s"
+          },
+          {
+            "type": "color",
+            "id": "color_overlay",
+            "label": "Overlay",
+            "default": "#000"
+          },
+          {
+            "type": "range",
+            "id": "color_overlay_opacity",
+            "label": "Opacity",
+            "default": 30,
+            "min": 0,
+            "max": 100,
+            "step": 2,
+            "unit": "%"
+          },
+          {
+            "type": "select",
+            "id": "desktop_height",
+            "label": "Desktop height",
+            "default": "650px",
+            "options": [
+              {
+                "label": "Natural",
+                "value": "natural"
+              },
+              {
+                "label": "450px",
+                "value": "450px"
+              },
+              {
+                "label": "550px",
+                "value": "550px"
+              },
+              {
+                "label": "650px",
+                "value": "650px"
+              },
+              {
+                "label": "750px",
+                "value": "750px"
+              },
+              {
+                "label": "Full screen",
+                "value": "100vh"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "mobile_height",
+            "label": "Mobile height",
+            "default": "auto",
+            "info": "Not used if desktop height is set to natural",
+            "options": [
+              {
+                "label": "Auto",
+                "value": "auto"
+              },
+              {
+                "label": "250px",
+                "value": "250px"
+              },
+              {
+                "label": "300px",
+                "value": "300px"
+              },
+              {
+                "label": "400px",
+                "value": "400px"
+              },
+              {
+                "label": "500px",
+                "value": "500px"
+              },
+              {
+                "label": "Full screen",
+                "value": "100vh"
+              }
+            ]
+          },
+          {
+            "type": "header",
+            "content": "Image 1"
+          },
+          {
+            "type": "checkbox",
+            "id": "enable_image_1",
+            "label": "Show image",
+            "default": true
+          },
+          {
+            "type": "image_picker",
+            "id": "image_1",
+            "label": "Image 1"
+          },
+          {
+            "type": "select",
+            "id": "focal_point_1",
+            "label": "Focal point",
+            "info": "Used to keep the subject of your photo in view. Not used if desktop height set to natural.",
+            "default": "center center",
+            "options": [
+              {
+                "value": "20% 0",
+                "label": "Top left"
+              },
+              {
+                "value": "top center",
+                "label": "Top center"
+              },
+              {
+                "value": "80% 0",
+                "label": "Top right"
+              },
+              {
+                "value": "20% 50%",
+                "label": "Left"
+              },
+              {
+                "value": "center center",
+                "label": "Center"
+              },
+              {
+                "value": "80% 50%",
+                "label": "Right"
+              },
+              {
+                "value": "20% 100%",
+                "label": "Bottom left"
+              },
+              {
+                "value": "bottom center",
+                "label": "Bottom center"
+              },
+              {
+                "value": "80% 100%",
+                "label": "Bottom right"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "slide_title_1a",
+            "label": "Title line 1",
+            "default": "Beautifully animated"
+          },
+          {
+            "type": "text",
+            "id": "slide_title_1b",
+            "label": "Title line 2",
+            "default": "titles and images"
+          },
+          {
+            "type": "header",
+            "content": "Image 2"
+          },
+          {
+            "type": "checkbox",
+            "id": "enable_image_2",
+            "label": "Show image",
+            "default": true
+          },
+          {
+            "type": "image_picker",
+            "id": "image_2",
+            "label": "Image 2"
+          },
+          {
+            "type": "select",
+            "id": "focal_point_2",
+            "label": "Focal point",
+            "info": "Used to keep the subject of your photo in view. Not used if desktop height set to natural.",
+            "default": "center center",
+            "options": [
+              {
+                "value": "20% 0",
+                "label": "Top left"
+              },
+              {
+                "value": "top center",
+                "label": "Top center"
+              },
+              {
+                "value": "80% 0",
+                "label": "Top right"
+              },
+              {
+                "value": "20% 50%",
+                "label": "Left"
+              },
+              {
+                "value": "center center",
+                "label": "Center"
+              },
+              {
+                "value": "80% 50%",
+                "label": "Right"
+              },
+              {
+                "value": "20% 100%",
+                "label": "Bottom left"
+              },
+              {
+                "value": "bottom center",
+                "label": "Bottom center"
+              },
+              {
+                "value": "80% 100%",
+                "label": "Bottom right"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "slide_title_2a",
+            "label": "Title line 1",
+            "default": "Use this section"
+          },
+          {
+            "type": "text",
+            "id": "slide_title_2b",
+            "label": "Title line 2",
+            "default": "to impress customers"
+          },
+          {
+            "type": "header",
+            "content": "Image 3"
+          },
+          {
+            "type": "checkbox",
+            "id": "enable_image_3",
+            "label": "Show image"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_3",
+            "label": "Image 3"
+          },
+          {
+            "type": "select",
+            "id": "focal_point_3",
+            "label": "Focal point",
+            "info": "Used to keep the subject of your photo in view. Not used if desktop height set to natural.",
+            "default": "center center",
+            "options": [
+              {
+                "value": "20% 0",
+                "label": "Top left"
+              },
+              {
+                "value": "top center",
+                "label": "Top center"
+              },
+              {
+                "value": "80% 0",
+                "label": "Top right"
+              },
+              {
+                "value": "20% 50%",
+                "label": "Left"
+              },
+              {
+                "value": "center center",
+                "label": "Center"
+              },
+              {
+                "value": "80% 50%",
+                "label": "Right"
+              },
+              {
+                "value": "20% 100%",
+                "label": "Bottom left"
+              },
+              {
+                "value": "bottom center",
+                "label": "Bottom center"
+              },
+              {
+                "value": "80% 100%",
+                "label": "Bottom right"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "slide_title_3a",
+            "label": "Title line 1"
+          },
+          {
+            "type": "text",
+            "id": "slide_title_3b",
+            "label": "Title line 2"
+          }
+        ]
+      },
+      {
+        "type": "featured-collection",
+        "name": "Featured collection",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Featured collection"
+          },
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+          },
+          {
+            "type": "range",
+            "id": "per_row",
+            "label": "Products per row",
+            "default": 4,
+            "min": 1,
+            "max": 5,
+            "step": 1
+          },
+          {
+            "type": "range",
+            "id": "rows",
+            "label": "Rows of products",
+            "default": 1,
+            "min": 1,
+            "max": 5,
+            "step": 1
+          },
+          {
+            "type": "checkbox",
+            "id": "view_all",
+            "label": "Show 'View all' link",
+            "default": true
+          }
+        ]
+      },
+      {
+        "type": "image-hero",
+        "name": "Image hero",
+        "settings": [
+          {
+            "type": "textarea",
+            "id": "title",
+            "label": "Heading",
+            "default": "Two line\ntitle image"
+          },
+          {
+            "type": "range",
+            "id": "title_size",
+            "label": "Heading text size",
+            "default": 80,
+            "min": 40,
+            "max": 100,
+            "unit": "px"
+          },
+          {
+            "type": "text",
+            "id": "subheading",
+            "label": "Subheading",
+            "default": "And an optional subheading"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+          },
+          {
+            "type": "text",
+            "id": "link_text",
+            "label": "Link text",
+            "default": "Optional button"
+          },
+          {
+            "type": "select",
+            "id": "text_align",
+            "label": "Text alignment",
+            "default": "vertical-bottom horizontal-left",
+            "options": [
+              {
+                "value": "vertical-center horizontal-left",
+                "label": "Center left"
+              },
+              {
+                "value": "vertical-center horizontal-center",
+                "label": "Center"
+              },
+              {
+                "value": "vertical-center horizontal-right",
+                "label": "Center right"
+              },
+              {
+                "value": "vertical-bottom horizontal-left",
+                "label": "Bottom left"
+              },
+              {
+                "value": "vertical-bottom horizontal-center",
+                "label": "Bottom center"
+              },
+              {
+                "value": "vertical-bottom horizontal-right",
+                "label": "Bottom right"
+              }
+            ]
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "select",
+            "id": "focal_point",
+            "label": "Image focal point",
+            "info": "Used to keep the subject of your photo in view.",
+            "default": "center center",
+            "options": [
+              {
+                "value": "20% 0",
+                "label": "Top left"
+              },
+              {
+                "value": "top center",
+                "label": "Top center"
+              },
+              {
+                "value": "80% 0",
+                "label": "Top right"
+              },
+              {
+                "value": "20% 50%",
+                "label": "Left"
+              },
+              {
+                "value": "center center",
+                "label": "Center"
+              },
+              {
+                "value": "80% 50%",
+                "label": "Right"
+              },
+              {
+                "value": "20% 100%",
+                "label": "Bottom left"
+              },
+              {
+                "value": "bottom center",
+                "label": "Bottom center"
+              },
+              {
+                "value": "80% 100%",
+                "label": "Bottom right"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "section_height",
+            "label": "Desktop height",
+            "default": "650px",
+            "options": [
+              {
+                "label": "Natural",
+                "value": "natural"
+              },
+              {
+                "label": "450px",
+                "value": "450px"
+              },
+              {
+                "label": "550px",
+                "value": "550px"
+              },
+              {
+                "label": "650px",
+                "value": "650px"
+              },
+              {
+                "label": "750px",
+                "value": "750px"
+              },
+              {
+                "label": "Full screen",
+                "value": "100vh"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "mobile_height",
+            "label": "Mobile height",
+            "default": "auto",
+            "info": "Not used if desktop height is set to natural",
+            "options": [
+              {
+                "label": "Auto",
+                "value": "auto"
+              },
+              {
+                "label": "250px",
+                "value": "250px"
+              },
+              {
+                "label": "300px",
+                "value": "300px"
+              },
+              {
+                "label": "400px",
+                "value": "400px"
+              },
+              {
+                "label": "500px",
+                "value": "500px"
+              },
+              {
+                "label": "Full screen",
+                "value": "100vh"
+              }
+            ]
+          },
+          {
+            "type": "checkbox",
+            "id": "parallax",
+            "label": "Enable parallax",
+            "default": true
+          }
+        ]
+      },
+      {
+        "type": "text-and-image",
+        "name": "Image with text",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "range",
+            "id": "image_width",
+            "label": "Image width",
+            "default": 500,
+            "min": 100,
+            "max": 500,
+            "step": 10,
+            "unit": "px"
+          },
+          {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Subtitle",
+            "default": "Improved"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Image with text"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Pair large text with an image to tell a story, explain a detail about your product, or describe a new promotion.</p>"
+          },
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label",
+            "default": "Optional button"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          },
+          {
+            "type": "select",
+            "id": "layout",
+            "label": "Layout",
+            "default": "left",
+            "options": [
+              {
+                "value": "left",
+                "label": "Image on left"
+              },
+              {
+                "value": "right",
+                "label": "Image on right"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "background-image-text",
+        "name": "Large image with text box",
+        "settings": [
+          {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Subtitle",
+            "default": "Impressive"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Large image with text box"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Pair large text with a full-width image to draw attention to an important detail of your brand or product line.</p>"
+          },
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "select",
+            "id": "alignment",
+            "label": "Image focal point",
+            "info": "Used to keep the subject of your photo in view.",
+            "default": "center",
+            "options": [
+              {
+                "value": "top left",
+                "label": "Top left"
+              },
+              {
+                "value": "top",
+                "label": "Top"
+              },
+              {
+                "value": "top right",
+                "label": "Top right"
+              },
+              {
+                "value": "center left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Middle"
+              },
+              {
+                "value": "center right",
+                "label": "Right"
+              },
+              {
+                "value": "bottom left",
+                "label": "Bottom left"
+              },
+              {
+                "value": "bottom",
+                "label": "Bottom"
+              },
+              {
+                "value": "bottom right",
+                "label": "Bottom right"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "layout",
+            "label": "Layout",
+            "default": "left",
+            "options": [
+              {
+                "value": "left",
+                "label": "Text on left"
+              },
+              {
+                "value": "right",
+                "label": "Text on right"
+              }
+            ]
+          },
+          {
+            "type": "range",
+            "id": "height",
+            "label": "Section height",
+            "default": 550,
+            "min": 450,
+            "max": 750,
+            "step": 100,
+            "unit": "px"
+          },
+          {
+            "type": "checkbox",
+            "id": "parallax",
+            "label": "Enable parallax",
+            "default": true
+          }
+        ]
+      },
+      {
+        "type": "map",
+        "name": "Map",
+        "settings": [
+          {
+            "id": "map_title",
+            "type": "text",
+            "label": "Title",
+            "default": "Our retail store"
+          },
+          {
+            "id": "address",
+            "type": "richtext",
+            "label": "Text",
+            "default": "<p>301 Front St W<br>Toronto, Canada</p><p>Mon - Fri, 8:30am - 10:30pm<br>Saturday, 8:30am - 10:30pm<br>Sunday, 8:30am - 10:30pm</p>"
+          },
+          {
+            "id": "map_address",
+            "type": "text",
+            "label": "Map address",
+            "info": "Google maps will find the exact location",
+            "default": "301 Front St W, Toronto, ON M5V 2T6"
+          },
+          {
+            "id": "api_key",
+            "type": "text",
+            "label": "Google Maps API key",
+            "info": "You'll need to [register a Google Maps API Key](https://help.shopify.com/manual/using-themes/troubleshooting/map-section-api-key) to display the map"
+          },
+          {
+            "id": "show_button",
+            "type": "checkbox",
+            "label": "Show 'Get directions' button",
+            "default": true
+          },
+          {
+            "type": "image_picker",
+            "id": "background_image",
+            "label": "Image",
+            "info": "Displayed if the map isn’t loaded"
+          },
+          {
+            "type": "select",
+            "id": "background_image_position",
+            "label": "Image focal point",
+            "default": "center center",
+            "options": [
+              {
+                "label": "Top left",
+                "value": "top left"
+              },
+              {
+                "label": "Top center",
+                "value": "top center"
+              },
+              {
+                "label": "Top right",
+                "value": "top right"
+              },
+              {
+                "label": "Middle left",
+                "value": "center left"
+              },
+              {
+                "label": "Middle center",
+                "value": "center center"
+              },
+              {
+                "label": "Middle right",
+                "value": "center right"
+              },
+              {
+                "label": "Bottom left",
+                "value": "bottom left"
+              },
+              {
+                "label": "Bottom center",
+                "value": "bottom center"
+              },
+              {
+                "label": "Bottom right",
+                "value": "bottom right"
+              }
+            ],
+            "info": "Used to keep the subject of your photo in view."
+          }
+        ]
+      },
+      {
+        "type": "rich-text",
+        "name": "Rich text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Rich text block"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Use this section for any descriptive text you need to fill out your pages or to add introductory headings between other blocks.</p>"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Button link"
+          },
+          {
+            "type": "text",
+            "id": "link_text",
+            "label": "Button text"
+          },
+          {
+            "type": "select",
+            "id": "align_text",
+            "label": "Text alignment",
+            "default": "left",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Centered"
+              }
+            ]
+          },
+          {
+            "type": "checkbox",
+            "id": "narrow_column",
+            "label": "Narrow column",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "enlarge_text",
+            "label": "Enlarge text"
+          }
+        ]
+      },
+      {
+        "type": "image-row",
+        "name": "Row of images",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image_1",
+            "label": "Image 1"
+          },
+          {
+            "type": "url",
+            "id": "image_1_link",
+            "label": "Link 1",
+            "info": "Optional"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_2",
+            "label": "Image 2"
+          },
+          {
+            "type": "url",
+            "id": "image_2_link",
+            "label": "Link 2",
+            "info": "Optional"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_3",
+            "label": "Image 3"
+          },
+          {
+            "type": "url",
+            "id": "image_3_link",
+            "label": "Link 3",
+            "info": "Optional"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_4",
+            "label": "Image 4"
+          },
+          {
+            "type": "url",
+            "id": "image_4_link",
+            "label": "Link 4",
+            "info": "Optional"
+          },
+          {
+            "type": "checkbox",
+            "id": "enable_gutter",
+            "label": "Add spacing",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "enable_zoom",
+            "label": "Enable image zoom",
+            "info": "Not active if any image links set",
+            "default": true
+          }
+        ]
+      },
+      {
+        "type": "testimonials",
+        "name": "Testimonials",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "From our customers"
+          },
+          {
+            "type": "select",
+            "id": "align_text",
+            "label": "Text alignment",
+            "default": "center",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Centered"
+              }
+            ]
+          },
+          {
+            "type": "checkbox",
+            "id": "round_images",
+            "label": "Circular images"
+          },
+          {
+            "type": "color",
+            "id": "color_background",
+            "label": "Background",
+            "default": "#f9f9f9"
+          },
+          {
+            "type": "color",
+            "id": "color_text",
+            "label": "Text",
+            "default": "#1c1d1d"
+          },
+          {
+            "type": "header",
+            "content": "Testimonial 1"
+          },
+          {
+            "type": "select",
+            "id": "icon_1",
+            "label": "Icon",
+            "default": "5-stars",
+            "options": [
+              {
+                "value": "none",
+                "label": "None"
+              },
+              {
+                "value": "quote",
+                "label": "Quote"
+              },
+              {
+                "value": "5-stars",
+                "label": "5 stars"
+              },
+              {
+                "value": "4-stars",
+                "label": "4 stars"
+              },
+              {
+                "value": "3-stars",
+                "label": "3 stars"
+              },
+              {
+                "value": "2-stars",
+                "label": "2 stars"
+              },
+              {
+                "value": "1-star",
+                "label": "1 star"
+              }
+            ]
+          },
+          {
+            "type": "richtext",
+            "id": "testimonial_1",
+            "label": "Text",
+            "default": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_1",
+            "label": "Author's image"
+          },
+          {
+            "type": "text",
+            "id": "author_1",
+            "label": "Author",
+            "default": "Author's name"
+          },
+          {
+            "type": "text",
+            "id": "author_info_1",
+            "label": "Author info",
+            "default": "Los Angeles, CA"
+          },
+          {
+            "type": "header",
+            "content": "Testimonial 2"
+          },
+          {
+            "type": "select",
+            "id": "icon_2",
+            "label": "Icon",
+            "default": "5-stars",
+            "options": [
+              {
+                "value": "none",
+                "label": "None"
+              },
+              {
+                "value": "quote",
+                "label": "Quote"
+              },
+              {
+                "value": "5-stars",
+                "label": "5 stars"
+              },
+              {
+                "value": "4-stars",
+                "label": "4 stars"
+              },
+              {
+                "value": "3-stars",
+                "label": "3 stars"
+              },
+              {
+                "value": "2-stars",
+                "label": "2 stars"
+              },
+              {
+                "value": "1-star",
+                "label": "1 star"
+              }
+            ]
+          },
+          {
+            "type": "richtext",
+            "id": "testimonial_2",
+            "label": "Text",
+            "default": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_2",
+            "label": "Author's image"
+          },
+          {
+            "type": "text",
+            "id": "author_2",
+            "label": "Author",
+            "default": "Author's name"
+          },
+          {
+            "type": "text",
+            "id": "author_info_2",
+            "label": "Author info",
+            "default": "Los Angeles, CA"
+          }
+        ]
+      },
+      {
+        "type": "text-columns",
+        "name": "Text columns with images",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "select",
+            "id": "align_text",
+            "label": "Text alignment",
+            "default": "center",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Centered"
+              }
+            ]
+          },
+          {
+            "type": "header",
+            "content": "Column 1"
+          },
+          {
+            "type": "checkbox",
+            "id": "enable_image_1",
+            "label": "Show image",
+            "default": true
+          },
+          {
+            "type": "image_picker",
+            "id": "image_1",
+            "label": "Image"
+          },
+          {
+            "type": "range",
+            "id": "image_width_1",
+            "label": "Image width",
+            "default": 650,
+            "min": 60,
+            "max": 650,
+            "step": 10,
+            "unit": "px"
+          },
+          {
+            "type": "text",
+            "id": "title_1",
+            "label": "Heading",
+            "default": "Example title"
+          },
+          {
+            "type": "richtext",
+            "id": "text_1",
+            "label": "Text",
+            "default": "<p>Use this section to explain a set of product features, to link to a series of pages, or to answer common questions about your products. Add images for emphasis.</p>"
+          },
+          {
+            "type": "text",
+            "id": "button_label_1",
+            "label": "Button label"
+          },
+          {
+            "type": "url",
+            "id": "button_link_1",
+            "label": "Link"
+          },
+          {
+            "type": "header",
+            "content": "Column 2"
+          },
+          {
+            "type": "checkbox",
+            "id": "enable_image_2",
+            "label": "Show image",
+            "default": true
+          },
+          {
+            "type": "image_picker",
+            "id": "image_2",
+            "label": "Image"
+          },
+          {
+            "type": "range",
+            "id": "image_width_2",
+            "label": "Image width",
+            "default": 650,
+            "min": 60,
+            "max": 650,
+            "step": 10,
+            "unit": "px"
+          },
+          {
+            "type": "text",
+            "id": "title_2",
+            "label": "Heading",
+            "default": "Example title"
+          },
+          {
+            "type": "richtext",
+            "id": "text_2",
+            "label": "Text",
+            "default": "<p>Use this section to explain a set of product features, to link to a series of pages, or to answer common questions about your products. Add images for emphasis.</p>"
+          },
+          {
+            "type": "text",
+            "id": "button_label_2",
+            "label": "Button label"
+          },
+          {
+            "type": "url",
+            "id": "button_link_2",
+            "label": "Link"
+          },
+          {
+            "type": "header",
+            "content": "Column 3"
+          },
+          {
+            "type": "checkbox",
+            "id": "enable_image_3",
+            "label": "Show image",
+            "default": true
+          },
+          {
+            "type": "image_picker",
+            "id": "image_3",
+            "label": "Image"
+          },
+          {
+            "type": "range",
+            "id": "image_width_3",
+            "label": "Image width",
+            "default": 650,
+            "min": 60,
+            "max": 650,
+            "step": 10,
+            "unit": "px"
+          },
+          {
+            "type": "text",
+            "id": "title_3",
+            "label": "Heading",
+            "default": "Example title"
+          },
+          {
+            "type": "richtext",
+            "id": "text_3",
+            "label": "Text",
+            "default": "<p>Use this section to explain a set of product features, to link to a series of pages, or to answer common questions about your products. Add images for emphasis.</p>"
+          },
+          {
+            "type": "text",
+            "id": "button_label_3",
+            "label": "Button label"
+          },
+          {
+            "type": "url",
+            "id": "button_link_3",
+            "label": "Link"
+          }
+        ]
+      },
+      {
+        "type": "hero-video",
+        "name": "Video hero",
+        "settings": [
+          {
+            "type": "textarea",
+            "id": "title",
+            "label": "Heading",
+            "default": "Bring your\nbrand to life."
+          },
+          {
+            "type": "range",
+            "id": "title_size",
+            "label": "Heading text size",
+            "default": 80,
+            "min": 40,
+            "max": 100,
+            "unit": "px"
+          },
+          {
+            "type": "text",
+            "id": "subheading",
+            "label": "Subheading",
+            "default": "Seamless hero videos"
+          },
+          {
+            "type": "text",
+            "id": "link_text",
+            "label": "Button text",
+            "default": "Optional button"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Button link",
+            "info": "Links to YouTube videos will be opened in a video player"
+          },
+          {
+            "type": "select",
+            "id": "text_align",
+            "label": "Text alignment",
+            "default": "vertical-bottom horizontal-left",
+            "options": [
+              {
+                "value": "vertical-center horizontal-left",
+                "label": "Center left"
+              },
+              {
+                "value": "vertical-center horizontal-center",
+                "label": "Center"
+              },
+              {
+                "value": "vertical-center horizontal-right",
+                "label": "Center right"
+              },
+              {
+                "value": "vertical-bottom horizontal-left",
+                "label": "Bottom left"
+              },
+              {
+                "value": "vertical-bottom horizontal-center",
+                "label": "Bottom center"
+              },
+              {
+                "value": "vertical-bottom horizontal-right",
+                "label": "Bottom right"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "video_url",
+            "label": "Background video link",
+            "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "info": "Supports YouTube, .MP4 and Vimeo. Not all features supported by Vimeo. [Learn more](https://archetypethemes.co/blogs/motion/how-do-i-add-background-videos)"
+          },
+          {
+            "type": "range",
+            "id": "overlay_opacity",
+            "label": "Text protection",
+            "info": "Darkens your image to ensure your text is readable",
+            "default": 0,
+            "min": 0,
+            "max": 100,
+            "step": 2,
+            "unit": "%"
+          },
+          {
+            "type": "select",
+            "id": "section_height",
+            "label": "Desktop height",
+            "default": "650px",
+            "options": [
+              {
+                "label": "16:9",
+                "value": "16-9"
+              },
+              {
+                "label": "450px",
+                "value": "450px"
+              },
+              {
+                "label": "550px",
+                "value": "550px"
+              },
+              {
+                "label": "650px",
+                "value": "650px"
+              },
+              {
+                "label": "750px",
+                "value": "750px"
+              },
+              {
+                "label": "Full screen",
+                "value": "100vh"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "mobile_height",
+            "label": "Mobile height",
+            "default": "auto",
+            "options": [
+              {
+                "label": "Auto",
+                "value": "auto"
+              },
+              {
+                "label": "250px",
+                "value": "250px"
+              },
+              {
+                "label": "300px",
+                "value": "300px"
+              },
+              {
+                "label": "400px",
+                "value": "400px"
+              },
+              {
+                "label": "500px",
+                "value": "500px"
+              },
+              {
+                "label": "Full screen",
+                "value": "100vh"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+
+  }
+{% endschema %}

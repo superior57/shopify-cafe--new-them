@@ -1,0 +1,159 @@
+{%- liquid
+  if product
+    assign section_id = section_id | append: '-' | append: product.id
+  endif
+
+  assign has_custom_tabs = false
+  for tag in product.tags
+    if tag contains '_tab'
+      assign has_custom_tabs = true
+    endif
+  endfor
+
+  assign reviews_as_tab = false
+  if settings.enable_product_reviews and settings.reviews_layout == 'expandable'
+    assign reviews_as_tab = true
+  endif
+-%}
+
+{% if settings.product_content_1 != blank or settings.product_content_2 != blank or settings.product_content_3 != blank or settings.product_contact or reviews_as_tab or has_custom_tabs or settings.product_description_collapse %}
+  <div class="collapsibles-wrapper collapsibles-wrapper--border-bottom">
+
+    {% if settings.product_description_collapse %}
+      <button type="button" class="label collapsible-trigger collapsible-trigger-btn collapsible-trigger-btn--borders collapsible--auto-height" aria-controls="Product-description-{{ section_id }}">
+        {{ 'products.product.description' | t }}
+        {%- render 'collapsible-icons' -%}
+      </button>
+      <div id="Product-description-{{ section_id }}" class="collapsible-content collapsible-content--all">
+        <div class="collapsible-content__inner rte">
+          {%- unless product.empty? -%}
+            {{ product.description }}
+          {%- else -%}
+            {{ 'home_page.onboarding.product_description' | t }}
+          {%- endunless -%}
+        </div>
+      </div>
+    {% endif %}
+
+
+    {%- for tag in product.tags -%}
+      {% if tag contains '_tab' %}
+        {%- assign include_page_handle = tag | split: '_' -%}
+        {%- assign include_page = pages[include_page_handle.last] -%}
+        {% if include_page.title != blank %}
+          <button type="button" class="label collapsible-trigger collapsible-trigger-btn collapsible-trigger-btn--borders collapsible--auto-height" aria-controls="Product-content-{{ include_page_handle.last }}-{{ section_id }}">
+            {{ include_page.title }}
+            {%- render 'collapsible-icons' -%}
+          </button>
+          <div id="Product-content-{{ include_page_handle.last }}-{{ section_id }}" class="collapsible-content collapsible-content--all">
+            <div class="collapsible-content__inner rte">
+              {{ include_page.content }}
+            </div>
+          </div>
+        {% endif %}
+      {% endif %}
+    {%- endfor -%}
+
+    {% if reviews_as_tab %}
+      <button type="button" class="label collapsible-trigger collapsible-trigger-btn collapsible-trigger-btn--borders collapsible--auto-height" aria-controls="Product-content-5-{{ section_id }}">
+        <span class="shopify-product-reviews-badge" data-id="{{ product.id }}">Reviews</span>
+        {%- render 'collapsible-icons' -%}
+      </button>
+      <div id="Product-content-5-{{ section_id }}" class="collapsible-content collapsible-content--all">
+        <div class="collapsible-content__inner product-reviews product-reviews--tab">
+          <div id="shopify-product-reviews" data-id="{{ product.id }}">{{ product.metafields.spr.reviews }}</div>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if settings.product_content_1 != blank %}
+      <button type="button" class="label collapsible-trigger collapsible-trigger-btn collapsible-trigger-btn--borders" aria-controls="Product-content-1-{{ section_id }}">
+        {{ pages[settings.product_content_1].title }}
+        {%- render 'collapsible-icons' -%}
+      </button>
+      <div id="Product-content-1-{{ section_id }}" class="collapsible-content collapsible-content--all">
+        <div class="collapsible-content__inner rte">
+          {{ pages[settings.product_content_1].content }}
+        </div>
+      </div>
+    {% endif %}
+    {% if settings.product_content_2 != blank %}
+      <button type="button" class="label collapsible-trigger collapsible-trigger-btn collapsible-trigger-btn--borders" aria-controls="Product-content-2-{{ section_id }}">
+        {{ pages[settings.product_content_2].title }}
+        {%- render 'collapsible-icons' -%}
+      </button>
+      <div id="Product-content-2-{{ section_id }}" class="collapsible-content collapsible-content--all">
+        <div class="collapsible-content__inner rte">
+          {{ pages[settings.product_content_2].content }}
+        </div>
+      </div>
+    {% endif %}
+    {% if settings.product_content_3 != blank %}
+      <button type="button" class="label collapsible-trigger collapsible-trigger-btn collapsible-trigger-btn--borders" aria-controls="Product-content-3-{{ section_id }}">
+        {{ pages[settings.product_content_3].title }}
+        {%- render 'collapsible-icons' -%}
+      </button>
+      <div id="Product-content-3-{{ section_id }}" class="collapsible-content collapsible-content--all">
+        <div class="collapsible-content__inner rte">
+          {{ pages[settings.product_content_3].content }}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if settings.product_contact %}
+      {%- assign form_id = 'contact-' | append: section_id -%}
+      {% form 'contact', id: form_id %}
+
+        <button type="button" class="label collapsible-trigger collapsible-trigger-btn collapsible-trigger-btn--borders" aria-controls="Product-content-4-{{ section_id }}">
+          {{ settings.product_contact_title }}
+          {%- render 'collapsible-icons' -%}
+        </button>
+        <div id="Product-content-4-{{ section_id }}" class="collapsible-content collapsible-content--all">
+          <div class="collapsible-content__inner rte">
+            <div class="form-vertical">
+
+              <input type="hidden" name="contact[product]" value="Product question for: {{ shop.secure_url }}{{ product.url }}">
+
+              <div class="grid grid--small">
+                <div class="grid__item medium-up--one-half">
+                  <label for="ContactFormName-{{ section_id }}">{{ 'contact.form.name' | t }}</label>
+                  <input type="text" id="ContactFormName-{{ section_id }}" class="input-full" name="contact[name]" autocapitalize="words" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}">
+                </div>
+
+                <div class="grid__item medium-up--one-half">
+                  <label for="ContactFormEmail-{{ section_id }}">{{ 'contact.form.email' | t }}</label>
+                  <input type="email" id="ContactFormEmail-{{ section_id }}" class="input-full" name="contact[email]" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+                </div>
+              </div>
+
+              {% if settings.product_contact_show_phone %}
+                <label for="ContactFormPhone-{{ section_id }}">{{ 'contact.form.phone' | t }}</label>
+                <input type="tel" id="ContactFormPhone-{{ section_id }}" class="input-full" name="contact[phone]" pattern="[0-9\-]*" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+              {% endif %}
+
+              <label for="ContactFormMessage-{{ section_id }}">{{ 'contact.form.message' | t }}</label>
+              <textarea rows="5" id="ContactFormMessage-{{ section_id }}" class="input-full" name="contact[body]">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+
+              <button type="submit" class="btn">
+                {{ 'contact.form.send' | t }}
+              </button>
+
+            </div>
+          </div>
+        </div>
+
+        {% if form.posted_successfully? %}
+          <p class="note note--success">
+            {{ 'contact.form.post_success' | t }}
+          </p>
+        {% endif %}
+
+        {% if form.errors %}
+          {{ form.errors | default_errors }}
+        {% endif %}
+
+      {% endform %}
+    {% endif %}
+
+  </div>
+{% endif %}

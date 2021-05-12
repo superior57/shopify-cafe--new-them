@@ -1,0 +1,104 @@
+<div class="page-narrow page-content">
+
+  {%- render 'breadcrumbs' -%}
+
+  <header class="section-header text-center{% if cart.item_count == 0 %} section-header--404{% endif %}">
+    <h1 class="section-header__title">{{ 'cart.general.title' | t }}</h1>
+    <div class="rte text-spacing">
+      {%- if cart.item_count == 0 -%}
+        <p>{{ 'cart.general.empty' | t }}</p>
+      {%- endif -%}
+      <p>{{ 'cart.general.continue_browsing_html' | t: url: routes.all_products_collection_url }}</p>
+    </div>
+  </header>
+
+  {%- if cart.item_count > 0 -%}
+    <form action="{{ routes.cart_url }}" method="post" novalidate data-location="page" id="CartPageForm">
+      <div class="cart__item cart__item--headers small--hide">
+        <div class="cart__item--details">
+          <div class="cart__item--qty">{{ 'cart.label.quantity' | t }}</div>
+          <div class="cart__item--price text-right">{{ 'cart.label.total' | t }}</div>
+        </div>
+      </div>
+
+      <div data-products>
+        {%- for item in cart.items -%}
+          {%- render 'cart-item', product: item -%}
+        {%- endfor -%}
+      </div>
+
+      <div class="cart__footer">
+        <div class="grid">
+          {%- if settings.cart_notes_enable -%}
+            <div class="grid__item medium-up--one-half">
+              <label for="CartNote">{{ 'cart.general.note' | t }}</label>
+              <textarea name="note" class="input-full cart-notes" id="CartNote">{{ cart.note }}</textarea>
+            </div>
+          {%- endif -%}
+          <div class="grid__item medium-up--one-half text-center medium-up--text-right{% unless settings.cart_notes_enable %} medium-up--push-one-half{% endunless %}">
+            
+            {% render 'haciendola-cart-boleta-factura' %}
+            {% render 'tarificador-cart-shipping-calculator' %}
+            
+            <div data-discounts>
+              {% if cart.cart_level_discount_applications != blank %}
+                <div class="cart__item-sub cart__item-row">
+                  <div>{{ 'cart.general.discounts' | t }}</div>
+                  <div class="text-right">
+                    {% for cart_discount in cart.cart_level_discount_applications %}
+                      <div>
+                        {{ cart_discount.title }} (-{{ cart_discount.total_allocated_amount | money }})
+                      </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="cart__item-sub cart__item-row">
+              <div class="cart__subtotal">{{ 'cart.general.subtotal' | t }}</div>
+              <div data-subtotal>{{ cart.total_price | money }}</div>
+            </div>
+
+            {%- assign cartTotalDiscounts = cart.total_discounts | money -%}
+            <div class="cart__item-row cart__savings {% unless cart.total_discounts > 0%} hide{% endunless %}" data-savings>
+              {{ 'cart.general.savings_html' | t: savings: cartTotalDiscounts }}
+            </div>
+
+            <div class="cart__item-row ajaxcart__note">
+              <small>
+                {{ 'cart.general.shipping_at_checkout' | t }}<br />
+              </small>
+            </div>
+
+            {%- if settings.cart_terms_conditions_enable -%}
+              <div class="cart__item-row cart__terms cart__terms--right">
+                <input type="checkbox" id="CartTerms" class="cart__terms-checkbox">
+                <label for="CartTerms">
+                  {% if settings.cart_terms_conditions_link != blank %}
+                    {{ 'cart.general.terms_html' | t: url: settings.cart_terms_conditions_link }}
+                  {% else %}
+                    {{ 'cart.general.terms' | t }}
+                  {% endif %}
+                </label>
+              </div>
+            {%- endif -%}
+
+            <div class="cart__checkout-wrapper">
+              <button type="submit" name="checkout" {% if settings.cart_terms_conditions_enable %} data-terms="CartPageAgree"{% endif %} class="btn btn--no-animate cart__checkout">
+                {{ 'cart.general.checkout' | t }}
+              </button>
+
+              {%- if additional_checkout_buttons and settings.cart_additional_buttons -%}
+                <div class="additional-checkout-buttons">{{ content_for_additional_checkout_buttons }}</div>
+              {%- endif -%}
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </form>
+  {%- endif -%}
+</div>

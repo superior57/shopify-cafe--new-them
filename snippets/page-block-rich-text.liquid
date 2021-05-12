@@ -1,0 +1,27 @@
+<div class="index-section {{ section_class }}">
+  <div class="page-width text-{{ block.settings.align_text }}">
+    <div class="grid">
+      <div class="grid__item{% if block.settings.narrow_column %} medium-up--three-quarters medium-up--push-one-eighth{% endif %}">
+        {%- if block.settings.title != blank -%}
+          <p class="h2">
+            {{ block.settings.title | escape }}
+          </p>
+        {% endif %}
+        {% if block.settings.text != blank %}
+          <div class="rte">
+            {% if block.settings.enlarge_text %}<div class="enlarge-text">{% endif %}
+              {{ block.settings.text }}
+            {% if block.settings.enlarge_text %}</div>{% endif %}
+          </div>
+        {% endif %}
+        {%- if block.settings.link_text != blank -%}
+          <div class="rte">
+            <a href="{{ block.settings.link }}" class="btn">
+              {{ block.settings.link_text }}
+            </a>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>

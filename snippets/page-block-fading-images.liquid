@@ -1,0 +1,188 @@
+{%- liquid
+  assign image_count = 0
+  if block.settings.enable_image_1
+    assign image_count = image_count | plus: 1
+  endif
+  if block.settings.enable_image_2
+    assign image_count = image_count | plus: 1
+  endif
+  if block.settings.enable_image_3
+    assign image_count = image_count | plus: 1
+  endif
+-%}
+
+<div
+  data-subsection
+  data-section-id="{{ block.id }}"
+  data-section-type="fading-images"
+  data-interval="{{ block.settings.slide_speed | times: 1000 }}"
+  data-count="{{ image_count }}">
+
+  {%- style -%}
+    .fading-images--{{ block.id }} .fading-images-overlay__title {
+      background-color: {{ block.settings.title_bg_color }};
+      color: {{ block.settings.title_color }};
+      font-size: {{ block.settings.title_size | times: 0.5 }}px;
+    }
+    @media only screen and (min-width: 769px) {
+      .fading-images--{{ block.id }} .fading-images-overlay__title {
+        font-size: {{ block.settings.title_size }}px;
+      }
+    }
+    .fading-images--{{ block.id }}.fading-images-overlay__overlay::before {
+      background-color: {{ block.settings.color_overlay }};
+      opacity: {{ block.settings.color_overlay_opacity | divided_by: 100.0 }};
+    }
+    .fading-images--{{ block.id }} .active-image {
+      animation-duration: {{ block.settings.slide_speed | times: 1000 }}ms;
+    }
+    .fading-images--{{ block.id }} .active-image.compensation {
+      animation-duration: {{ block.settings.slide_speed | times: 1000 | plus: 400 }}ms;
+    }
+    .fading-images--{{ block.id }} .finished-image {
+      animation-duration: 1000ms;
+    }
+  {%- endstyle -%}
+
+  {%- assign natural_height = false -%}
+  {%- assign natural_mobile_height = false -%}
+  {%- if block.settings.desktop_height == 'natural' -%}
+    {% comment %}
+      Get first image's aspect ratio
+    {% endcomment %}
+    {%- if block.settings.enable_image_1 and block.settings.image_1 != blank -%}
+      {%- assign natural_height = true -%}
+      {%- capture natural_height_ratio -%}{{ 100 | divided_by: block.settings.image_1.aspect_ratio }}%{% endcapture %}
+    {%- endif -%}
+    {%- if block.settings.mobile_height == 'auto' -%}
+      {%- assign natural_mobile_height = true -%}
+    {%- endif -%}
+  {%- endif -%}
+
+  {%- if natural_height -%}
+    {%- style -%}
+      .hero-natural--{{ block.id }} {
+        height: 0;
+        padding-bottom: {{ natural_height_ratio }};
+      }
+    {%- endstyle -%}
+  {%- endif -%}
+
+  {%- if natural_height -%}
+    <div class="hero-natural--{{ block.id }}">
+  {%- endif -%}
+
+  <div
+    class="hero hero--{{ block.id }} hero--{{ block.settings.desktop_height }} hero--mobile--{{ block.settings.mobile_height }} fading-images fading-images--{{ block.id }} fading-images-overlay__overlay loading"
+    {% if natural_height %}
+      data-natural="true"
+    {% endif %}
+    data-mobile-natural="{{ natural_mobile_height }}">
+    {%- if block.settings.link -%}
+      <a href="{{ block.settings.link }}" class="hero__slide-link">
+    {%- endif -%}
+
+    <div class="hero__text-wrap hero__text-wrap--absolute">
+      <div class="page-width text-center">
+        <div class="hero__text-content {{ block.settings.text_align }}">
+          <div class="fading-images-overlay__titles{% if block.settings.title_font == 'heading' %} fading-images-overlay__titles--heading-style{% endif %}">
+            <div class="animation-cropper">
+              <div class="fading-images-overlay__title fading-images-overlay__title--1"></div>
+            </div>
+            {%- if block.settings.title_lines == "2" -%}
+              <div class="animation-cropper">
+                <div class="fading-images-overlay__title fading-images-overlay__title--2"></div>
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {%- assign image_index = 0 -%}
+
+    {%- if block.settings.enable_image_1 -%}
+      {%- assign image_index = image_index | plus: 1 -%}
+      {%- if block.settings.image_1 != blank -%}
+        {%- assign img_url = block.settings.image_1 | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        <img class="fading-images__item fading-images__item--{{ block.id }} lazyload"
+          src="{{ block.settings.image_1 | img_url: '300x' }}"
+          data-src="{{ img_url }}"
+          data-aspectratio="{{ block.settings.image_1.aspect_ratio }}"
+          data-sizes="auto"
+          data-slide-index="1"
+          data-slide-title1="{{ block.settings.slide_title_1a }}"
+          data-slide-title2="{{ block.settings.slide_title_1b }}"
+          alt="{{ block.settings.image_1.alt | escape }}"
+          style="object-position: {{ block.settings.focal_point_1 }};">
+      {%- else -%}
+        {%- capture placeholder -%}lifestyle-{% cycle 1, 2 %}{%- endcapture -%}
+        <div class="fading-images__item fading-images__item--{{ block.id }} lazyloaded"
+          data-slide-index="1"
+          data-slide-title1="{{ block.settings.slide_title_1a }}"
+          data-slide-title2="{{ block.settings.slide_title_1b }}">
+            {{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- if block.settings.enable_image_2 -%}
+      {%- assign image_index = image_index | plus: 1 -%}
+      {%- if block.settings.image_2 != blank -%}
+        {%- assign img_url = block.settings.image_2 | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        <img class="fading-images__item fading-images__item--{{ block.id }} lazyload"
+          src="{{ block.settings.image_2 | img_url: '300x' }}"
+          data-src="{{ img_url }}"
+          data-aspectratio="{{ block.settings.image_2.aspect_ratio }}"
+          data-sizes="auto"
+          data-slide-index="2"
+          data-slide-title1="{{ block.settings.slide_title_2a }}"
+          data-slide-title2="{{ block.settings.slide_title_2b }}"
+          alt="{{ block.settings.image_2.alt | escape }}"
+          style="object-position: {{ block.settings.focal_point_2 }};">
+      {%- else -%}
+        {%- capture placeholder -%}lifestyle-{% cycle 1, 2 %}{%- endcapture -%}
+        <div class="fading-images__item fading-images__item--{{ block.id }} lazyloaded"
+          data-slide-index="2"
+          data-slide-title1="{{ block.settings.slide_title_2a }}"
+          data-slide-title2="{{ block.settings.slide_title_2b }}">
+            {{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- if block.settings.enable_image_3 -%}
+      {%- assign image_index = image_index | plus: 1 -%}
+      {%- if block.settings.image_3 != blank -%}
+        {%- assign img_url = block.settings.image_3 | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        <img class="fading-images__item fading-images__item--{{ block.id }} lazyload"
+          src="{{ block.settings.image_3 | img_url: '300x' }}"
+          data-src="{{ img_url }}"
+          data-aspectratio="{{ block.settings.image_3.aspect_ratio }}"
+          data-sizes="auto"
+          data-slide-index="3"
+          data-slide-title1="{{ block.settings.slide_title_3a }}"
+          data-slide-title2="{{ block.settings.slide_title_3b }}"
+          alt="{{ block.settings.image_3.alt | escape }}"
+          style="object-position: {{ block.settings.focal_point_3 }};">
+      {%- else -%}
+        {%- capture placeholder -%}lifestyle-{% cycle 1, 2 %}{%- endcapture -%}
+        <div class="fading-images__item fading-images__item--{{ block.id }} lazyloaded"
+          data-slide-index="3"
+          data-slide-title1="{{ block.settings.slide_title_3a }}"
+          data-slide-title2="{{ block.settings.slide_title_3b }}">
+            {{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- if block.settings.link -%}
+      </a>
+    {%- endif -%}
+  </div>
+
+  {%- if natural_height -%}
+    </div>
+  {%- endif -%}
+
+</div>

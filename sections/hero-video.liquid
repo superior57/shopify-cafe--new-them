@@ -1,0 +1,284 @@
+{%- style -%}
+  .hero--{{ section.id }} .hero__title {
+    font-size: {{ section.settings.title_size | times: 0.5 }}px;
+  }
+  @media only screen and (min-width: 769px) {
+    .hero--{{ section.id }} .hero__title {
+      font-size: {{ section.settings.title_size }}px;
+    }
+  }
+
+  {% if section.settings.overlay_opacity > 0 %}
+    .hero--{{ section.id }} .hero__text-wrap:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 3;
+      background-color: #000;
+      opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+    }
+  {% endif %}
+{%- endstyle -%}
+
+<div
+  data-section-id="{{ section.id }}"
+  data-section-type="video-section"
+  data-mobile-natural="false"
+  class="video-parent-section hero hero--{{ section.id }} hero--{{ section.settings.section_height }} hero--mobile--{{ section.settings.mobile_height }}"
+  data-aos="hero__animation">
+
+  <div class="hero__media hero__media--{{ section.id }}">
+
+    {%- if section.settings.video_url contains 'youtube.com/watch' -%}
+      {%- assign video_id = section.settings.video_url | split: 'v=' -%}
+      {%- assign video_id = video_id[1] | split: '&' | first -%}
+      <div
+        id="YouTubeVideo-{{ section.id }}"
+        class="video-div"
+        data-type="youtube"
+        data-video-id="{{ video_id }}"></div>
+    {%- endif -%}
+
+    {%- if section.settings.video_url contains 'youtu.be/' -%}
+      {%- assign video_id = section.settings.video_url | split: '.be/' -%}
+      {%- assign video_id = video_id[1] | split: '&' | first -%}
+      <div
+        id="YouTubeVideo-{{ section.id }}"
+        class="video-div"
+        data-type="youtube"
+        data-video-id="{{ video_id }}"></div>
+    {%- endif -%}
+
+    {%- if section.settings.video_url contains 'vimeo.com' -%}
+      {%- assign video_id = section.settings.video_url | split: '.com/' -%}
+      {%- assign video_id = video_id[1] | split: '/' | first -%}
+      <div
+        id="Vimeo-{{ section.id }}"
+        class="video-div"
+        data-type="vimeo"
+        data-video-id="{{ video_id }}"></div>
+    {%- endif -%}
+
+    {%- if section.settings.video_url contains '.mp4' or section.settings.video_url contains '.MP4' -%}
+      <video
+        id="Mp4Video-{{ section.id }}"
+        class="video-div"
+        src="{{ section.settings.video_url }}"
+        data-type="mp4"
+        loop muted playsinline autoplay></video>
+    {%- endif -%}
+
+  </div>
+
+  <div class="hero__text-wrap{% if section.settings.section_height == '16-9' %} hero__text-wrap--absolute{% endif %}">
+    <div class="page-width">
+      <div class="hero__text-content {{ section.settings.text_align }}">
+        {%- unless section.settings.title == blank -%}
+          <h2 class="h1 hero__title">
+            <div class="animation-cropper"><div class="animation-contents">
+            {{ section.settings.title | newline_to_br }}
+            </div></div>
+          </h2>
+        {%- endunless -%}
+        {%- if section.settings.subheading or section.settings.link -%}
+          {%- unless section.settings.subheading == blank -%}
+            <div class="hero__subtitle">
+              <div class="animation-cropper"><div class="animation-contents">
+                {{ section.settings.subheading | escape }}
+              </div></div>
+            </div>
+          {%- endunless -%}
+          {%- if section.settings.link_text != blank -%}
+            {%- assign link_href = section.settings.link -%}
+            {%- if section.settings.link == blank -%}
+              {%- assign link_href = section.settings.video_url -%}
+            {%- endif -%}
+
+            {%- assign youtube_video_link = false -%}
+            {%- if link_href contains 'youtube.com/watch' or link_href contains 'youtu.be/' -%}
+              {%- assign youtube_video_link = true -%}
+            {%- endif -%}
+
+            <div class="hero__link">
+              <div class="animation-cropper">
+                <div class="animation-contents">
+                  <a href="{{ link_href }}" class="btn btn--inverse{% if youtube_video_link %} btn--no-animate{% endif %}">
+                    {%- if youtube_video_link -%}
+                      <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-play" viewBox="18.24 17.35 24.52 28.3"><path fill="#323232" d="M22.1 19.151v25.5l20.4-13.489-20.4-12.011z"/></svg>
+                    {%- endif -%}
+                    {{ section.settings.link_text }}
+                  </a>
+                </div>
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endif -%}
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% schema %}
+  {
+    "name": "Video hero",
+    "class": "index-section--hero",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "title",
+        "label": "Heading",
+        "default": "Bring your\nbrand to life."
+      },
+      {
+        "type": "range",
+        "id": "title_size",
+        "label": "Heading text size",
+        "default": 80,
+        "min": 40,
+        "max": 100,
+        "unit": "px"
+      },
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "Subheading",
+        "default": "Seamless hero videos"
+      },
+      {
+        "type": "text",
+        "id": "link_text",
+        "label": "Button text",
+        "default": "Optional button"
+      },
+      {
+        "type": "url",
+        "id": "link",
+        "label": "Button link",
+        "info": "Links to YouTube videos will be opened in a video player"
+      },
+      {
+        "type": "select",
+        "id": "text_align",
+        "label": "Text alignment",
+        "default": "vertical-center horizontal-center",
+        "options": [
+          {
+            "value": "vertical-center horizontal-left",
+            "label": "Center left"
+          },
+          {
+            "value": "vertical-center horizontal-center",
+            "label": "Center"
+          },
+          {
+            "value": "vertical-center horizontal-right",
+            "label": "Center right"
+          },
+          {
+            "value": "vertical-bottom horizontal-left",
+            "label": "Bottom left"
+          },
+          {
+            "value": "vertical-bottom horizontal-center",
+            "label": "Bottom center"
+          },
+          {
+            "value": "vertical-bottom horizontal-right",
+            "label": "Bottom right"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "video_url",
+        "label": "Background video link",
+        "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "info": "Supports YouTube, .MP4 and Vimeo. Not all features supported by Vimeo. [Learn more](https://archetypethemes.co/blogs/motion/how-do-i-add-background-videos)"
+      },
+      {
+        "type": "range",
+        "id": "overlay_opacity",
+        "label": "Text protection",
+        "info": "Darkens your image to ensure your text is readable",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "%"
+      },
+      {
+        "type": "select",
+        "id": "section_height",
+        "label": "Desktop height",
+        "default": "650px",
+        "options": [
+          {
+            "label": "16:9",
+            "value": "16-9"
+          },
+          {
+            "label": "450px",
+            "value": "450px"
+          },
+          {
+            "label": "550px",
+            "value": "550px"
+          },
+          {
+            "label": "650px",
+            "value": "650px"
+          },
+          {
+            "label": "750px",
+            "value": "750px"
+          },
+          {
+            "label": "Full screen",
+            "value": "100vh"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "mobile_height",
+        "label": "Mobile height",
+        "default": "auto",
+        "options": [
+          {
+            "label": "Auto",
+            "value": "auto"
+          },
+          {
+            "label": "250px",
+            "value": "250px"
+          },
+          {
+            "label": "300px",
+            "value": "300px"
+          },
+          {
+            "label": "400px",
+            "value": "400px"
+          },
+          {
+            "label": "500px",
+            "value": "500px"
+          },
+          {
+            "label": "Full screen",
+            "value": "100vh"
+          }
+        ]
+      }
+    ],
+    "presets": [{
+      "name": "Video hero",
+      "category": "Video"
+    }]
+  }
+{% endschema %}

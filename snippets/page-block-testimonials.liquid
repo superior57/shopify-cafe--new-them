@@ -1,0 +1,134 @@
+{%- liquid
+  assign text_column_count = 0
+  assign column_1_enabled = false
+  assign column_2_enabled = false
+  if block.settings.image_1 != blank or block.settings.testimonial_1 != blank or block.settings.author_1 != blank
+    assign column_1_enabled = true
+    assign text_column_count = text_column_count | plus: 1
+  endif
+  if block.settings.image_2 or block.settings.testimonial_2 != blank or block.settings.author_2 != blank
+    assign column_2_enabled = true
+    assign text_column_count = text_column_count | plus: 1
+  endif
+
+  case text_column_count
+    when 1
+      assign grid_item_width = ''
+    when 2
+      assign grid_item_width = 'medium-up--one-half'
+  endcase %
+-%}
+
+{%- style -%}
+  .testimonials-{{ block.id }} {
+    background-color: {{ block.settings.color_background }};
+    color: {{ block.settings.color_text }};
+  }
+}
+{%- endstyle -%}
+
+<div class="testimonials-section testimonials-{{ block.id }}">
+  <div class="page-width text-{{ block.settings.align_text }}">
+    {%- if block.settings.title != blank -%}
+      <div class="section-header">
+        <h2>{{ block.settings.title }}</h2>
+      </div>
+    {%- endif -%}
+
+    <div class="grid">
+      {%- if column_1_enabled -%}
+        <div class="grid__item {{ grid_item_width }}" data-aos="row-of-2">
+          <blockquote class="testimonials-slider__text">
+
+            {%- if block.settings.icon_1 == 'quote' -%}
+              <span class="quote-icon"><svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-quote" viewBox="0 0 41 35"><path d="M10.208 17.711h6.124v16.332H0V21.684C0 8.184 5.444.956 16.332 0v6.125c-4.083 1.14-6.124 4.414-6.124 9.82v1.766zm24.498 0h6.124v16.332H24.498V21.684C24.498 8.184 29.942.956 40.83 0v6.125c-4.083 1.14-6.124 4.414-6.124 9.82v1.766z" fill="#000" fill-rule="evenodd"/></svg></span>
+            {%- elsif block.settings.icon_1 == '5-stars' -%}
+              <span class="testimonial-stars">★★★★★</span>
+            {%- elsif block.settings.icon_1 == '4-stars' -%}
+              <span class="testimonial-stars">★★★★</span>
+            {%- elsif block.settings.icon_1 == '3-stars' -%}
+              <span class="testimonial-stars">★★★</span>
+            {%- elsif block.settings.icon_1 == '2-stars' -%}
+              <span class="testimonial-stars">★★</span>
+            {%- elsif block.settings.icon_1 == '1-star' -%}
+              <span class="testimonial-stars">★</span>
+            {%- endif -%}
+
+            {%- if block.settings.testimonial_1 != blank -%}
+              <div class="rte-setting text-spacing">{{ block.settings.testimonial_1 }}</div>
+            {%- endif -%}
+            {%- if block.settings.image_1 != blank or block.settings.author_1 != blank or block.settings.author_info_1 != blank -%}
+              <div class="testimonial-meta">
+                {%- if block.settings.image_1 != blank -%}
+                  <div
+                    class="text-spacing testimonail-image{% if block.settings.round_images %} testimonail-image--round{% endif %}">
+                    {%- assign img_url = block.settings.image_1 | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                    <img class="lazyload"
+                        data-src="{{ img_url }}"
+                        data-widths="[180, 360, 540, 720, 900, 1080]"
+                        data-aspectratio="{{ block.settings.image_1.aspect_ratio }}"
+                        data-sizes="auto"
+                        alt="{{ block.settings.image_1.alt }}">
+                  </div>
+                {%- endif -%}
+                {%- if block.settings.author_1 != blank -%}
+                  <cite>{{ block.settings.author_1 | escape }}</cite>
+                {%- endif -%}
+                {%- if block.settings.author_info_1 != blank -%}
+                  <p>{{ block.settings.author_info_1 | escape }}</p>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          </blockquote>
+        </div>
+      {%- endif -%}
+
+      {%- if column_2_enabled -%}
+        <div class="grid__item {{ grid_item_width }}" data-aos="row-of-3">
+          <blockquote class="testimonials-slider__text">
+
+            {%- if block.settings.icon_2 == 'quote' -%}
+              <span class="quote-icon"><svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-quote" viewBox="0 0 41 35"><path d="M10.208 17.711h6.124v16.332H0V21.684C0 8.184 5.444.956 16.332 0v6.125c-4.083 1.14-6.124 4.414-6.124 9.82v1.766zm24.498 0h6.124v16.332H24.498V21.684C24.498 8.184 29.942.956 40.83 0v6.125c-4.083 1.14-6.124 4.414-6.124 9.82v1.766z" fill="#000" fill-rule="evenodd"/></svg></span>
+            {%- elsif block.settings.icon_2 == '5-stars' -%}
+              <span class="testimonial-stars">★★★★★</span>
+            {%- elsif block.settings.icon_2 == '4-stars' -%}
+              <span class="testimonial-stars">★★★★</span>
+            {%- elsif block.settings.icon_2 == '3-stars' -%}
+              <span class="testimonial-stars">★★★</span>
+            {%- elsif block.settings.icon_2 == '2-stars' -%}
+              <span class="testimonial-stars">★★</span>
+            {%- elsif block.settings.icon_2 == '1-star' -%}
+              <span class="testimonial-stars">★</span>
+            {%- endif -%}
+
+            {%- if block.settings.testimonial_2 != blank -%}
+              <div class="rte-setting text-spacing">{{ block.settings.testimonial_2 }}</div>
+            {%- endif -%}
+            {%- if block.settings.image_2 != blank or block.settings.author_2 != blank or block.settings.author_info_2 != blank -%}
+              <div class="testimonial-meta">
+                {%- if block.settings.image_2 != blank -%}
+                  <div
+                    class="text-spacing testimonail-image{% if block.settings.round_images %} testimonail-image--round{% endif %}">
+                    {%- assign img_url = block.settings.image_2 | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                    <img class="lazyload"
+                        data-src="{{ img_url }}"
+                        data-widths="[180, 360, 540, 720, 900, 1080]"
+                        data-aspectratio="{{ block.settings.image_2.aspect_ratio }}"
+                        data-sizes="auto"
+                        alt="{{ block.settings.image_2.alt }}">
+                  </div>
+                {% endif %}
+                {%- if block.settings.author_2 != blank -%}
+                  <cite>{{ block.settings.author_2 | escape }}</cite>
+                {%- endif -%}
+                {%- if block.settings.author_info_2 != blank -%}
+                  <p>{{ block.settings.author_info_2 | escape }}</p>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          </blockquote>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>

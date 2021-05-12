@@ -1,0 +1,92 @@
+{% if settings.show_breadcrumbs %}
+
+{% unless template.name == 'index' or template.name == 'cart' %}
+  <nav class="breadcrumb" role="navigation" aria-label="breadcrumbs">
+    <a href="{{ routes.root_url }}" title="{{ 'general.breadcrumbs.home_link_title' | t }}">{{ 'general.breadcrumbs.home' | t }}</a>
+
+    {% if template.name == 'product' %}
+
+      {% if collection %}
+        {% if settings.show_breadcrumbs_collection_link %}
+          <span class="breadcrumb__divider" aria-hidden="true">/</span>
+          <a href="{{ routes.collections_url }}">{{ 'general.search.collections' | t | replace: ':', '' }}</a>
+        {% endif %}
+
+        <span class="breadcrumb__divider" aria-hidden="true">/</span>
+        {% if collection.handle %}
+          {% capture url %}{{ routes.collections_url }}/{{ collection.handle }}{% endcapture %}
+          {{ collection.title | link_to: url }}
+        {% endif %}
+      {% endif %}
+
+      <span class="breadcrumb__divider" aria-hidden="true">/</span>
+      {{ product.title }}
+
+    {% elsif template.name == 'collection' and collection.handle %}
+      {% if settings.show_breadcrumbs_collection_link %}
+        <span class="breadcrumb__divider" aria-hidden="true">/</span>
+        <a href="{{ routes.collections_url }}">{{ 'general.search.collections' | t | replace: ':', ''}}</a>
+      {% endif %}
+
+      <span class="breadcrumb__divider" aria-hidden="true">/</span>
+
+      {% if current_tags %}
+
+        {% capture url %}{{ routes.collections_url }}/{{ collection.handle }}{% endcapture %}
+        {{ collection.title | link_to: url }}
+
+        <span class="breadcrumb__divider" aria-hidden="true">/</span>
+
+        {% for tag in current_tags %}
+          {% if tag contains "_" %}{%- assign tag_starts_with = tag | slice: 0 -%}{% if tag_starts_with == "_" %}{% if tag_count %}{%- assign tag_count = tag_count | minus: 1 | at_least: 0 -%}{% endif %}{% continue %}{% endif %}{% endif %}
+
+          <span>{{ tag }}</span>
+
+          {% unless forloop.last %}
+            <span>+</span>
+          {% endunless %}
+
+        {% endfor %}
+
+      {% else %}
+        <span>{{ collection.title }}</span>
+      {% endif %}
+
+    {% elsif template.name == 'blog' %}
+
+      <span class="breadcrumb__divider" aria-hidden="true">/</span>
+      {% if current_tags %}
+        {{ blog.title | link_to: blog.url }}
+        <span class="breadcrumb__divider" aria-hidden="true">/</span>
+        <span>{{ current_tags | join: " + " }}</span>
+      {% else %}
+      <span>{{ blog.title }}</span>
+      {% endif %}
+
+    {% elsif template.name == 'article' %}
+
+      <span class="breadcrumb__divider" aria-hidden="true">/</span>
+      {{ blog.title | link_to: blog.url }}
+      <span class="breadcrumb__divider" aria-hidden="true">/</span>
+      <span>{{ article.title }}</span>
+
+    {% elsif template.name == 'page' %}
+
+      <span class="breadcrumb__divider" aria-hidden="true">/</span>
+      <span>{{ page.title }}</span>
+
+    {% elsif template.name == 'search' %}
+
+      <span class="breadcrumb__divider" aria-hidden="true">/</span>
+      <span>{{ page_title | replace: '*', '' }}</span>
+
+    {% else %}
+
+      <span class="breadcrumb__divider" aria-hidden="true">/</span>
+      <span>{{ page_title }}</span>
+
+    {% endif %}
+  </nav>
+{% endunless %}
+
+{% endif %}

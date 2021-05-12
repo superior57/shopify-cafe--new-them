@@ -1,0 +1,74 @@
+{%- paginate search.results by 12 -%}
+
+<div class="page-width page-content">
+
+  {%- render 'breadcrumbs' -%}
+
+  <header class="section-header">
+    <h1 class="section-header__title">
+      {{ 'general.search.title' | t }}
+    </h1>
+  </header>
+
+  {%- render 'search-bar', search_btn_style: 'btn', search_bar_location: 'search-bar--page' -%}
+
+  {%- if search.performed -%}
+
+    <hr class="hr--medium">
+
+    <div data-section-id="{{ section.id }}" data-section-type="collection-template">
+      <h2>
+        {{ 'general.search.result_count' | t: count: search.results_count }}
+      </h2>
+      {%- if search.results_count == 0 -%}
+        {{ 'general.search.no_results_html' | t: terms: search.terms | replace: '*', '' }}
+      {%- endif -%}
+
+      <div class="grid grid--uniform">
+        {%- for item in search.results -%}
+
+          {%- if item.object_type == 'product' -%}
+            {%- render 'product-grid-item', product: item, per_row: 4 -%}
+          {%- else -%}
+            <div class="grid__item grid-search medium-up--one-quarter medium--one-half">
+              <div class="grid-search__page">
+                <a href="{{ item.url }}" class="grid-search__page-link">
+                  <span class="grid-search__page-content">
+                    <span class="h4">{{ item.title }}</span>
+                    {%- if item.object_type == 'article' and item.image -%}
+                      {%- assign img_url = item.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                      <img class="grid-product__image lazyload"
+                          data-src="{{ img_url }}"
+                          data-widths="[180, 360, 540]"
+                          data-aspectratio="{{ item.image.aspect_ratio }}"
+                          data-sizes="auto"
+                          alt="{{ item.title | escape }}">
+                    {%- endif -%}
+                    {{ item.content | strip_html | truncatewords: 60 }}
+                  </span>
+                </a>
+              </div>
+            </div>
+          {%- endif -%}
+
+        {%- endfor -%}
+
+        {%- for item in search.results -%}
+          {%- if item.object_type == 'product' -%}
+            {%- if settings.quick_shop_enable -%}
+              {%- assign product = item -%}
+              {%- render 'quick-shop-modal', product: product -%}
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+
+    {%- if paginate.pages > 1 -%}
+      {%- render 'pagination', paginate: paginate -%}
+    {%- endif -%}
+
+  {%- endif -%}
+</div>
+
+{%- endpaginate -%}

@@ -1,0 +1,112 @@
+<div
+  data-section-id="{{ section.id }}"
+  data-section-type="store-availability">
+  {%- assign pick_up_availabilities = product_variant.store_availabilities | where: 'pick_up_enabled', true -%}
+  {%- if pick_up_availabilities.size > 0 -%}
+    <div class="store-availability">
+      {%- assign closest_location = pick_up_availabilities.first -%}
+      {%- if closest_location.available -%}
+        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-in-stock" viewBox="0 0 12 10"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.293 9.707l-3-3a.999.999 0 1 1 1.414-1.414l2.236 2.236 6.298-7.18a.999.999 0 1 1 1.518 1.3l-7 8a1 1 0 0 1-.72.35 1.017 1.017 0 0 1-.746-.292z" fill="#212B36"/></svg>
+      {%- else -%}
+        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-out-of-stock" viewBox="0 0 12 13"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.414 6.5l4.293-4.293A.999.999 0 1 0 10.293.793L6 5.086 1.707.793A.999.999 0 1 0 .293 2.207L4.586 6.5.293 10.793a.999.999 0 1 0 1.414 1.414L6 7.914l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414L7.414 6.5z" fill="#212B36"/></svg>
+      {%- endif -%}
+      <div class="store-availability__info">
+        {%- if closest_location.available -%}
+          <div>
+            {{ 'store_availability.general.pick_up_available_at_html' | t: location_name: closest_location.location.name }}
+          </div>
+          <p class="store-availability__small">
+            {{ closest_location.pick_up_time }}
+          </p>
+          <p class="store-availability__small">
+            <a href="#StoreAvailabilityDrawer" class="js-drawer-open-availability" aria-controls="StoreAvailabilityDrawer">
+              {%- if pick_up_availabilities.size == 1 -%}
+                {{ 'store_availability.general.view_store_info' | t }}
+              {%- else -%}
+                {{ 'store_availability.general.check_other_stores' | t }}
+              {%- endif -%}
+            </a>
+          </p>
+        {%- else -%}
+          <p>
+            {{ 'store_availability.general.pick_up_unavailable_at_html' | t: location_name: closest_location.location.name }}
+          </p>
+          {%- if pick_up_availabilities.size > 1 -%}
+            <p class="store-availability__small">
+              <a href="#StoreAvailabilityDrawer" class="js-drawer-open-availability" aria-controls="StoreAvailabilityDrawer">
+                {{ 'store_availability.general.check_other_stores' | t }}
+              </a>
+            </p>
+          {%- endif -%}
+      {%- endif -%}
+      </div>
+    </div>
+
+    <div id="StoreAvailabilityDrawer" class="drawer drawer--right text-left">
+      <div class="drawer__contents">
+        <div class="drawer__fixed-header">
+          <div class="drawer__header appear-animation appear-delay-1">
+            <div class="drawer__title">
+              <div data-availability-product-title></div>
+              {% unless product_variant.title == 'Default Title' %}
+                <div><small>{{ product_variant.title }}</small></div>
+              {% endunless %}
+            </div>
+            <div class="drawer__close">
+              <button type="button" class="drawer__close-button js-drawer-close">
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64"><path d="M19 17.61l27.12 27.13m0-27.12L19 44.74"/></svg>
+                <span class="icon__fallback-text">{{ 'cart.general.close_cart' | t }}</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="drawer__inner">
+          <div class="drawer__scrollable">
+            <div class="appear-animation appear-delay-2">
+              {%- for availability in pick_up_availabilities -%}
+                <div class="store-availability">
+                  {%- if availability.available -%}
+                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-in-stock" viewBox="0 0 12 10"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.293 9.707l-3-3a.999.999 0 1 1 1.414-1.414l2.236 2.236 6.298-7.18a.999.999 0 1 1 1.518 1.3l-7 8a1 1 0 0 1-.72.35 1.017 1.017 0 0 1-.746-.292z" fill="#212B36"/></svg>
+                  {%- else -%}
+                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-out-of-stock" viewBox="0 0 12 13"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.414 6.5l4.293-4.293A.999.999 0 1 0 10.293.793L6 5.086 1.707.793A.999.999 0 1 0 .293 2.207L4.586 6.5.293 10.793a.999.999 0 1 0 1.414 1.414L6 7.914l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414L7.414 6.5z" fill="#212B36"/></svg>
+                  {%- endif -%}
+                  <div class="store-availability__info">
+                    <div>
+                      <strong>
+                        {{ availability.location.name }}
+                      </strong>
+                    </div>
+                    <p class="store-availability__small">
+                      {%- if availability.available -%}
+                        {{ 'store_availability.general.pick_up_available' | t }}, {{ availability.pick_up_time | downcase }}
+                      {%- else -%}
+                        {{ 'store_availability.general.pick_up_currently_unavailable' | t }}
+                      {%- endif -%}
+                    </p>
+                    {%- assign address = availability.location.address -%}
+                    <div class="store-availability__small">
+                      {{ address | format_address }}
+                      {%- if address.phone.size > 0 -%}
+                        <p>
+                          {{ address.phone }}
+                        </p>
+                      {%- endif -%}
+                    </div>
+                  </div>
+                </div>
+              {%- endfor -%}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": {},
+  "settings": []
+}
+{% endschema %}

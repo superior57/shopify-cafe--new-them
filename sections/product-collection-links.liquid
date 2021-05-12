@@ -1,0 +1,99 @@
+{%- if collection and section.settings.collection_links_enable -%}
+  {%- liquid
+    assign grid_item_width = ''
+
+    if collection.next_product
+      assign grid_item_width = 'medium-up--one-half'
+    endif
+
+    if collection.image
+      assign collection_image = collection.image
+    else
+      assign collection_image = collection.products.first.featured_media.preview_image
+    endif
+  -%}
+
+  <div class="grid grid--no-gutters skrim-grid skrim-grid--pagination product-navigation">
+    {%- if collection.next_product -%}
+      <div class="grid__item {{ grid_item_width }} skrim__item medium-up--hide" data-aos="skrim__animation">
+        <a href="{{ collection.next_product }}" class="skrim__link skrim__item-content">
+          <div
+            class="skrim__overlay grid__image">
+              {%- assign img_url = collection.next_product.featured_media.preview_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+              <img class="image-fit lazyload"
+                src="{{ collection.next_product.featured_media.preview_image | img_url: '300x' }}"
+                data-src="{{ img_url }}"
+                data-aspectratio="{{ collection.next_product.featured_media.preview_image.aspect_ratio }}"
+                data-sizes="auto"
+                alt="{{ collection.next_product.featured_media.preview_image.alt | escape }}">
+            </div>
+          <div class="skrim__title-wrapper">
+            <span class="skrim__title skrim__title--right">
+              <div class="skrim__underline-me">
+                {{ 'products.general.next_product' | t: title: collection.next_product.title }}
+              </div> <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon--wide icon-arrow-right" viewBox="0 0 50 15"><path d="M0 9.63V5.38h35V0l15 7.5L35 15V9.63z"/></svg>
+            </span>
+          </div>
+        </a>
+      </div>
+    {%- endif -%}
+    <div class="grid__item {{ grid_item_width }} skrim__item" data-aos="skrim__animation">
+      <a href="{{ collection.url }}" class="skrim__link skrim__item-content">
+        <div
+          class="skrim__overlay grid__image">
+            {%- assign img_url = collection_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+            <img class="image-fit lazyload"
+              src="{{ collection_image | img_url: '300x' }}"
+              data-src="{{ img_url }}"
+              data-aspectratio="{{ collection_image.aspect_ratio }}"
+              data-sizes="auto"
+              alt="{{ collection_image.alt | escape }}">
+          </div>
+        <div class="skrim__title-wrapper">
+          <span class="skrim__title">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon--wide icon-arrow-left" viewBox="0 0 50 15"><path d="M50 5.38v4.25H15V15L0 7.5 15 0v5.38z"/></svg> <div class="skrim__underline-me">{{ 'products.general.collection_return' | t: collection: collection.title }}</div>
+          </span>
+        </div>
+      </a>
+    </div>
+    {%- if collection.next_product -%}
+      <div class="grid__item {{ grid_item_width }} skrim__item small--hide" data-aos="skrim__animation">
+        <a href="{{ collection.next_product }}" class="skrim__link skrim__item-content">
+          <div
+            class="skrim__overlay grid__image">
+            {%- assign img_url = collection.next_product.featured_media.preview_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+            <img class="image-fit lazyload"
+              src="{{ collection.next_product.featured_media.preview_image | img_url: '300x' }}"
+              data-src="{{ img_url }}"
+              data-aspectratio="{{ collection.next_product.featured_media.preview_image.aspect_ratio }}"
+              data-sizes="auto"
+              alt="{{ collection.next_product.featured_media.preview_image.alt | escape }}">
+          </div>
+          <div class="skrim__title-wrapper">
+            <span class="skrim__title skrim__title--right">
+              <div class="skrim__underline-me">{{ 'products.general.next_product' | t: title: collection.next_product.title }}</div> <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon--wide icon-arrow-right" viewBox="0 0 50 15"><path d="M0 9.63V5.38h35V0l15 7.5L35 15V9.63z"/></svg>
+            </span>
+          </div>
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+{%- endif -%}
+
+{% schema %}
+  {
+    "name": "Collection links",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Collection links will show up when you navigate to a product through a collection. If you do not see /collections/collection-name/ in the URL of a product, these links will not appear."
+      },
+      {
+        "type": "checkbox",
+        "id": "collection_links_enable",
+        "label": "Show back/next product links",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}

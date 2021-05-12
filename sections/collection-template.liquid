@@ -1,0 +1,419 @@
+{%- liquid
+  assign per_row = section.settings.per_row
+  assign paginate_by = per_row | times: 5
+  if section.settings.collection_tags_style == 'inline' and collection.all_tags.size > 0
+    assign paginate_by = paginate_by | minus: 1
+  elsif section.settings.collection_subnav_style == 'inline'
+    assign paginate_by = paginate_by | minus: 1
+  endif
+-%}
+
+{%- paginate collection.products by paginate_by -%}
+
+<div
+  id="CollectionSection"
+  data-section-id="{{ section.id }}"
+  data-section-type="collection-template"
+  {% if section.settings.parallax %}data-parallax="true"{% endif %}>
+
+  {%- if section.settings.collection_image_enable and collection.image -%}
+
+    {%- style -%}
+    .collection-hero {
+      height: {{ section.settings.collection_image_height }}px;
+    }
+    @media screen and (max-width: 768px) {
+      .collection-hero {
+        height: {{ section.settings.collection_image_height | times: 0.6 }}px;
+      }
+    }
+    {%- endstyle -%}
+
+    <div class="collection-hero">
+
+      {%- if section.settings.parallax -%}
+        <div class="parallax-container">
+          <div class="parallax-image">
+      {%- endif -%}
+
+        {%- assign img_url = collection.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        <img class="collection-hero__image image-fit lazyload"
+          src=""
+          data-src="{{ img_url }}"
+          data-aspectratio="{{ collection.image.aspect_ratio }}"
+          data-widths="[720, 900, 1080, 1800, 2400]"
+          data-sizes="auto"
+          alt="{{ collection.image.alt | escape }}">
+
+      {%- if section.settings.parallax -%}
+          </div>
+        </div>
+      {%- endif -%}
+
+      <div class="collection-hero__content">
+        <div class="page-width">
+          <header class="section-header section-header--hero">
+            <h1 class="section-header__title section-header__title--medium">
+              <div class="animation-cropper">
+                <div class="animation-contents collection-title">
+                  {{ collection.title }}
+                </div>
+              </div>
+            </h1>
+          </header>
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+
+  <div class="page-width page-content">
+    {%- render 'breadcrumbs' -%}
+
+    {%- unless section.settings.collection_image_enable and collection.image -%}
+      <header class="section-header">
+        <h1 class="section-header__title collection-title">
+          {{ collection.title }}
+        </h1>
+      </header>
+    {%- endunless -%}
+
+    {%- if section.settings.collection_tags_style == 'dropdown' or section.settings.collection_sort_enable -%}
+      <div class="collection-filter">
+        <div class="grid grid--uniform">
+
+        {%- if section.settings.collection_tags_style == 'dropdown' -%}
+          <div class="grid__item small--one-half medium-up--one-half">
+            <label for="SortTags" class="hidden-label">{{ 'collections.filters.title_tags' | t }}</label>
+            <select name="SortTags" id="SortTags">
+              {%- if current_tags -%}
+                {%- if collection.handle -%}
+                  <option value="{{ routes.collections_url }}/{{ collection.handle }}">{{ 'collections.filters.all_tags' | t }}</option>
+                {%- elsif collection.current_type -%}
+                  <option value="{{ collection.current_type | url_for_type }}">{{ 'collections.filters.all_tags' | t }}</option>
+                {%- elsif collection.current_vendor -%}
+                  <option value="{{ collection.current_vendor | url_for_vendor }}">{{ 'collections.filters.all_tags' | t }}</option>
+                {%- endif -%}
+              {%- else -%}
+                {%- if current_tags contains tag -%}
+                  <option value="">{{ 'collections.filters.all_tags' | t }}</option>
+                {%- else -%}
+                  <option value="">{{ 'collections.filters.title_tags' | t }}</option>
+                {%- endif -%}
+              {%- endif -%}
+              {%- for tag in collection.all_tags -%}
+                {% if tag contains "_" %}{%- assign tag_starts_with = tag | slice: 0 -%}{% if tag_starts_with == "_" %}{% if tag_count %}{%- assign tag_count = tag_count | minus: 1 | at_least: 0 -%}{% endif %}{% continue %}{% endif %}{% endif %}
+                <option value="{{ routes.collections_url }}/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag | handleize }}"{% if current_tags contains tag %} selected="selected"{% endif %}>{{ tag }}</option>
+              {%- endfor -%}
+            </select>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.collection_sort_enable -%}
+          <div class="grid__item text-right{% if section.settings.collection_tags_style == 'dropdown' %} small--one-half medium-up--one-half{% endif %}">
+            {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+            <label for="SortBy" class="hidden-label">{{ 'collections.sorting.title' | t }}</label>
+            <select name="SortBy" id="SortBy" data-default-sortby="{{ collection.default_sort_by }}">
+              <option value="title-ascending"{% if sort_by == collection.default_sort_by %} selected="selected"{% endif %}>{{ 'collections.sorting.title' | t }}</option>
+              {%- for option in collection.sort_options -%}
+                <option value="{{ option.value }}" {% if option.value == sort_by %}selected="selected"{% endif %}>{{ option.name }}</option>
+              {%- endfor -%}
+            </select>
+          </div>
+        {%- endif -%}
+
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.description_position == 'top' -%}
+      {%- if collection.description != blank -%}
+        <div class="collection-description rte">
+          <div class="enlarge-text">
+            {{ collection.description }}
+          </div>
+        </div>
+        <hr class="hr--clear hr--medium">
+      {%- endif -%}
+    {%- endif -%}
+
+    <div id="CollectionAjaxResult">
+      <div id="CollectionAjaxContent">
+        <div class="grid grid--uniform{% if section.settings.mobile_flush_grid %} small--grid--flush{% endif %}">
+          {%- liquid
+            assign grid_item_width = 'small--one-half medium-up--one-third'
+
+            case per_row
+              when 1
+                assign grid_item_width = ''
+              when 2
+                assign grid_item_width = 'medium-up--one-half'
+              when 3
+                assign grid_item_width = 'small--one-half medium-up--one-third'
+              when 4
+                assign grid_item_width = 'small--one-half medium-up--one-quarter'
+              when 5
+                assign grid_item_width = 'small--one-half medium-up--one-fifth'
+            endcase
+
+            assign have_sidebar = false
+            assign tag_count = 0
+            assign tag_limit = 7
+            assign have_extra_tags = false
+          -%}
+
+          {%- if section.settings.collection_tags_style == 'inline' -%}
+            {%- if collection.all_tags.size > 0 -%}
+              <div class="grid__item {{ grid_item_width }} grid__item--{{ section.id }}">
+                <ul class="tags tags--vertical">
+                  <li{% unless current_tags %} class="tag--active"{% endunless %}>
+                    {%- if collection.handle -%}
+                      <a href="{{ routes.collections_url }}/{{ collection.handle }}">
+                        {{ 'collections.general.all_of_collection' | t }}
+                      </a>
+                    {%- elsif collection.current_type -%}
+                      <a href="{{ collection.current_type | url_for_type }}">
+                        {{ 'collections.general.all_of_collection' | t }}
+                      </a>
+                    {%- elsif collection.current_vendor -%}
+                      <a href="{{ collection.current_vendor | url_for_vendor }}">
+                        {{ 'collections.general.all_of_collection' | t }}
+                      </a>
+                    {%- endif -%}
+                  </li>
+
+                  {%- for tag in collection.all_tags -%}
+                    {%- assign tag_count = tag_count | plus: 1 -%}
+                    {% if tag contains "_" %}{%- assign tag_starts_with = tag | slice: 0 -%}{% if tag_starts_with == "_" %}{% if tag_count %}{%- assign tag_count = tag_count | minus: 1 | at_least: 0 -%}{% endif %}{% continue %}{% endif %}{% endif %}
+                    {%- assign tag_with_hyphens = tag | replace: ' ', '-' -%}
+                    {%- if tag_count == tag_limit -%}
+                      {%- assign have_extra_tags = true -%}
+                      </ul>
+                      <div id="TagList-{{ section.id }}" class="collapsible-content collapsible-content--all">
+                        <ul class="tags tags--vertical collapsible-content__inner collapsible-content__inner--no-translate">
+                    {%- endif -%}
+                    {%- if current_tags contains tag or current_tags contains tag_with_hyphens -%}
+                      <li class="tag--active">
+                        {{ tag | link_to_remove_tag: tag | replace: 'title=', 'class="js-no-transition" title=' | replace: 'view=ajax', '' }}
+                      </li>
+                    {%- else -%}
+                      <li>
+                        {{ tag | link_to_tag: tag | replace: 'title=', 'class="js-no-transition" title=' | replace: 'view=ajax', '' }}
+                      </li>
+                    {%- endif -%}
+                  {%- endfor -%}
+
+                  {%- if have_extra_tags -%}
+                    </div>
+                  {%- endif -%}
+                </ul>
+
+                {%- assign show_button_limit = tag_limit | minus: 1 -%}
+                {%- if tag_count > show_button_limit -%}
+                  <p>
+                    <button type="button" class="collapsible-trigger collapsible--auto-height collapsible-trigger-btn btn btn--tertiary tags-toggle" aria-controls="TagList-{{ section.id }}">
+                      <span class="collapsible-label__closed">{{ 'collections.general.see_more' | t }}</span>
+                      <span class="collapsible-label__open">{{ 'collections.general.see_less' | t }}</span>
+                    </button>
+                  </p>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          {%- elsif section.settings.collection_subnav_style == 'inline' -%}
+            {%- liquid
+              if linklists.main-menu.levels > 0
+                for link in linklists.main-menu.links
+                  if link.active
+                    if link.links.size > 0
+                      assign have_sidebar = true
+                    endif
+                  elsif link.child_active
+                    assign have_sidebar = true
+                  endif
+                endfor
+              endif
+            -%}
+
+            {%- if have_sidebar -%}
+              <div class="grid__item {{ grid_item_width }} grid__item--{{ section.id }}">
+                <ul class="tags tags--vertical">
+                  {%- if linklists.main-menu.levels > 0 -%}
+                    {%- for link in linklists.main-menu.links -%}
+                      {%- if link.active -%}
+                        {%- render 'subcollection-list', links: link.links -%}
+                      {%- elsif link.child_active -%}
+                        {%- for sub_link in link.links -%}
+                          {%- if sub_link.active or sub_link.child_active -%}
+                            {%- if sub_link.levels > 0 -%}
+                              {%- render 'subcollection-list', links: sub_link.links -%}
+                            {%- else -%}
+                              {%- render 'subcollection-list', links: link.links -%}
+                            {%- endif -%}
+                          {%- endif -%}
+                        {%- endfor -%}
+                      {%- endif -%}
+                    {%- endfor -%}
+
+                    {%- if have_extra_tags -%}
+                      </div>
+                    {%- endif -%}
+                  {%- endif -%}
+                </ul>
+
+                {%- assign show_button_limit = tag_limit | minus: 1 -%}
+                {%- if tag_count > show_button_limit -%}
+                  <p>
+                    <button type="button" class="collapsible-trigger collapsible--auto-height collapsible-trigger-btn btn btn--tertiary tags-toggle" aria-controls="TagList-{{ section.id }}">
+                      <span class="collapsible-label__closed">{{ 'collections.general.see_more' | t }}</span>
+                      <span class="collapsible-label__open">{{ 'collections.general.see_less' | t }}</span>
+                    </button>
+                  </p>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          {%- endif -%}
+
+          {%- for product in collection.products -%}
+            {%- render 'product-grid-item'
+              product: product,
+              grid_item_width: grid_item_width,
+              per_row: per_row
+            -%}
+          {%- else -%}
+            <div class="grid__item">
+              <p>{{ 'collections.general.no_matches' | t }}</p>
+            </div>
+          {%- endfor -%}
+        </div>
+
+        {%- if paginate.pages > 1 -%}
+          {%- render 'pagination', paginate: paginate -%}
+        {%- endif -%}
+
+        {%- if settings.quick_shop_enable -%}
+          {%- for product in collection.products -%}
+            {%- render 'quick-shop-modal', product: product -%}
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- if section.settings.description_position == 'bottom' -%}
+      {%- if collection.description != blank -%}
+        <hr class="hr--clear hr--small">
+        <div class="rte">
+          {{ collection.description }}
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</div>
+
+{%- endpaginate -%}
+
+{% schema %}
+  {
+    "name": "Collection pages",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "collection_image_enable",
+        "label": "Show collection image",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "collection_image_height",
+        "label": "Image height",
+        "default": 550,
+        "min": 350,
+        "max": 750,
+        "step": 100,
+        "unit": "px"
+      },
+      {
+        "type": "checkbox",
+        "id": "parallax",
+        "label": "Parallax image",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "description_position",
+        "label": "Collection description position",
+        "default": "top",
+        "options": [
+          {
+            "value": "top",
+            "label": "Top of page"
+          },
+          {
+            "value": "bottom",
+            "label": "Bottom of page"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "collection_subnav_style",
+        "label": "Subnavigation style",
+        "default": "inline",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "inline",
+            "label": "Inline"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "collection_tags_style",
+        "label": "Tag filter style",
+        "default": "none",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "inline",
+            "label": "Inline"
+          },
+          {
+            "value": "dropdown",
+            "label": "Dropdown"
+          }
+        ],
+        "info": "Only one option can use Inline style at a time"
+      },
+      {
+        "type": "checkbox",
+        "id": "collection_sort_enable",
+        "label": "Show sort options",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Products"
+      },
+      {
+        "type": "range",
+        "id": "per_row",
+        "label": "Products per row",
+        "default": 4,
+        "min": 1,
+        "max": 5,
+        "step": 1
+      },
+      {
+        "type": "checkbox",
+        "id": "mobile_flush_grid",
+        "label": "Flush grid on mobile",
+        "default": false
+      }
+    ]
+  }
+{% endschema %}

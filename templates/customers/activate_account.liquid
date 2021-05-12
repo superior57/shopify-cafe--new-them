@@ -1,0 +1,28 @@
+<div class="page-width page-content">
+  <div class="grid">
+    <div class="grid__item medium-up--one-third medium-up--push-one-third">
+
+      <header class="section-header">
+        <h1 class="section-header__title">{{ 'customer.activate_account.title' | t }}</h1>
+        <br>
+        <p>{{ 'customer.activate_account.subtext' | t }}</p>
+      </header>
+
+      <div class="form-vertical">
+        {% form 'activate_customer_password' %}
+
+          {{ form.errors | default_errors }}
+
+          <label for="CustomerPassword">{{ 'customer.activate_account.password' | t }}</label>
+          <input type="password" value="" name="customer[password]" id="CustomerPassword" class="input-full">
+
+          <label for="CustomerPasswordConfirmation">{{ 'customer.activate_account.password_confirm' | t }}</label>
+          <input type="password" value="" name="customer[password_confirmation]" id="CustomerPasswordConfirmation" class="input-full">
+
+          <input type="submit" class="btn" value="{{ 'customer.activate_account.submit' | t }}">
+        {% endform %}
+      </div>
+
+    </div>
+  </div>
+</div>

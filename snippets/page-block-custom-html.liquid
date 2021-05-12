@@ -1,0 +1,21 @@
+{% if block.settings.space_around %}
+  <div class="index-section">
+{% endif %}
+{% unless block.settings.full_width %}
+  <div class="page-width">
+{% endunless %}
+  <div {{ block.shopify_attributes }}>
+    <div class="rte">
+      {% if block.settings.code != blank %}
+        {{ block.settings.code }}
+      {% else %}
+        {{ 'home_page.onboarding.no_content' | t }}
+      {% endif %}
+    </div>
+  </div>
+{% unless block.settings.full_width %}
+  </div>
+{% endunless %}
+{% if block.settings.space_around %}
+  </div>
+{% endif %}

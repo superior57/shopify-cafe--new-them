@@ -1,0 +1,215 @@
+{%- liquid
+  assign per_row = section.settings.per_row
+  assign product_limit = per_row | times: 3
+  assign collection1 = collections[section.settings.collection1]
+  assign collection2 = collections[section.settings.collection2]
+
+  assign emptyState = false
+  if collection1.empty? and collection2.empty?
+    assign emptyState = true
+  endif
+-%}
+
+{%- if section.settings.divider -%}<div class="section--divider">{%- endif -%}
+
+<div
+  id="CollectionSection-{{ section.id }}"
+  data-section-id="{{ section.id }}"
+  data-section-type="collection-switcher"
+  data-per-row="{{ per_row }}">
+  {%- if section.settings.title != blank -%}
+    <div class="page-width">
+      <div class="section-header text-center">
+        <div class="larger-text">
+          <p class="subtitle">{{ section.settings.title }}</p>
+        </div>
+        {%- unless collection1.empty? -%}
+          <h3 class="collection-switcher__title">
+            <a href="{{ collection1.url }}"
+              class="collection-switcher__trigger is-active js-no-transition"
+              aria-controls="collection1-{{ section.id }}">
+              {{ collection1.title }}
+            </a>
+          </h3>
+        {%- endunless -%}
+        {%- unless collection2.empty? -%}
+          <h3 class="collection-switcher__title">
+            <a href="{{ collection2.url }}"
+              class="collection-switcher__trigger js-no-transition"
+              aria-controls="collection2-{{ section.id }}">
+              {{ collection2.title }}
+            </a>
+          </h3>
+        {%- endunless -%}
+
+        {%- if emptyState -%}
+          {%- for i in (1..2) -%}
+            <h3 class="collection-switcher__title">
+              <a href="#"
+                class="collection-switcher__trigger js-no-transition{% if i == 1 %} is-active {% endif %}"
+                aria-controls="collection{{ i }}-{{ section.id }}">
+                {{ 'home_page.onboarding.collection_title' | t }} {{ i }}
+              </a>
+            </h3>
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+    </div>
+  {% endif %}
+
+  {%- liquid
+    assign grid_item_width = 'small--one-half medium-up--one-third'
+    case per_row
+      when 1
+        assign grid_item_width = ''
+      when 2
+        assign grid_item_width = 'medium-up--one-half'
+      when 3
+        assign grid_item_width = 'small--one-half medium-up--one-third'
+      when 4
+        assign grid_item_width = 'small--one-half medium-up--one-quarter'
+      when 5
+        assign grid_item_width = 'small--one-half medium-up--one-fifth'
+    endcase
+  -%}
+
+  <div class="page-width">
+    {%- unless collection1.empty? -%}
+      <div id="collection1-{{ section.id }}" class="collection-switcher__collection" data-index="0">
+        <div
+          id="CollectionSwitcher1-{{ section.id }}"
+          class="grid collection-switcher__collection-grid"
+          data-per-row="{{ per_row }}">
+          {%- for product in collection1.products limit: product_limit -%}
+            {%- render 'product-grid-item', product: product, grid_item_width: grid_item_width, per_row: per_row -%}
+          {%- endfor -%}
+        </div>
+
+        {%- if section.settings.view_all -%}
+          <p class="text-center">
+            <a href="{{ collection1.url }}" class="btn">{{ 'collections.general.all_of_collection' | t }}</a>
+          </p>
+        {%- endif -%}
+      </div>
+    {%- endunless -%}
+
+    {%- unless collection2.empty? -%}
+      <div id="collection2-{{ section.id }}" class="collection-switcher__collection hide" data-index="1">
+        <div
+          id="CollectionSwitcher2-{{ section.id }}"
+          class="grid collection-switcher__collection-grid"
+          data-per-row="{{ per_row }}">
+          {%- for product in collection2.products limit: product_limit -%}
+            {%- render 'product-grid-item', product: product, grid_item_width: grid_item_width, per_row: per_row -%}
+          {%- endfor -%}
+        </div>
+
+        {%- if section.settings.view_all -%}
+          <p class="text-center">
+            <a href="{{ collection2.url }}" class="btn">{{ 'collections.general.all_of_collection' | t }}</a>
+          </p>
+        {%- endif -%}
+      </div>
+    {%- endunless -%}
+
+    {%- if emptyState -%}
+      {%- for i in (1..2) -%}
+        <div id="collection{{i}}-{{ section.id }}" class="collection-switcher__collection{% if i == 2 %} hide{% endif %}">
+          <div
+            id="CollectionSwitcher{{ i }}-{{ section.id }}"
+            class="grid"
+            data-per-row="{{ per_row }}">
+            {%- for i in (1..per_row) -%}
+              <div class="grid__item grid-product {{ grid_item_width }}" data-aos="row-of-{{ per_row }}">
+                <div class="grid-product__content">
+                  <a href="#" class="grid-product__link">
+                    <div class="grid-product__image-mask">
+                      {%- capture current -%}{% cycle 1, 2, 3, 4, 5, 6 %}{%- endcapture -%}
+                      <div class="image-wrap">{{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}</div>
+                    </div>
+                    <div class="grid-product__meta">
+                      <div class="grid-product__title">{{ 'home_page.onboarding.product_title' | t }}</div>
+                      <div class="grid-product__price">$29</div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+
+          {%- if section.settings.view_all -%}
+            <p class="text-center">
+              <a href="#" class="btn">{{ 'collections.general.all_of_collection' | t }}</a>
+            </p>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+</div>
+
+{%- if settings.quick_shop_enable -%}
+  {%- unless collection1.empty? -%}
+    {%- for product in collection1.products limit: product_limit -%}
+      {%- render 'quick-shop-modal', product: product -%}
+    {%- endfor -%}
+  {%- endunless -%}
+  {%- unless collection2.empty? -%}
+    {%- for product in collection2.products limit: product_limit -%}
+      {%- render 'quick-shop-modal', product: product -%}
+    {%- endfor -%}
+  {%- endunless -%}
+{%- endif -%}
+
+{%- if section.settings.divider -%}</div>{%- endif -%}
+
+{% schema %}
+  {
+    "name": "Featured collection",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Most popular"
+      },
+      {
+        "id": "collection1",
+        "type": "collection",
+        "label": "Collection 1"
+      },
+      {
+        "id": "collection2",
+        "type": "collection",
+        "label": "Collection 2"
+      },
+      {
+        "type": "range",
+        "id": "per_row",
+        "label": "Products per row",
+        "default": 4,
+        "min": 1,
+        "max": 5,
+        "step": 1
+      },
+      {
+        "type": "checkbox",
+        "id": "view_all",
+        "label": "Show 'View all' link",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "divider",
+        "label": "Show section divider",
+        "default": false
+      }
+    ],
+    "presets": [{
+      "name": "Featured collection switcher",
+      "category": "Collection"
+    }],
+    "blocks" : []
+  }
+{% endschema %}

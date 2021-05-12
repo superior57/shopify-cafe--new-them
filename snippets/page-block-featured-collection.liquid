@@ -1,0 +1,97 @@
+{%- liquid
+  assign per_row = block.settings.per_row
+  assign product_limit = per_row | times: block.settings.rows
+  assign collection = collections[block.settings.collection]
+
+  assign grid_item_width = 'small--one-half medium-up--one-third'
+
+  case per_row
+    when 1
+      assign grid_item_width = ''
+    when 2
+      assign grid_item_width = 'medium-up--one-half'
+    when 3
+      assign grid_item_width = 'small--one-half medium-up--one-third'
+    when 4
+      assign grid_item_width = 'small--one-half medium-up--one-quarter'
+    when 5
+      assign grid_item_width = 'small--one-half medium-up--one-fifth'
+  endcase
+-%}
+
+<div class="index-section">
+  <div id="CollectionSection-{{ block.id }}" data-section-id="{{ block.id }}" data-section-type="featured-collection">
+    {%- if block.settings.title != blank -%}
+      <div class="page-width">
+        <div class="section-header">
+          <h2 class="section-header__title">
+            {{ block.settings.title }}
+            {% if block.settings.view_all and block.settings.rows == 1 %}
+              <a href="{{ collections[block.settings.collection].url }}" class="section-header__link">{{ 'collections.general.all_of_collection' | t }}</a>
+            {% endif %}
+          </h2>
+        </div>
+      </div>
+    {%- endif -%}
+
+    <div class="page-width page-width--flush-small">
+      <div class="grid-overflow-wrapper">
+        <div class="grid grid--uniform" data-aos="overflow__animation">
+
+          {%- if block.settings.collection == blank or collections[block.settings.collection].empty? or collections[block.settings.collection].products_count == 0 -%}
+
+            <div class="grid__item">
+              <div class="grid grid--uniform">
+                {%- for i in (1..product_limit) -%}
+                  <div class="grid__item grid-product {{ grid_item_width }}" data-aos="row-of-{{ per_row }}">
+                    <div class="grid-product__content">
+                      <a href="{{ product.url | within: collection }}" class="grid-product__link">
+                        <div class="grid-product__image-mask">
+                          {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                          <div class="image-wrap">{{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}</div>
+                        </div>
+                        <div class="grid-product__meta">
+                          <div class="grid-product__title">{{ 'home_page.onboarding.product_title' | t }}</div>
+                          <div class="grid-product__price">$29</div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                {%- endfor -%}
+              </div>
+            </div>
+
+          {% else %}
+
+            {%- for product in collections[block.settings.collection].products limit: product_limit -%}
+              {%- render 'product-grid-item', product: product, grid_item_width: grid_item_width, per_row: per_row -%}
+            {%- endfor -%}
+
+            {% if block.settings.view_all %}
+
+              {% if block.settings.rows > 1 %}
+                <div class="grid__item small--hide text-center">
+                  <a href="{{ collections[block.settings.collection].url }}" class="btn">{{ 'collections.general.all_of_collection' | t }}</a>
+                </div>
+              {% endif %}
+
+              <div class="grid__item grid__item--view-all text-center {{ grid_item_width }} medium-up--hide">
+                <a href="{{ collections[block.settings.collection].url }}" class="grid-product__see-all">
+                  {{ 'collections.general.view_all_products_html' | t: count: collection.products_count }}
+                </a>
+              </div>
+
+            {% endif %}
+
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{%- if settings.quick_shop_enable -%}
+  {%- for product in collections[block.settings.collection].products limit: product_limit -%}
+    {%- render 'quick-shop-modal', product: product -%}
+  {%- endfor -%}
+{%- endif -%}

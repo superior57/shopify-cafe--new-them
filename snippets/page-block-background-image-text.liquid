@@ -1,0 +1,80 @@
+{%- if block.settings.image != blank -%}
+  {%- style -%}
+    @media screen and (max-width: 768px) {
+      .background-media-text--{{ block.id }} {
+        background-image: url({{ block.settings.image | img_url: '1x1' }});
+      }
+    }
+  {%- endstyle -%}
+{%- endif -%}
+
+<div
+  data-subsection
+  data-section-id="{{ block.id }}"
+  data-section-type="background-image"
+  class="background-media-text background-media-text--{{ block.id }} background-media-text--{{ block.settings.height }} loaded"
+  data-aos="background-media-text__animation"
+  {% if block.settings.parallax %}data-parallax="true"{% endif %}>
+
+  <div class="background-media-text__container">
+    {%- if block.settings.parallax -%}
+      <div class="parallax-container">
+        <div class="parallax-image">
+    {%- endif -%}
+
+      {%- if block.settings.image != blank -%}
+        {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        <img
+          class="image-fit background-media-text__image background-media-text__image--{{ block.id }} lazyload"
+          src=""
+          data-src="{{ img_url }}"
+          data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+          data-widths="[720, 900, 1080, 1800, 2400]"
+          data-sizes="auto"
+          alt="{{ block.settings.image.alt | escape }}"
+          style="object-position: {{ block.settings.alignment }}">
+        <noscript>
+          <img
+            class="image-fit background-media-text__image background-media-text__image--{{ block.id }} lazyloaded"
+            src="{{ block.settings.image | img_url: '1800x' }}"
+            alt="{{ block.settings.image.alt }}">
+        </noscript>
+      {%- else -%}
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+
+    {%- if block.settings.parallax -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- if block.settings.subtitle != blank or block.settings.title != blank or block.settings.text != blank -%}
+    <div class="background-media-text__inner">
+      <div class="background-media-text__aligner background-media-text--{{ block.settings.layout }}">
+        <div class="animation-cropper">
+          <div class="animation-contents">
+            <div class="background-media-text__text larger-text">
+              {%- if block.settings.subtitle -%}
+                <p class="subtitle">{{ block.settings.subtitle }}</p>
+              {%- endif -%}
+              {%- if block.settings.title != blank -%}
+                <h2 class="h3">{{ block.settings.title | escape }}</h2>
+              {%- endif -%}
+              {%- if block.settings.text != blank -%}
+                <div class="rte background-media-text__subtext">{{ block.settings.text }}</div>
+              {%- endif -%}
+              {%- if block.settings.button_label != blank and block.settings.button_link != blank -%}
+                <a href="{{ block.settings.button_link }}" class="btn">
+                  {{ block.settings.button_label }}
+                </a>
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+<div class="background-media-text__spacer background-media-text--{{ block.settings.height }}"></div>

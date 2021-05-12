@@ -1,0 +1,82 @@
+<header class="giftcard-header" role="banner">
+  {%- liquid
+    assign has_logo = section.settings.logo
+    assign header_logo_size = section.settings.desktop_logo_width | append: 'x'
+    assign header_logo_size_mobile = section.settings.mobile_logo_width | append: 'x'
+  -%}
+
+  {%- if has_logo -%}
+    {%- style -%}
+    .site-header__logo a {
+      max-width: {{ section.settings.mobile_logo_width }}px;
+    }
+    @media only screen and (min-width: 769px) {
+      .site-header__logo a {
+        max-width: {{ section.settings.desktop_logo_width }}px;
+      }
+    }
+    {%- endstyle -%}
+  {%- endif -%}
+
+  <h1 id="LogoContainer" class="site-header__logo{% unless has_logo %} text-center{% endunless %}" itemscope itemtype="http://schema.org/Organization">
+    {%- if section.settings.logo -%}
+      <a
+        href="{{ routes.root_url }}"
+        itemprop="url"
+        class="site-header__logo-link">
+        <img
+          class="small--hide"
+          src="{{ section.settings.logo | img_url: header_logo_size }}"
+          srcset="{{ section.settings.logo | img_url: header_logo_size }} 1x, {{ section.settings.logo | img_url: header_logo_size, scale: 2 }} 2x"
+          alt="{{ section.settings.logo.alt | default: shop.name }}"
+          itemprop="logo">
+        <img
+          class="medium-up--hide"
+          src="{{ section.settings.logo | img_url: header_logo_size_mobile }}"
+          srcset="{{ section.settings.logo | img_url: header_logo_size_mobile }} 1x, {{ section.settings.logo | img_url: header_logo_size_mobile, scale: 2 }} 2x"
+          alt="{{ section.settings.logo.alt | default: shop.name }}">
+      </a>
+    {%- else -%}
+      <a href="{{ routes.root_url }}" itemprop="url">{{ shop.name }}</a>
+    {%- endif -%}
+  </h1>
+
+  <div class="shop-url">{{ shop.url }}</div>
+</header>
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo"
+      },
+      {
+        "type": "range",
+        "id": "desktop_logo_width",
+        "label": "Desktop logo width",
+        "default": 200,
+        "min": 100,
+        "max": 400,
+        "step": 10,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "mobile_logo_width",
+        "label": "Mobile logo width",
+        "default": 140,
+        "min": 60,
+        "max": 200,
+        "step": 10,
+        "unit": "px",
+        "info": "Set as a max-width, may appear smaller"
+      }
+    ],
+    "default": {
+      "settings": {}
+    }
+  }
+{% endschema %}

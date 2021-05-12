@@ -1,0 +1,104 @@
+<div class="cart__item" data-key="{{ product.key }}">
+  <div class="cart__item--image" data-aos>
+    <a href="{{ product.url }}" class="image-wrap" style="display: block; height: 0; padding-bottom: {{ 100 | divided_by: product.image.aspect_ratio }}%;">
+      {%- assign img_url = product | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+      <img class="lazyload"
+          data-src="{{ img_url }}"
+          data-widths="[180, 360, 540]"
+          data-aspectratio="{{ product.aspect_ratio }}"
+          data-sizes="auto"
+          alt="{{ product.title | escape }}">
+    </a>
+  </div>
+
+  <div class="cart__item--details">
+    <div class="cart__item--name">
+      <a href="{{ product.url }}" class="cart__product-name">
+        {{ product.product.title }}
+      </a>
+
+      {%- unless product.product.has_only_default_variant -%}
+        <div class="cart__variant-meta">
+          {{ product.variant.title }}
+        </div>
+      {%- endunless -%}
+      <div class="{% if product.selling_plan_allocation == empty %}hide {% endif %}">
+        {{ product.selling_plan_allocation.selling_plan.name }}
+      </div>
+
+      {%- assign property_size = product.properties | size -%}
+      {%- if property_size > 0 -%}
+        {%- for p in product.properties -%}
+          {%- assign first_character_in_key = p.first | truncate: 1, '' -%}
+          {%- unless p.last == blank or first_character_in_key == '_' -%}
+            {{ p.first }}:
+
+            {%- if p.last contains '/uploads/' -%}
+              <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+            {%- else -%}
+              {{ p.last }}
+            {%- endif -%}
+
+            <br>
+          {%- endunless -%}
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+    <div class="cart__item--qty">
+      <div class="js-qty__wrapper">
+        <label for="cart_updates_{{ product.key }}" class="hidden-label">{{ 'cart.label.quantity' | t }}</label>
+        <input type="text"
+          id="cart_updates_{{ product.key }}"
+          name="updates[]"
+          class="js-qty__num"
+          value="{{ product.quantity }}"
+          min="0"
+          pattern="[0-9]*"
+          data-id="{{ product.key }}">
+        <button type="button"
+          class="js-qty__adjust js-qty__adjust--minus"
+          aria-label="{{ 'cart.general.reduce_quantity' | t }}">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-minus" viewBox="0 0 20 20"><path fill="#444" d="M17.543 11.029H2.1A1.032 1.032 0 0 1 1.071 10c0-.566.463-1.029 1.029-1.029h15.443c.566 0 1.029.463 1.029 1.029 0 .566-.463 1.029-1.029 1.029z"/></svg>
+            <span class="icon__fallback-text" aria-hidden="true">&minus;</span>
+        </button>
+        <button type="button"
+          class="js-qty__adjust js-qty__adjust--plus"
+          aria-label="{{ 'cart.general.increase_quantity' | t }}">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus" viewBox="0 0 20 20"><path fill="#444" d="M17.409 8.929h-6.695V2.258c0-.566-.506-1.029-1.071-1.029s-1.071.463-1.071 1.029v6.671H1.967C1.401 8.929.938 9.435.938 10s.463 1.071 1.029 1.071h6.605V17.7c0 .566.506 1.029 1.071 1.029s1.071-.463 1.071-1.029v-6.629h6.695c.566 0 1.029-.506 1.029-1.071s-.463-1.071-1.029-1.071z"/></svg>
+            <span class="icon__fallback-text" aria-hidden="true">+</span>
+        </button>
+      </div>
+    </div>
+    <div class="cart__item--price cart__item-price-col text-right">
+      {%- if product.original_price != product.final_price -%}
+        <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+        <small class="cart__price cart__price--strikethrough">{{ product.original_price | money }}</small>
+        <span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
+        <span class="cart__price cart__discount">{{ product.final_price | money }}</span>
+      {%- else -%}
+        <span class="cart__price">{{ product.original_price | money }}</span>
+      {%- endif -%}
+
+      {%- if product.line_level_discount_allocations != blank -%}
+        {%- for discount_allocation in product.line_level_discount_allocations -%}
+          <small class="cart__discount">{{ discount_allocation.discount_application.title }} (-{{ discount_allocation.amount | money }})</small>
+        {%- endfor -%}
+      {%- endif -%}
+
+      {%- if product.unit_price_measurement -%}
+        {%- capture unit_price_base_unit -%}
+          <span class="unit-price-base">
+            {%- if product.unit_price_measurement -%}
+              {%- if product.unit_price_measurement.reference_value != 1 -%}
+                {{ product.unit_price_measurement.reference_value }}
+              {%- endif -%}
+              {{ product.unit_price_measurement.reference_unit }}
+            {%- endif -%}
+          </span>
+        {%- endcapture -%}
+
+        <div class="product__unit-price">{{ product.unit_price | money }}/{{ unit_price_base_unit }}</div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>

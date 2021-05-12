@@ -1,0 +1,19 @@
+{%- liquid
+  assign link_count = 0
+  for link in main_menu.links
+    assign link_count = link_count | plus: 1
+  endfor
+  assign link_count_half = link_count | divided_by: 2
+-%}
+
+<div class="header-item header-item--logo-split" role="navigation" aria-label="Primary">
+  <div class="header-item header-item--split-left">
+    {%- render 'header-desktop-nav', main_menu: main_menu, disable_aria: true, limit: link_count_half -%}
+  </div>
+  <div class="header-item header-item--logo">
+    {%- render 'header-logo-block', section: section -%}
+  </div>
+  <div class="header-item header-item--split-right">
+    {%- render 'header-desktop-nav', main_menu: main_menu, disable_aria: true, offset: link_count_half -%}
+  </div>
+</div>

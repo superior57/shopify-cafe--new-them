@@ -1,0 +1,210 @@
+{%- liquid
+  assign fixed_aspect_ratio = false
+  unless section.settings.image_size == 'natural'
+    assign fixed_aspect_ratio = true
+  endunless
+
+  assign show_section = true
+  if template == 'index' and section.settings.hide_homepage
+    assign show_section = false
+  endif -%
+-%}
+
+{%- if show_section -%}
+  {%- if section.blocks.size > 0 -%}
+    {%- liquid
+      assign grid_item_width = 'medium-up--one-half'
+      if section.blocks.size == 3
+        assign grid_item_width = 'medium-up--one-third'
+      endif
+    -%}
+
+    <div class="index-section">
+      <div class="section--divider">
+        <div class="page-width footer-promotions">
+          <div class="grid grid--flush-bottom">
+            {%- for block in section.blocks -%}
+              <div class="grid__item {{ grid_item_width }} text-{{ section.settings.align_text }}" {{ block.shopify_attributes }} data-aos="row-of-3">
+                {%- if block.settings.enable_image -%}
+                  <div style="{% if section.settings.align_text == 'center' %}margin: 0 auto;{% endif %} max-width: {{ block.settings.image_width }}px;">
+                    <a href="{{ block.settings.button_link }}" class="article__grid-image" aria-label="{{ block.settings.title }}">
+                      {%- if block.settings.image != blank -%}
+                        {%- if fixed_aspect_ratio -%}
+                          <div class="image-wrap">
+                            <div
+                              class="grid__image-ratio grid__image-ratio--{{ section.settings.image_size }}">
+                              {% assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                              <img class="lazyload grid__image-cover"
+                                  data-src="{{ img_url }}"
+                                  data-widths="[360, 540, 720, 900]"
+                                  data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+                                  data-sizes="auto"
+                                  alt="{{ block.settings.image.alt | escape }}">
+                            </div>
+                            <noscript>
+                              <img class="lazyloaded" src="{{ block.settings.image | img_url: '400x' }}" alt="{{ block.settings.title | escape }}">
+                            </noscript>
+                          </div>
+                        {%- else -%}
+                          <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: block.settings.image.aspect_ratio }}%;">
+                            {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                            <img class="lazyload"
+                                data-src="{{ img_url }}"
+                                data-widths="[180, 360, 540, 720, 900, 1080]"
+                                data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+                                data-sizes="auto"
+                                alt="{{ block.settings.image.alt | escape }}">
+                            <noscript>
+                              <img class="lazyloaded" src="{{ block.settings.image | img_url: '400x' }}" alt="{{ block.settings.title | escape }}">
+                            </noscript>
+                          </div>
+                        {%- endif -%}
+                      {%- else -%}
+                        {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                      {%- endif -%}
+                    </a>
+                  </div>
+                {%- endif -%}
+                {%- if block.settings.title != blank -%}
+                  <div class="h4">{{ block.settings.title }}</div>
+                {%- endif -%}
+                {%- if block.settings.text != blank -%}
+                  <div class="rte-setting text-spacing">{{ block.settings.text }}</div>
+                {%- endif -%}
+                {%- if block.settings.button_label != blank -%}
+                  <a href="{{ block.settings.button_link }}" class="btn btn--tertiary btn--small">
+                    {{ block.settings.button_label }}
+                  </a>
+                {%- endif -%}
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+{%- endif -%}
+
+{% schema %}
+  {
+    "name": "Footer promotions",
+    "max_blocks": 3,
+    "class": "index-section--footer",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "hide_homepage",
+        "label": "Do not show on home page"
+      },
+      {
+        "type": "select",
+        "id": "image_size",
+        "label": "Image size",
+        "default": "wide",
+        "options": [
+          {
+            "value": "natural",
+            "label": "Natural"
+          },
+          {
+            "value": "square",
+            "label": "Square (1:1)"
+          },
+          {
+            "value": "landscape",
+            "label": "Landscape (4:3)"
+          },
+          {
+            "value": "portrait",
+            "label": "Portrait (2:3)"
+          },
+          {
+            "value": "wide",
+            "label": "Wide (16:9)"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "align_text",
+        "label": "Text alignment",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Centered"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "promotion",
+        "name": "Column",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "enable_image",
+            "label": "Show image",
+            "default": true
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "range",
+            "id": "image_width",
+            "label": "Image width",
+            "default": 650,
+            "min": 60,
+            "max": 650,
+            "step": 10,
+            "unit": "px"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Site-wide promotion"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Use this section to promote content throughout every page of your site. Add images for further impact.</p>"
+          },
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label",
+            "default": "Optional button"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Link"
+          }
+        ]
+      }
+    ],
+    "default": {
+      "blocks": [
+        {
+          "type": "promotion"
+        },
+        {
+          "type": "promotion"
+        },
+        {
+          "type": "promotion"
+        }
+      ]
+    }
+  }
+{% endschema %}

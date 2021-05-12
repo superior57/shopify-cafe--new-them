@@ -1,0 +1,2597 @@
+{
+  "current": {
+    "color_body_bg": "#ffffff",
+    "color_borders": "#e8e8e1",
+    "color_button": "#111111",
+    "color_button_text": "#ffffff",
+    "color_footer": "#111111",
+    "color_footer_text": "#ffffff",
+    "color_drawer_background": "#ffffff",
+    "color_drawer_text": "#000000",
+    "color_drawer_border": "#e8e8e1",
+    "color_drawer_button": "#111111",
+    "color_drawer_button_text": "#ffffff",
+    "color_modal_overlays": "#17172c",
+    "color_image_2": "#000000",
+    "color_image_2_opacity": 0,
+    "color_image_1": "#000000",
+    "color_image_1_opacity": 36,
+    "color_small_image_bg": "#ffffff",
+    "color_large_image_bg": "#ffffff",
+    "type_header_font_family": "itc_avant_garde_gothic_n7",
+    "type_header_spacing": "0",
+    "type_header_base_size": 35,
+    "type_header_line_height": 1.2,
+    "type_header_accent_transform": true,
+    "type_headers_align_text": true,
+    "type_base_font_family": "futura_n4",
+    "type_base_spacing": "25",
+    "type_base_size": 15,
+    "type_base_line_height": 1.6,
+    "type_base_accent_transform": false,
+    "icon_weight": "3px",
+    "icon_linecaps": "miter",
+    "animate_page_transitions": true,
+    "animate_page_transition_style": "page-fade-in-up",
+    "animate_sections": true,
+    "animate_sections_background_style": "zoom-fade",
+    "animate_sections_text_style": "rise-up",
+    "animate_images": true,
+    "animate_images_style": "zoom-fade",
+    "animate_buttons": true,
+    "animate_underlines": true,
+    "product_save_type": "percent",
+    "product_grid_image_size": "natural",
+    "product_grid_image_fill": false,
+    "quick_shop_enable": false,
+    "quick_shop_text": "Compra rapida",
+    "enable_payment_button": false,
+    "quantity_enable": true,
+    "surface_pickup_enable": false,
+    "product_description_collapse": true,
+    "product_content_1": "despacho-y-corbetura",
+    "product_content_2": "devoluciones",
+    "product_contact": false,
+    "enable_product_reviews": false,
+    "reviews_layout": "full",
+    "cart_type": "page",
+    "cart_icon": "cart",
+    "cart_additional_buttons": false,
+    "cart_notes_enable": true,
+    "social_facebook_link": "https:\/\/www.facebook.com\/CafeSenorK",
+    "social_twitter_link": "",
+    "social_instagram_link": "https:\/\/www.instagram.com\/CafeSenorK\/",
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "show_breadcrumbs": false,
+    "show_breadcrumbs_collection_link": false,
+    "text_direction": "ltr",
+    "checkout_header_image": "shopify:\/\/shop_images\/checkout_3bcbda86-f87f-47cb-b677-2f9eb7ad92d3.jpg",
+    "checkout_logo_image": "shopify:\/\/shop_images\/logo_blanco_cbbfb684-496a-4bfd-a84f-38c08704426c.png",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#ffffff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "shopify:\/\/shop_images\/fonod_checkout-copia_f8e8e899-e861-4fe7-954b-8a2d3b2a9153.jpg",
+    "checkout_sidebar_background_color": "#f2f2f2",
+    "checkout_heading_font": "Helvetica Neue",
+    "checkout_body_font": "Helvetica Neue",
+    "checkout_accent_color": "#231e1e",
+    "checkout_button_color": "#231e1e",
+    "checkout_error_color": "#ed2424",
+    "color_image_bg": "#000000",
+    "breadcrumb": true,
+    "color_input": "#ffffff",
+    "checkout_banner_background_color": "#ffffff",
+    "checkout_call_to_action_color": "#a26b25",
+    "checkout_use_header_image": false,
+    "sections": {
+      "header": {
+        "type": "header",
+        "blocks": {
+          "679f723a-7a39-4f27-b145-ff9ce8841508": {
+            "type": "logo",
+            "settings": {
+              "logo": "shopify:\/\/shop_images\/srk_logo.png",
+              "logo-inverted": "shopify:\/\/shop_images\/logo_blanco_cbbfb684-496a-4bfd-a84f-38c08704426c.png",
+              "desktop_logo_width": 200,
+              "mobile_logo_width": 140
+            }
+          }
+        },
+        "block_order": [
+          "679f723a-7a39-4f27-b145-ff9ce8841508"
+        ],
+        "settings": {
+          "main_menu_link_list": "home",
+          "main_menu_alignment": "center-split",
+          "header_style": "normal",
+          "sticky_index": true,
+          "sticky_collection": false,
+          "type_navigation_size": 19,
+          "type_navigation_style": false,
+          "show_announcement": true,
+          "announcement_text": "🌎 Despachos 100% operativos a todo Chile · Sobre 35.000 Gratis · Conoce Nuestro Plan Covid-19 ☕",
+          "announcement_link": "https:\/\/cafesenork.com\/pages\/plan-covid-19",
+          "announcement_closable": true
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "500ea7dc-9710-414f-a40e-cf3c5686ba23": {
+            "type": "custom",
+            "settings": {
+              "show_footer_title": true,
+              "title": "<img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/logo_mobile_d8381929-5a24-45a3-a1c0-5167a2a7e8e2_250x@2x.png?v=1606500055<\/img>\">",
+              "text": "<p>La marca registrada Nespresso® pertenece a Société Des Produits Nestlé S.A. \/ Café SeñorK no está relacionado a Société Des Produits Nestlé S.A.<\/p>",
+              "container_width": 25
+            }
+          },
+          "1494301487049": {
+            "type": "menu",
+            "settings": {
+              "show_footer_title": true,
+              "menu": "tienda-online",
+              "container_width": 25
+            }
+          },
+          "1494292485313": {
+            "type": "menu",
+            "settings": {
+              "show_footer_title": true,
+              "menu": "main-menu",
+              "container_width": 25
+            }
+          },
+          "772e781e-18c1-4d14-8e1f-7a45a38db94c": {
+            "type": "custom",
+            "settings": {
+              "show_footer_title": true,
+              "title": "<img src=\"\/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/280362-webpay-logos_large_de605a39-41e7-441d-a00f-4b2ff62c1910_2048x.png?v=1597341845\" alt=\"Métodos de pago\" class=\"footer-logo blur-up lazyloaded\" data-sizes=\"25vw\" data-src=\"\/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/280362-webpay-logos_large_de605a39-41e7-441d-a00f-4b2ff62c1910_2048x.png?v=1597341845\" data-srcset=\" \/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/280362-webpay-logos_large_de605a39-41e7-441d-a00f-4b2ff62c1910_200x.png?v=1597341845 200w,                                     \/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/280362-webpay-logos_large_de605a39-41e7-441d-a00f-4b2ff62c1910_300x.png?v=1597341845 300w,                                     \/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/280362-webpay-logos_large_de605a39-41e7-441d-a00f-4b2ff62c1910_400x.png?v=1597341845 400w,                                     \/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/280362-webpay-logos_large_de605a39-41e7-441d-a00f-4b2ff62c1910_500x.png?v=1597341845 500w,                                     \/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/280362-webpay-logos_large_de605a39-41e7-441d-a00f-4b2ff62c1910_600x.png?v=1597341845 600w,                                     \/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/280362-webpay-logos_large_de605a39-41e7-441d-a00f-4b2ff62c1910_1000x.png?v=1597341845 1000w\" sizes=\"25vw\" srcset=\" \/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/280362-webpay-logos_large_de605a39-41e7-441d-a00f-4b2ff62c1910_200x.png?v=1597341845 200w,                                     \/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/280362-webpay-logos_large_de605a39-41e7-441d-a00f-4b2ff62c1910_300x.png?v=1597341845 300w,                                     \/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/280362-webpay-logos_large_de605a39-41e7-441d-a00f-4b2ff62c1910_400x.png?v=1597341845 400w,                                     \/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/280362-webpay-logos_large_de605a39-41e7-441d-a00f-4b2ff62c1910_500x.png?v=1597341845 500w,                                     \/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/280362-webpay-logos_large_de605a39-41e7-441d-a00f-4b2ff62c1910_600x.png?v=1597341845 600w,                                     \/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/280362-webpay-logos_large_de605a39-41e7-441d-a00f-4b2ff62c1910_1000x.png?v=1597341845 1000w\">",
+              "text": "",
+              "container_width": 25
+            }
+          }
+        },
+        "block_order": [
+          "500ea7dc-9710-414f-a40e-cf3c5686ba23",
+          "1494301487049",
+          "1494292485313",
+          "772e781e-18c1-4d14-8e1f-7a45a38db94c"
+        ],
+        "settings": {
+          "show_locale_selector": false,
+          "show_currency_selector": false,
+          "show_currency_flags": false,
+          "show_payment_icons": true,
+          "colorize_payment_icons": false,
+          "show_copyright": true,
+          "copyright_text": ""
+        }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "settings": {
+          "collection_image_enable": true,
+          "collection_image_height": 450,
+          "parallax": true,
+          "description_position": "top",
+          "collection_subnav_style": "none",
+          "collection_tags_style": "none",
+          "collection_sort_enable": true,
+          "per_row": 3,
+          "mobile_flush_grid": true
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "description_style": "default",
+          "social_enable": true,
+          "image_size": "medium",
+          "thumbnail_position": "beside",
+          "thumbnail_arrows": true,
+          "enable_video_looping": true,
+          "product_video_style": "unmuted"
+        }
+      },
+      "article-template": {
+        "type": "article-template",
+        "settings": {
+          "blog_show_image": true,
+          "blog_show_tags": true,
+          "blog_show_date": true,
+          "blog_show_comments": false,
+          "blog_show_author": false,
+          "social_sharing_blog": true
+        }
+      },
+      "blog-template": {
+        "type": "blog-template",
+        "settings": {
+          "blog_show_tag_filter": true,
+          "blog_show_rss": false,
+          "blog_show_tags": true,
+          "blog_show_date": true,
+          "blog_show_comments": true,
+          "blog_show_author": true
+        }
+      },
+      "1566999869051": {
+        "type": "featured-collection-switcher",
+        "disabled": true,
+        "settings": {
+          "title": "Most popular",
+          "collection1": "",
+          "collection2": "",
+          "per_row": 4,
+          "view_all": true,
+          "divider": false
+        }
+      },
+      "1499789718857": {
+        "type": "featured-collections",
+        "disabled": true,
+        "blocks": {
+          "1499789718857-0": {
+            "type": "collection",
+            "settings": {
+              "collection": "capsulas-nespresso-alternativas",
+              "focal_point": "center center",
+              "size": "wide"
+            }
+          },
+          "1499789718857-1": {
+            "type": "collection",
+            "settings": {
+              "collection": "",
+              "focal_point": "center center",
+              "size": "wide"
+            }
+          }
+        },
+        "block_order": [
+          "1499789718857-0",
+          "1499789718857-1"
+        ],
+        "settings": {
+          "title": "",
+          "divider": false,
+          "enable_gutter": false
+        }
+      },
+      "1499790529450": {
+        "type": "hero-video",
+        "settings": {
+          "title": "CAFÉ DE ORIGEN\nPARA ORIGINALES",
+          "title_size": 60,
+          "subheading": "TOSTADO EN CHILE",
+          "link_text": "Compra Ahora",
+          "link": "shopify:\/\/collections\/cafe-grano",
+          "text_align": "vertical-center horizontal-center",
+          "video_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/video_home_48080988-435b-4c5f-a03f-f064be3de8ba.mp4?v=1619019237",
+          "overlay_opacity": 40,
+          "section_height": "100vh",
+          "mobile_height": "auto"
+        }
+      },
+      "1499790633921": {
+        "type": "background-image-text",
+        "disabled": true,
+        "settings": {
+          "subtitle": "Por que",
+          "title": "Señor K?",
+          "text": "<p>En Señor K priorizamos ante todo el valor del trabajo de los caficultores pagando precios justos y adentrándonos en la vida de las familias cafeteras con las que trabajamos, año a año viajamos al origen para visitar las fincas y así cultivar las relaciones lo cual sin duda le da un sabor aun mas especial al café. <br\/><br\/><\/p>",
+          "button_label": "Conoce Más",
+          "button_link": "#",
+          "image": "shopify:\/\/shop_images\/IMG-20200713-WA0055.jpg",
+          "focal_point": "20% 50%",
+          "layout": "right",
+          "height": 750,
+          "parallax": true
+        }
+      },
+      "1499790731541": {
+        "type": "collection-callout",
+        "settings": {
+          "collection": "cafeteras-accesorios",
+          "subtitle": "Accesorios",
+          "title": "Transforma tu casa en una cafeteria",
+          "text": "Selección de accesorios y cafeteras para elevar tu experiencia cafetera. Selección de accesorios y cafeteras para elevar tu experiencia cafetera.",
+          "cta_text1": "Accesorios",
+          "cta_text2": "Cafeteras",
+          "layout": "right",
+          "divider": false
+        }
+      },
+      "product-sections-template": {
+        "type": "product-sections-template",
+        "blocks": {
+          "a5f95746-d1f5-46e8-8c6c-bfa0ce8e4a15": {
+            "type": "custom-html",
+            "settings": {
+              "full_width": false,
+              "space_around": false,
+              "code": "<img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/cafe_tostado_chile.png?v=1619027114\" width=\"50%\" absolute style=\"margin-top:30px; margin-left: 20px;\nposition:absolute; z-index:0;\nleft: 0; \n  right: 0; \nopacity:20%;\n  margin-left: auto; \n  margin-right: auto\">\n<br>"
+            }
+          },
+          "product-text-columns": {
+            "type": "text-columns",
+            "settings": {
+              "title": "",
+              "align_text": "center",
+              "enable_image_1": true,
+              "image_1": "shopify:\/\/shop_images\/sustentable_2335149c-5b11-4bf0-b61a-f6e7cda3018b.png",
+              "image_width_1": 650,
+              "title_1": "Sustentable",
+              "text_1": "<p>Te garantizamos una cadena cafetera sustentable de la finca a la taza<\/p>",
+              "button_label_1": "",
+              "enable_image_2": true,
+              "image_2": "shopify:\/\/shop_images\/tostado_chile.png",
+              "image_width_2": 650,
+              "title_2": "Siempre Fresco",
+              "text_2": "<p>Tostamos semana a semana para que tu café esté siempre fresco<\/p>",
+              "button_label_2": "",
+              "enable_image_3": true,
+              "image_3": "shopify:\/\/shop_images\/origen.png",
+              "image_width_3": 650,
+              "title_3": "De origen",
+              "text_3": "<p>Importamos granos directo de las fincas para conectarte con familias cafeteras<\/p>",
+              "button_label_3": ""
+            }
+          },
+          "bba63206-0523-4789-921a-b2f8d062f6e3": {
+            "type": "custom-html",
+            "settings": {
+              "full_width": false,
+              "space_around": false,
+              "code": "<img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/capsulas_bio.gif?v=1617908954\" width=\"200px\" height=\"15%\" absolute style=\"margin-top:-30px; margin-left: 20px;\nposition:absolute; z-index:10;\nleft: 0; \n  right: 0; \n  margin-left: auto; \n  margin-right: auto;\">\n<br>"
+            }
+          },
+          "1a561776-0dd5-43cc-8c7b-896bcbe4924c": {
+            "type": "custom-html",
+            "settings": {
+              "full_width": false,
+              "space_around": false,
+              "code": "<img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/Capsula_2020.png?v=1619021009\" width=\"140px\" absolute style=\"margin-top:-30px; \nposition:absolute; z-index:10;\nleft: 0; \n  right: 0; \n  margin-left: auto; \n  margin-right: auto\">\n<br>"
+            }
+          },
+          "c6227869-5d0e-4a7a-b644-a04ff2525a65": {
+            "type": "background-image-text",
+            "settings": {
+              "subtitle": "",
+              "title": "Cápsulas 100% Compostables",
+              "text": "<p>Tus cápsulas en proceso de compost industrial desaparecen en 3 semanas a diferencia de las cápsulas de aluminio y plástico que pueden demorar más de 150 años.<\/p>",
+              "button_label": "Conoce Más",
+              "button_link": "shopify:\/\/pages\/compost2021",
+              "image": "shopify:\/\/shop_images\/compost2_d970cf20-2122-4c0b-94b5-852afb3de124.jpg",
+              "alignment": "center left",
+              "layout": "left",
+              "height": 550,
+              "parallax": true
+            }
+          },
+          "2837e2ed-a93f-4cab-9422-ba8784ae1bb1": {
+            "type": "hero-video",
+            "settings": {
+              "title": "Pequeños lotes de Café\nHechos a Mano",
+              "title_size": 48,
+              "subheading": "ESTD. 2016",
+              "link_text": "",
+              "text_align": "vertical-bottom horizontal-center",
+              "video_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/video_home_48080988-435b-4c5f-a03f-f064be3de8ba.mp4?v=1619019237",
+              "overlay_opacity": 20,
+              "section_height": "550px",
+              "mobile_height": "auto"
+            }
+          },
+          "c121a68e-cdd7-47d3-8aed-fb67ec8d5892": {
+            "type": "image-row",
+            "settings": {
+              "image_1": "shopify:\/\/shop_images\/capsulas1.jpg",
+              "image_2": "shopify:\/\/shop_images\/capsulas2.jpg",
+              "image_3": "shopify:\/\/shop_images\/capsulas3.jpg",
+              "image_4": "shopify:\/\/shop_images\/capsulas4.jpg",
+              "enable_gutter": false,
+              "enable_zoom": false
+            }
+          },
+          "706cc929-25c2-4808-bff6-5572910b9c8e": {
+            "type": "text-columns",
+            "settings": {
+              "title": "",
+              "align_text": "center",
+              "enable_image_1": true,
+              "image_1": "shopify:\/\/shop_images\/coffee_kids2.jpg",
+              "image_width_1": 650,
+              "title_1": "En apoyo a Coffee Kids",
+              "text_1": "<p>Gracias a tu preferencia empoderamos a las nuevas generaciones de caficultores a través de la ONG Coffee Kids.<\/p>",
+              "button_label_1": "Conoce más",
+              "enable_image_2": true,
+              "image_2": "shopify:\/\/shop_images\/compost4.jpg",
+              "image_width_2": 650,
+              "title_2": "Retiro de cáspulas a domicilio",
+              "text_2": "<p>Contrata nuestro servicio de compostaje de cápsulás, empaques y borra de café a domicilio, valido Santiago, Viña del mar y concepción.<\/p>",
+              "button_label_2": "Conoce más",
+              "enable_image_3": false,
+              "image_width_3": 60,
+              "title_3": "",
+              "text_3": "",
+              "button_label_3": ""
+            }
+          }
+        },
+        "block_order": [
+          "a5f95746-d1f5-46e8-8c6c-bfa0ce8e4a15",
+          "product-text-columns",
+          "bba63206-0523-4789-921a-b2f8d062f6e3",
+          "1a561776-0dd5-43cc-8c7b-896bcbe4924c",
+          "c6227869-5d0e-4a7a-b644-a04ff2525a65",
+          "2837e2ed-a93f-4cab-9422-ba8784ae1bb1",
+          "c121a68e-cdd7-47d3-8aed-fb67ec8d5892",
+          "706cc929-25c2-4808-bff6-5572910b9c8e"
+        ],
+        "settings": {
+          "description_style": "default",
+          "social_enable": true,
+          "image_size": "medium",
+          "thumbnail_position": "beside",
+          "thumbnail_arrows": false,
+          "enable_video_looping": true,
+          "product_video_style": "muted"
+        }
+      },
+      "page-sections-template": {
+        "type": "page-sections-template",
+        "blocks": {
+          "b44e873e-7b04-4228-87e0-9543d3c25284": {
+            "type": "image-hero",
+            "settings": {
+              "title": "Bienvenido a la cultura\nCafetera Nacional",
+              "title_size": 46,
+              "subheading": "ESTD. 2016",
+              "link_text": "",
+              "text_align": "vertical-center horizontal-right",
+              "image": "shopify:\/\/shop_images\/bienvenido_97f98a42-f4ce-4665-9a7f-9ad6714bc3ff.jpg",
+              "focal_point": "center center",
+              "section_height": "650px",
+              "mobile_height": "400px",
+              "parallax": true
+            }
+          },
+          "c72df409-c90c-48dd-9929-3f50595bf35d": {
+            "type": "custom-html",
+            "settings": {
+              "full_width": false,
+              "space_around": false,
+              "code": "<img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/cultura_final.gif?v=1616612762\" width=\"150px\" height=\"15%\" absolute style=\"margin-top:-80px;\nposition:absolute; z-index:10;\nleft: 0; \n  right: 0; \n  margin-left: auto; \n  margin-right: auto;\">\n<br>"
+            }
+          },
+          "page-rich-text": {
+            "type": "rich-text",
+            "settings": {
+              "title": "",
+              "text": "<p><\/p><p>Café especialidad corresponde a una raza de cafeto, finca, origen, secado, tostado y cultura especifica que goza armónicamente un grano de cafe con una perfecta trazabilidad que rescata sabores originarios de pueblos y lugares con una riqueza inimaginable, cada etapa de su proceso esta orientada al sabor final en taza la que Café Señor K  ha querido rescatar y traer a Chile para que nuestras manos le otorguen el sello  final  y dar paso a disfrutar un momento de conexión con sus orígenes...<\/p>",
+              "link_text": "",
+              "align_text": "center",
+              "narrow_column": true,
+              "enlarge_text": false
+            }
+          },
+          "b26f8408-8797-425a-a4d2-f1a3ad0c2892": {
+            "type": "text-and-image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/origen_13a970eb-ba95-470b-bd35-6765c01ef941.jpg",
+              "image_width": 500,
+              "subtitle": "",
+              "title": "Origen",
+              "text": "<p>El Punto de partida de nuestro café es con nuestros amigos productores lo cuales poseen amplia experiencia en café y cuyas familias han perfeccionado por generaciones sus prácticas para cultivar café de especialidad de la más alta calidad. Utilizamos solo granos libres de defectos y madurados en su máximo esplendor recogidos a mano para garantizar un estándar de calidad en los granos. <\/p>",
+              "button_label": "",
+              "layout": "left"
+            }
+          },
+          "38a41ec8-1c3e-4499-8552-5c6752945c49": {
+            "type": "text-and-image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/certificaciones.jpg",
+              "image_width": 500,
+              "subtitle": "",
+              "title": "Especialidad",
+              "text": "<p>Importamos año a año directo de fincas amigas cultivando relaciones unicas. Nuestros granos se cosechan y se secan bajo rigurosos y distintos procesos, donde posteriormente se evalua y se le otorga su puntaje segun la SCA. <\/p>",
+              "button_label": "",
+              "layout": "right"
+            }
+          },
+          "6f0097ce-26b3-4aef-9263-fbc8d319fdfd": {
+            "type": "background-image-text",
+            "settings": {
+              "subtitle": "",
+              "title": "Tostado en Chile",
+              "text": "<p>Tostamos día a día en una Diedrich IR-12 para garantizar la maxima frescura de tu café, cada grano es tostado de acuerdo a sus caracterizticas fisicas y de origen.<\/p>",
+              "button_label": "",
+              "image": "shopify:\/\/shop_images\/tostado_chile_2021.jpg",
+              "alignment": "center right",
+              "layout": "left",
+              "height": 650,
+              "parallax": true
+            }
+          },
+          "page-background-image-text": {
+            "type": "background-image-text",
+            "settings": {
+              "subtitle": "",
+              "title": "¡Tú nuestro barista!",
+              "text": "<p>¡Nuestros clientes son lo más importante en esta cadena! ¡Son quienes completan el ciclo de vida de nuestros granos de especialidad formando un ciclo sustentable y enriquecedor para todos! Te invitamos a preparar cada una de nuestras variedades en las medidas estipuladas y sentir el sabor de la tierra que fue cultivada por manos de gente que ama el café.<\/p>",
+              "button_label": "",
+              "image": "shopify:\/\/shop_images\/barista_tostado_chile.jpg",
+              "alignment": "center left",
+              "layout": "right",
+              "height": 650,
+              "parallax": true
+            }
+          },
+          "64985887-65d6-4923-bfb2-51880d92c315": {
+            "type": "rich-text",
+            "settings": {
+              "title": "¿Quien es el señor K?",
+              "text": "<p>Conocimos al Señor K en el centro de Santiago un verano de 1999. Un tipo auténtico, excéntrico y un poco loco. La pasión por el café nos conecto, generando una gran amistad durante un par de años. Dedicó gran parte de su vida a recorrer el mundo en la búsqueda de los mejores granos de café, con el objetivo de desarrollar la industria en Chile. Algunos de sus viajes fueron a Perú, Colombia, Etiopía e India, donde se instruyó en los procesos de extracción y tostado en una época donde no se conocía ni había mucha información del tema. Luego de su fallecimiento en 2001, decidimos continuar su legado y su sueño. El recuerdo de sus interminables historias, viajes y aventuras nos motivan día a día a sacar adelante este proyecto en su honor y su nombre.<\/p>",
+              "link_text": "",
+              "align_text": "center",
+              "narrow_column": true,
+              "enlarge_text": false
+            }
+          },
+          "0e2f1c49-4a3a-43ee-8c58-3b672133252f": {
+            "type": "image-row",
+            "settings": {
+              "image_1": "shopify:\/\/shop_images\/senork06_760x_dae8154d-e599-4603-a2b6-f58795ee15a9.jpg",
+              "image_2": "shopify:\/\/shop_images\/senork03_1520x_5e1cc9e0-4651-4a84-be4d-481157aef47a.jpg",
+              "image_3": "shopify:\/\/shop_images\/senork05_760x_864d538c-7ae5-4664-970b-80d4f654b652.jpg",
+              "image_4": "shopify:\/\/shop_images\/senork02_1520x_35348177-0e5b-4c83-835a-e9d1a42427f9.jpg",
+              "enable_gutter": false,
+              "enable_zoom": false
+            }
+          }
+        },
+        "block_order": [
+          "b44e873e-7b04-4228-87e0-9543d3c25284",
+          "c72df409-c90c-48dd-9929-3f50595bf35d",
+          "page-rich-text",
+          "b26f8408-8797-425a-a4d2-f1a3ad0c2892",
+          "38a41ec8-1c3e-4499-8552-5c6752945c49",
+          "6f0097ce-26b3-4aef-9263-fbc8d319fdfd",
+          "page-background-image-text",
+          "64985887-65d6-4923-bfb2-51880d92c315",
+          "0e2f1c49-4a3a-43ee-8c58-3b672133252f"
+        ],
+        "settings": {
+          "page_title_enable": false,
+          "page_content_enable": false,
+          "overlaid_header": true
+        }
+      },
+      "footer-promotions": {
+        "type": "footer-promotions",
+        "settings": {
+          "hide_homepage": false,
+          "image_size": "wide",
+          "align_text": "center"
+        }
+      },
+      "newsletter-popup": {
+        "type": "newsletter-popup",
+        "settings": {
+          "mode": "disabled",
+          "popup_seconds": 5,
+          "popup_days": 30,
+          "popup_title": "Sign up and save",
+          "popup_text": "<p>Entice customers to sign up for your mailing list with discounts or exclusive offers. Include an image for extra impact.<\/p>",
+          "close_text": "No thanks",
+          "enable_newsletter": true,
+          "button_label": "Optional button",
+          "enable_button": false
+        }
+      },
+      "product-recommendations": {
+        "type": "product-recommendations",
+        "settings": {
+          "show_product_recommendations": true,
+          "product_recommendations_heading": "Recomendados",
+          "related_count": 5
+        }
+      },
+      "product-collection-links": {
+        "type": "product-collection-links",
+        "settings": {
+          "collection_links_enable": false
+        }
+      },
+      "list-collections-template": {
+        "type": "list-collections-template",
+        "settings": {
+          "title_enable": true,
+          "display_type": "all",
+          "sort": "alphabetical",
+          "grid": "3"
+        }
+      },
+      "16165519726b35ba9b": {
+        "type": "advanced-content",
+        "disabled": true,
+        "blocks": {
+          "1616551971755fb03d-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/prueba_6ae2ba93-c435-4fa9-a717-8f13a30064e3.png",
+              "width": "50%",
+              "alignment": "top-middle"
+            }
+          },
+          "1616551971755fb03d-1": {
+            "type": "html",
+            "settings": {
+              "code": "<h2>Custom content<\/h2><p>Use this advanced section to build your own layouts or to add custom HTML or scripts.<\/p>\n\n <a href=\"\" class=\"btn\" data-live-text-setting=\"section.16165492263e601600.button_label\">\n          Optional button\n        <\/a>",
+              "width": "50%",
+              "alignment": "center"
+            }
+          }
+        },
+        "block_order": [
+          "1616551971755fb03d-0",
+          "1616551971755fb03d-1"
+        ],
+        "settings": {
+          "full_width": false,
+          "space_around": false
+        }
+      },
+      "16165535095edd088a": {
+        "type": "advanced-content",
+        "blocks": {
+          "16165535095edd088a-1": {
+            "type": "html",
+            "settings": {
+              "code": "<style>\n      marquee{\n    white-space: nowrap;\n\n      font-size: 30px;\n      font-weight: 800;\n      color: #ffff;\n       -webkit-text-stroke: 1px #fff;\n    color:transparent\n      }\n    <\/style>\n<marquee bgcolor=\"#000000\" scrolldelay=\"1\" scrollamount=\"3\" truespeed>\n\n<span>DESPACHOS A TODO CHILE \/  <\/span>\n<span>DESPACHOS A TODO CHILE \/  <\/span>\n<span>DESPACHOS A TODO CHILE \/  <\/span>\n<span>DESPACHOS A TODO CHILE \/  <\/span>\n<span>DESPACHOS A TODO CHILE \/  <\/span>\n<span>DESPACHOS A TODO CHILE \/  <\/span>\n<span>DESPACHOS A TODO CHILE \/  <\/span>\n<span>DESPACHOS A TODO CHILE \/  <\/span>\n<span>DESPACHOS A TODO CHILE \/  <\/span>\n<span>DESPACHOS A TODO CHILE \/  <\/span>\n<span>DESPACHOS A TODO CHILE \/  <\/span>\n\n\t <\/marquee>",
+              "width": "100%",
+              "alignment": "center"
+            }
+          }
+        },
+        "block_order": [
+          "16165535095edd088a-1"
+        ],
+        "settings": {
+          "full_width": true,
+          "space_around": false
+        }
+      },
+      "16165890775478dca0": {
+        "type": "text-columns",
+        "blocks": {
+          "16165890775478dca0-0": {
+            "type": "text_block",
+            "settings": {
+              "enable_image": true,
+              "image": "shopify:\/\/shop_images\/capsulas_compost.gif",
+              "image_width": 520,
+              "title": "Cápsulas Compostables",
+              "text": "<p>El mejor café de especialidad en cápsulas compatibles con cafeteras Nespresso. 100% biodegradables, compostables y tostado en Chile<\/p>",
+              "button_label": "Comprar",
+              "button_link": "shopify:\/\/collections\/capsulas-nespresso-alternativas"
+            }
+          },
+          "16165890775478dca0-1": {
+            "type": "text_block",
+            "settings": {
+              "enable_image": true,
+              "image": "shopify:\/\/shop_images\/grano.gif",
+              "image_width": 520,
+              "title": "Grano\/Molido",
+              "text": "<p>Disfruta de nuestra colección mundial de cafés especiales en grano que hemos traído para ti. Tostados, molidos y envasados en Chile para todo tipo de gustos.<\/p>",
+              "button_label": "Comprar",
+              "button_link": "shopify:\/\/collections\/cafe-grano"
+            }
+          }
+        },
+        "block_order": [
+          "16165890775478dca0-0",
+          "16165890775478dca0-1"
+        ],
+        "settings": {
+          "title": "",
+          "align_text": "center",
+          "divider": false
+        }
+      },
+      "16165897914e8077a9": {
+        "type": "advanced-content",
+        "blocks": {
+          "b7357c52-c6d6-4b1b-bbb4-f050b7c07b7d": {
+            "type": "html",
+            "settings": {
+              "code": "<img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/cultura_final.gif?v=1616612762\" width=\"150px\" absolute style=\"margin-top:-70px;\nposition:absolute; z-index:10;\nleft: 0; \n  right: 0; \n  margin-left: auto; \n  margin-right: auto;\">",
+              "width": "100%",
+              "alignment": "top-middle"
+            }
+          }
+        },
+        "block_order": [
+          "b7357c52-c6d6-4b1b-bbb4-f050b7c07b7d"
+        ],
+        "settings": {
+          "full_width": true,
+          "space_around": false
+        }
+      },
+      "16165925800c0250ce": {
+        "type": "text-columns",
+        "blocks": {
+          "16165925800c0250ce-0": {
+            "type": "text_block",
+            "settings": {
+              "enable_image": true,
+              "image": "shopify:\/\/shop_images\/iconos1_00a105a9-40ca-45be-9614-57453139b3bc.png",
+              "image_width": 650,
+              "title": "",
+              "text": "",
+              "button_label": ""
+            }
+          },
+          "16165925800c0250ce-1": {
+            "type": "text_block",
+            "settings": {
+              "enable_image": true,
+              "image": "shopify:\/\/shop_images\/iconos2_97bf26be-e4af-42ed-90d8-5dabc27dffc2.png",
+              "image_width": 650,
+              "title": "",
+              "text": "",
+              "button_label": ""
+            }
+          }
+        },
+        "block_order": [
+          "16165925800c0250ce-0",
+          "16165925800c0250ce-1"
+        ],
+        "settings": {
+          "title": "",
+          "align_text": "center",
+          "divider": false
+        }
+      },
+      "1616593439b45ed24d": {
+        "type": "featured-collection",
+        "settings": {
+          "title": "Destacados",
+          "home_featured_products": "catalogo-para-inicio",
+          "per_row": 5,
+          "rows": 1,
+          "view_all": true,
+          "divider": false
+        }
+      },
+      "161659365970a3a0ca": {
+        "type": "slideshow",
+        "blocks": {
+          "16165936595731df4c-0": {
+            "type": "image",
+            "settings": {
+              "title": "<link rel=\"preconnect\" href=\"https:\/\/fonts.gstatic.com\"> \n<link href=\"https:\/\/fonts.googleapis.com\/css2?family=Parisienne&display=swap\" rel=\"stylesheet\"> \n\nHEMOS RECORRIDO<br> EL MUNDO PARA TRAER <br> LOS MEJORES GRANOS A <h1 class=\"h1\" style=\"font-family: 'Parisienne', cursive; font-size:75px !important; color:#F59847\">Chile<\/h1>",
+              "title_size": 40,
+              "subheading": "",
+              "link": "shopify:\/\/pages\/senork2021",
+              "link_text": "Nuestra historia",
+              "text_align": "vertical-center horizontal-right",
+              "image": "shopify:\/\/shop_images\/cafe_de_origen_chile_456c8bc7-0f0f-4036-9edd-53b9939c7be4.jpg",
+              "overlay_opacity": 0,
+              "focal_point": "center center"
+            }
+          }
+        },
+        "block_order": [
+          "16165936595731df4c-0"
+        ],
+        "settings": {
+          "section_height": "650px",
+          "mobile_height": "500px",
+          "parallax": false,
+          "style": "minimal",
+          "autoplay": false,
+          "autoplay_speed": 5
+        }
+      },
+      "1616601894756ab593": {
+        "type": "blog-posts",
+        "settings": {
+          "title": "Blog Cafetero",
+          "blog": "news",
+          "post_limit": 3,
+          "blog_show_tags": false,
+          "blog_show_date": true,
+          "blog_show_comments": false,
+          "blog_show_author": false,
+          "view_all": true,
+          "divider": false
+        }
+      },
+      "161660195053f77078": {
+        "type": "testimonials",
+        "blocks": {
+          "161660195053f77078-1": {
+            "type": "testimonial",
+            "settings": {
+              "icon": "5-stars",
+              "testimonial": "<p>Lo mas rico en café, y todos sus sabores exquisitos,  un cariño para cada ocasión y dia, excelente servicio entrega rápida y la mejor calidad.<\/p>",
+              "image": "shopify:\/\/shop_images\/capsulas_a346105d-9be3-4136-93ef-d3d8e2b91989.jpg",
+              "author": "Yannie Malui G.",
+              "author_info": ""
+            }
+          },
+          "161660195053f77078-2": {
+            "type": "testimonial",
+            "settings": {
+              "icon": "5-stars",
+              "testimonial": "<p>Café  con cuerpo y complejo.  Un aroma intenso.  Muy recomendable!!<\/p>",
+              "image": "shopify:\/\/shop_images\/laderas.jpg",
+              "author": "Javier V.",
+              "author_info": "Los Angeles, CA"
+            }
+          },
+          "161660195053f77078-3": {
+            "type": "testimonial",
+            "settings": {
+              "icon": "5-stars",
+              "testimonial": "<p>Delicioso cafe, lo he preparado en v60, aeropress, con leche, frio, siempre con un muy buen resultado! Me encanta en nuevo empaque<\/p>",
+              "image": "shopify:\/\/shop_images\/cafe_grano_2f461848-cc64-4990-bdcc-8e5dcab21895.jpg",
+              "author": "Rodrigo H.",
+              "author_info": ""
+            }
+          },
+          "161660195053f77078-0": {
+            "type": "testimonial",
+            "settings": {
+              "icon": "5-stars",
+              "testimonial": "<p>Me facino por las tardes suelo preparar uno para disfrutar un gran momento<\/p>",
+              "image": "shopify:\/\/shop_images\/VkRpwKQ4q_mid_copia.jpg",
+              "author": "Jose antonio S.",
+              "author_info": ""
+            }
+          },
+          "161660195053f77078-4": {
+            "type": "testimonial",
+            "settings": {
+              "icon": "5-stars",
+              "testimonial": "<p>Realmente muy rico café! Y además son compostables, qué mejor!<\/p>",
+              "image": "shopify:\/\/shop_images\/cafe_chile_b6a9e68c-6ea2-4daf-8c60-6f061745a796.jpg",
+              "author": "Catalina V.",
+              "author_info": ""
+            }
+          }
+        },
+        "block_order": [
+          "161660195053f77078-1",
+          "161660195053f77078-2",
+          "161660195053f77078-3",
+          "161660195053f77078-0",
+          "161660195053f77078-4"
+        ],
+        "settings": {
+          "title": "Comunidad K",
+          "round_images": true,
+          "color_background": "rgba(0,0,0,0)",
+          "color_text": "#1c1d1d"
+        }
+      },
+      "1616602850f6c37a5e": {
+        "type": "background-video-text",
+        "disabled": true,
+        "settings": {
+          "subtitle": "",
+          "title": "Señor K",
+          "text": "<p><\/p><p>Priorizamos ante todo el valor del trabajo de los caficultores pagando precios justos y adentrándonos en la vida de las familias cafeteras con las que trabajamos, año a año viajamos al origen para visitar las fincas y así cultivar las relaciones lo cual sin duda le da un sabor aun mas especial al café.<\/p>",
+          "button_label": "Conoce Más",
+          "video_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/WhatsApp_Video_2021-01-17_at_12.44.32.mp4?v=1616602952",
+          "color_border": "#111111",
+          "layout": "left",
+          "height": 650
+        }
+      },
+      "161660343548c5ad6c": {
+        "type": "text-columns",
+        "blocks": {
+          "16166034369c477fb5-0": {
+            "type": "text_block",
+            "settings": {
+              "enable_image": true,
+              "image": "shopify:\/\/shop_images\/compost_capsulas_bc1755ac-efd3-441d-b97c-c4d3edb2197a.jpg",
+              "image_width": 650,
+              "title": "100% Compostable",
+              "text": "<p>Conoce nuestro servicio de compostaje de cápsulas, bolsas y borra de café a domicilio, válido para Santiago, Viña del mar y concepción. <\/p>",
+              "button_label": "Conoce más",
+              "button_link": "shopify:\/\/pages\/compost2021"
+            }
+          },
+          "16166034369c477fb5-1": {
+            "type": "text_block",
+            "settings": {
+              "enable_image": true,
+              "image": "shopify:\/\/shop_images\/coffeekids_chile_3f75a0c3-f32c-4127-b8b0-c6923e8f7058.jpg",
+              "image_width": 650,
+              "title": "Coffee Kids",
+              "text": "<p>Gracias a tu preferencia empoderamos  a las nuevas generaciones de caficultores a través de la ONG Coffee Kids la cual se encargada de apoyar a jóvenes caficultores.<\/p>",
+              "button_label": "Conoce más"
+            }
+          }
+        },
+        "block_order": [
+          "16166034369c477fb5-0",
+          "16166034369c477fb5-1"
+        ],
+        "settings": {
+          "title": "",
+          "align_text": "center",
+          "divider": false
+        }
+      },
+      "16166113480961ddc8": {
+        "type": "hero-video",
+        "settings": {
+          "title": "¿Por que Señor K?",
+          "title_size": 40,
+          "subheading": "Priorizamos ante todo el valor del trabajo de los caficultores pagando precios justos y adentrándonos en la vida de las familias cafeteras con las que trabajamos, año a año viajamos al origen para visitar las fincas y así cultivar las relaciones lo cual sin duda le da un sabor aun mas especial al café.",
+          "link_text": "Conoce Más",
+          "link": "shopify:\/\/pages\/senork2021",
+          "text_align": "vertical-center horizontal-center",
+          "video_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/WhatsApp_Video_2021-01-17_at_12.44.32.mp4?v=1616602952",
+          "overlay_opacity": 76,
+          "section_height": "650px",
+          "mobile_height": "500px"
+        }
+      },
+      "page-sections-compost-template": {
+        "type": "page-sections-compost-template",
+        "blocks": {
+          "0a9e4427-5121-4b73-b606-731a08c626e1": {
+            "type": "image-hero",
+            "settings": {
+              "title": "Primera Linea 100%\ncompostable",
+              "title_size": 46,
+              "subheading": "De café de especialidad",
+              "link_text": "",
+              "text_align": "vertical-center horizontal-center",
+              "image": "shopify:\/\/shop_images\/compost2_3ef3b3b3-6cfc-4fa4-95c6-3423ec57ea87.jpg",
+              "focal_point": "center center",
+              "section_height": "650px",
+              "mobile_height": "auto",
+              "parallax": true
+            }
+          },
+          "c04b7301-c6d5-4e93-a302-a47efc6d92cd": {
+            "type": "custom-html",
+            "settings": {
+              "full_width": false,
+              "space_around": false,
+              "code": "<img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/capsulas_bio.gif?v=1617908954\" width=\"150px\" height=\"15%\" absolute style=\"margin-top:-80px;\nposition:absolute; z-index:10;\nleft: 0; \n  right: 0; \n  margin-left: auto; \n  margin-right: auto;\">\n<br>"
+            }
+          },
+          "f12408a9-29b0-405d-91ea-ffcf99a77ff5": {
+            "type": "rich-text",
+            "settings": {
+              "title": "",
+              "text": "<p><\/p><p>Fabricadas con materiales renovables a partir de la caña de azúcar. Nuestra cápsula desaparece por acción microbiológica mediante el proceso de compost en un corto periodo de tiempo sin dejar huella alguna.<\/p>",
+              "link_text": "",
+              "align_text": "center",
+              "narrow_column": true,
+              "enlarge_text": true
+            }
+          },
+          "06ae3415-47d3-4072-b768-2646165d08aa": {
+            "type": "text-and-image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/compostable_7d40ec22-c6dc-4ac0-afe5-6557bfead3a7.gif",
+              "image_width": 500,
+              "subtitle": "",
+              "title": "¿que es el compost?",
+              "text": "<p>Es un tipo de tierra hecha a base de desechos orgánicos y elementos de material vegetal. Lo conseguimos a partir del proceso llamado compostaje, en el cuál,  microorganismos van descomponiendo la materia orgánica hasta formar tierra rica en nutrientes. Las capsulas de café Señor K no dejan huella en el planeta, son compostables en dos meses bajo régimen industrial a temperaturas entre 60ºc a 80ºc, desapareciendo y transformandose en abono para el medio ambiente!<\/p>",
+              "button_label": "",
+              "layout": "left"
+            }
+          },
+          "a9bb7b17-bdfd-4f92-baaa-c48e5331190d": {
+            "type": "custom-html",
+            "settings": {
+              "full_width": false,
+              "space_around": false,
+              "code": "<img class=\"hidemobile\" src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/Capsula_2020.png?v=1619021009\" width=\"220px\" height=\"15%\" absolute style=\"margin-top:-100px;\nposition:absolute; z-index:10;\nleft: 0; \n  right: 0; \n  margin-left: auto; \n  margin-right: auto;\">\n<br>"
+            }
+          },
+          "86d89d88-748a-49e2-b0de-53607fb5b389": {
+            "type": "image-hero",
+            "settings": {
+              "title": "Nuestro Café \nno deja huella",
+              "title_size": 48,
+              "subheading": "Seamos parte del cambio",
+              "link_text": "",
+              "text_align": "vertical-center horizontal-center",
+              "image": "shopify:\/\/shop_images\/banner_compost_3.jpg",
+              "focal_point": "center center",
+              "section_height": "450px",
+              "mobile_height": "auto",
+              "parallax": true
+            }
+          },
+          "3c444d97-d5c6-4f50-93fc-6cc9a9230dc2": {
+            "type": "custom-html",
+            "settings": {
+              "full_width": false,
+              "space_around": false,
+              "code": "<img class=\"hidemobile\" src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/alumnio-vs-compostable.gif?v=1617901695\" width=\"150px\" height=\"15%\" absolute style=\"margin-top:15%;\nposition:absolute; z-index:10;\nleft: 0; \n  right: 0; \n  margin-left: auto; \n  margin-right: auto;\">"
+            }
+          },
+          "37a13602-62ef-4ada-8253-47cc8a890aa2": {
+            "type": "text-columns",
+            "settings": {
+              "title": "",
+              "align_text": "center",
+              "enable_image_1": true,
+              "image_1": "shopify:\/\/shop_images\/capsulas_aluminio_bbf3246e-9fc0-48ee-baa7-e52b46cba422.jpg",
+              "image_width_1": 650,
+              "title_1": "Cápsulas de aluminio",
+              "text_1": "<p>Altamente Contaminantes.<br\/>Hasta 500 años en descomponerse.<\/p>",
+              "button_label_1": "",
+              "enable_image_2": true,
+              "image_2": "shopify:\/\/shop_images\/biodegradables2.jpg",
+              "image_width_2": 650,
+              "title_2": "Cápsulas señor K",
+              "text_2": "<p>No Contaminan.<br\/>Se descomponen en 4 mesesn.<br\/>Compostables.<\/p>",
+              "button_label_2": "",
+              "enable_image_3": false,
+              "image_width_3": 60,
+              "title_3": "",
+              "text_3": "",
+              "button_label_3": ""
+            }
+          },
+          "6727a0c1-25a2-4c83-a466-ed43c046bc4c": {
+            "type": "custom-html",
+            "settings": {
+              "full_width": false,
+              "space_around": false,
+              "code": "<img class=\"hidemobile\" src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/cafe_compostable_0fd9f1c2-b60a-4f16-ba94-078a5ddf4d46.jpg?v=1619642521\">\n<br>"
+            }
+          },
+          "a4d603e8-8be0-4912-9f49-7936518c9ebe": {
+            "type": "custom-html",
+            "settings": {
+              "full_width": false,
+              "space_around": false,
+              "code": "<img class=\"hideescritorio\" src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/cafe_compostable_mobile_079a9d40-0059-4c7b-b024-5b9064471d65.jpg?v=1619642541\">\n<br>"
+            }
+          },
+          "33cd5eec-8888-4585-b7fc-b12cf6fbeb3a": {
+            "type": "custom-html",
+            "settings": {
+              "full_width": false,
+              "space_around": true,
+              "code": "<img class=\"hidemobile\" src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/ciclo-compost_cb918dd1-bc8a-4cd3-865d-83c172a48790.jpg?v=1617903434\">\n<br>"
+            }
+          },
+          "48680272-8519-4fd5-8210-896530d00c0b": {
+            "type": "text-columns",
+            "settings": {
+              "title": "Contrata Nuestro Servicio",
+              "align_text": "center",
+              "enable_image_1": true,
+              "image_1": "shopify:\/\/shop_images\/sr_compost.png",
+              "image_width_1": 650,
+              "title_1": "Santiago",
+              "text_1": "<p>Providencia, Macul, Las condes, Vitacura, Ñuñoa y Santiago centro.<\/p>",
+              "button_label_1": "Contratar",
+              "button_link_1": "shopify:\/\/products\/retiro-de-capsulas-con-el-senor-compost",
+              "enable_image_2": true,
+              "image_2": "shopify:\/\/shop_images\/pewin_logo.png",
+              "image_width_2": 650,
+              "title_2": "Viña del mar",
+              "text_2": "<p>Plan de Viña, Concon, Valparaiso, Olmue, Limache, Peña blanca, Curauma, Quilpue.<\/p>",
+              "button_label_2": "Contratar",
+              "button_link_2": "shopify:\/\/products\/retiro-de-capsulas-con-el-senor-compost",
+              "enable_image_3": true,
+              "image_3": "shopify:\/\/shop_images\/ketrawe.png",
+              "image_width_3": 650,
+              "title_3": "Concepción",
+              "text_3": "<p>Gran concepción - Tome - San pedro ( menos lomas coloradas) - Talcahuano - Chiguayante - Penco<\/p>",
+              "button_label_3": "Contratar",
+              "button_link_3": "shopify:\/\/products\/retiro-de-capsulas-con-el-senor-compost"
+            }
+          },
+          "d54de066-24e5-4abd-8f3d-7518d5bd05d0": {
+            "type": "custom-html",
+            "settings": {
+              "full_width": false,
+              "space_around": true,
+              "code": "<img class=\"hidemobile\" src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/certificaciones_compost_32fb77d3-a596-4cd4-b436-5f1f4c718b60.jpg?v=1614770336\">\n<br>"
+            }
+          }
+        },
+        "block_order": [
+          "0a9e4427-5121-4b73-b606-731a08c626e1",
+          "c04b7301-c6d5-4e93-a302-a47efc6d92cd",
+          "f12408a9-29b0-405d-91ea-ffcf99a77ff5",
+          "06ae3415-47d3-4072-b768-2646165d08aa",
+          "a9bb7b17-bdfd-4f92-baaa-c48e5331190d",
+          "86d89d88-748a-49e2-b0de-53607fb5b389",
+          "3c444d97-d5c6-4f50-93fc-6cc9a9230dc2",
+          "37a13602-62ef-4ada-8253-47cc8a890aa2",
+          "6727a0c1-25a2-4c83-a466-ed43c046bc4c",
+          "a4d603e8-8be0-4912-9f49-7936518c9ebe",
+          "33cd5eec-8888-4585-b7fc-b12cf6fbeb3a",
+          "48680272-8519-4fd5-8210-896530d00c0b",
+          "d54de066-24e5-4abd-8f3d-7518d5bd05d0"
+        ],
+        "settings": {
+          "page_title_enable": false,
+          "page_content_enable": false,
+          "overlaid_header": true
+        }
+      },
+      "product-sections-template-2": {
+        "type": "product-sections-template-2",
+        "blocks": {
+          "ff36ad67-c123-466f-be63-d0db5c57ce60": {
+            "type": "custom-html",
+            "settings": {
+              "full_width": false,
+              "space_around": false,
+              "code": "<img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/cafe_tostado_chile.png?v=1619027114\" width=\"50%\" absolute style=\"margin-top:30px; margin-left: 20px;\nposition:absolute; z-index:50;\nleft: 0; \n  right: 0; \nopacity:20%;\n  margin-left: auto; \n  margin-right: auto\">\n<br>"
+            }
+          },
+          "01e75723-800d-48bb-abfc-231260baf336": {
+            "type": "text-columns",
+            "settings": {
+              "title": "",
+              "align_text": "center",
+              "enable_image_1": true,
+              "image_1": "shopify:\/\/shop_images\/sustentable2.jpg",
+              "image_width_1": 650,
+              "title_1": "Sustentable",
+              "text_1": "<p>Te garantizamos una cadena cafetera sustentable de la finca a la taza<\/p>",
+              "button_label_1": "",
+              "enable_image_2": true,
+              "image_2": "shopify:\/\/shop_images\/grano_molido_8cc39da3-54b8-4ad3-9531-0104c6a9d38d.gif",
+              "image_width_2": 650,
+              "title_2": "Siempre Fresco",
+              "text_2": "<p>Tostamos semana a semana para que tu café esté siempre fresco<\/p>",
+              "button_label_2": "",
+              "enable_image_3": true,
+              "image_3": "shopify:\/\/shop_images\/origen2.jpg",
+              "image_width_3": 650,
+              "title_3": "De origen",
+              "text_3": "<p>Importamos granos directo de las fincas para conectarte con familias cafeteras<\/p>",
+              "button_label_3": ""
+            }
+          },
+          "85bc9ec8-cbbd-49a9-937e-993ee6b1ba76": {
+            "type": "custom-html",
+            "settings": {
+              "full_width": false,
+              "space_around": false,
+              "code": "<img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/recien_tostado_cafe.gif?v=1619620765\" width=\"180px\" height=\"15%\" absolute style=\"margin-top:-90px;\nposition:absolute; z-index:10;\n right: 0; \n  margin-left: auto; \n  margin-right: auto;\">\n<br>"
+            }
+          },
+          "0e49edb5-3a0b-4c42-be45-adfbb70c02ce": {
+            "type": "background-image-text",
+            "settings": {
+              "subtitle": "",
+              "title": "Café de especialidad tostado en Chile",
+              "text": "<p>Tostamos día a día para garantizarte la máxima frescura de tu café, cada tueste es único, tomamos en cuenta las características físicas y de origen del café, para así resaltar su sabor y el gran trabajo de caficultores de todo el mundo.<\/p>",
+              "button_label": "Conoce más",
+              "button_link": "shopify:\/\/pages\/senork2021",
+              "image": "shopify:\/\/shop_images\/tostado_mano.jpg",
+              "alignment": "center right",
+              "layout": "left",
+              "height": 650,
+              "parallax": true
+            }
+          },
+          "bf62fcc5-c27b-4295-afc0-e67e1956f243": {
+            "type": "hero-video",
+            "settings": {
+              "title": "Pequeños lotes de Café\nHechos a Mano",
+              "title_size": 48,
+              "subheading": "ESTD. 2016",
+              "link_text": "",
+              "text_align": "vertical-bottom horizontal-center",
+              "video_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/video_home_48080988-435b-4c5f-a03f-f064be3de8ba.mp4?v=1619019237",
+              "overlay_opacity": 20,
+              "section_height": "650px",
+              "mobile_height": "auto"
+            }
+          },
+          "7c941ec1-664e-495c-91fb-699280fbe825": {
+            "type": "image-row",
+            "settings": {
+              "image_1": "shopify:\/\/shop_images\/Mesa-de-trabajo-25-copia-4.jpg",
+              "image_2": "shopify:\/\/shop_images\/Mesa-de-trabajo-25-copia-5.jpg",
+              "image_3": "shopify:\/\/shop_images\/Mesa-de-trabajo-25-copia-6.jpg",
+              "image_4": "shopify:\/\/shop_images\/Mesa-de-trabajo-25-copia-7.jpg",
+              "enable_gutter": false,
+              "enable_zoom": false
+            }
+          },
+          "b7498b84-d90d-4de7-8a03-f420975b158a": {
+            "type": "text-columns",
+            "settings": {
+              "title": "",
+              "align_text": "center",
+              "enable_image_1": true,
+              "image_1": "shopify:\/\/shop_images\/coffee_kids3.jpg",
+              "image_width_1": 650,
+              "title_1": "En apoyo a Coffee Kids",
+              "text_1": "<p>Gracias a tu preferencia empoderamos a las nuevas generaciones de caficultores a través de la ONG Coffee Kids.<\/p>",
+              "button_label_1": "Conoce más",
+              "enable_image_2": true,
+              "image_2": "shopify:\/\/shop_images\/compost_cafe_605c064c-30f6-4b56-bdc6-64a865461de8.jpg",
+              "image_width_2": 650,
+              "title_2": "Retiro de bolsas y borra de Café",
+              "text_2": "<p>Contrata nuestro servicio de compostaje de cápsulás, empaques y borra de café a domicilio, valido Santiago, Viña del mar y concepción.<\/p>",
+              "button_label_2": "Conoce más",
+              "enable_image_3": false,
+              "image_width_3": 60,
+              "title_3": "",
+              "text_3": "",
+              "button_label_3": ""
+            }
+          }
+        },
+        "block_order": [
+          "ff36ad67-c123-466f-be63-d0db5c57ce60",
+          "01e75723-800d-48bb-abfc-231260baf336",
+          "85bc9ec8-cbbd-49a9-937e-993ee6b1ba76",
+          "0e49edb5-3a0b-4c42-be45-adfbb70c02ce",
+          "bf62fcc5-c27b-4295-afc0-e67e1956f243",
+          "7c941ec1-664e-495c-91fb-699280fbe825",
+          "b7498b84-d90d-4de7-8a03-f420975b158a"
+        ],
+        "settings": {
+          "description_style": "default",
+          "social_enable": true,
+          "image_size": "medium",
+          "thumbnail_position": "beside",
+          "thumbnail_arrows": false,
+          "enable_video_looping": true,
+          "product_video_style": "muted"
+        }
+      },
+      "background-video-text": {
+        "type": "background-video-text",
+        "settings": {
+          "subtitle": "Impressive",
+          "title": "Large video with text box",
+          "text": "<p>Pair large text with a full-width video to showcase your brand&#x27;s lifestyle video or to describe and showcase an important detail of your products.<\/p>",
+          "button_label": "",
+          "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+          "color_border": "#f4f4f4",
+          "layout": "left",
+          "height": 550
+        }
+      },
+      "hero-video": {
+        "type": "hero-video",
+        "settings": {
+          "title": "",
+          "title_size": 48,
+          "subheading": "",
+          "link_text": "",
+          "text_align": "vertical-center horizontal-center",
+          "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+          "overlay_opacity": 0,
+          "section_height": "450px",
+          "mobile_height": "auto"
+        }
+      },
+      "page-contact-template": {
+        "type": "page-contact-template",
+        "blocks": {
+          "c76ba6e3-30f1-4fc0-b664-c5c1e1009121": {
+            "type": "image-hero",
+            "settings": {
+              "title": "Contáctanos",
+              "title_size": 48,
+              "subheading": "",
+              "link_text": "",
+              "text_align": "vertical-center horizontal-center",
+              "image": "shopify:\/\/shop_images\/tostado_mano.jpg",
+              "focal_point": "center center",
+              "section_height": "550px",
+              "mobile_height": "auto",
+              "parallax": true
+            }
+          },
+          "9463fa2f-c84a-473a-88ea-956c5e3b85ee": {
+            "type": "rich-text",
+            "settings": {
+              "title": "",
+              "text": "<p>A través de nuestro email contacto@cafesenork.com o escríbenos en nuestro formulario.<\/p>",
+              "link_text": "",
+              "align_text": "center",
+              "narrow_column": true,
+              "enlarge_text": false
+            }
+          },
+          "page-contact-template-0": {
+            "type": "contact-form",
+            "settings": {
+              "title": "",
+              "show_phone": false,
+              "narrow_column": true
+            }
+          }
+        },
+        "block_order": [
+          "c76ba6e3-30f1-4fc0-b664-c5c1e1009121",
+          "9463fa2f-c84a-473a-88ea-956c5e3b85ee",
+          "page-contact-template-0"
+        ],
+        "settings": {
+          "page_title_enable": false,
+          "page_content_enable": false,
+          "overlaid_header": true
+        }
+      },
+      "1619636240ca0372e3": {
+        "type": "advanced-content",
+        "blocks": {
+          "1619636240ca0372e3-1": {
+            "type": "html",
+            "settings": {
+              "code": "<img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/bg_3.jpg?v=1619641792\" width=\"100%\" absolute style=\"margin-top:60px;\nposition:absolute; \nz-index:-100;\n\">",
+              "width": "100%",
+              "alignment": "bottom-middle"
+            }
+          }
+        },
+        "block_order": [
+          "1619636240ca0372e3-1"
+        ],
+        "settings": {
+          "full_width": true,
+          "space_around": false
+        }
+      },
+      "1620138999f86d02e9": {
+        "type": "newsletter",
+        "settings": {
+          "icon_enable": false,
+          "title": "Suscríbete",
+          "text": "<p>¡Disfruta junto a nosotros del mejor café!<\/p>",
+          "color_background": "#2b2b2b",
+          "color_text": "#ffffff"
+        }
+      },
+      "page-sections-cafeteria-template": {
+        "type": "page-sections-cafeteria-template",
+        "blocks": {
+          "790af639-c43c-499e-834d-410618a54bc4": {
+            "type": "image-hero",
+            "settings": {
+              "title": "Planes Cafetería",
+              "title_size": 48,
+              "subheading": "",
+              "link_text": "",
+              "text_align": "vertical-center horizontal-center",
+              "image": "shopify:\/\/shop_images\/planesk_ff74df6e-9bff-4448-8b10-9d127a1827e8.jpg",
+              "focal_point": "center center",
+              "section_height": "550px",
+              "mobile_height": "auto",
+              "parallax": true
+            }
+          },
+          "a48412b6-75e5-4805-bd79-edd6701be132": {
+            "type": "rich-text",
+            "settings": {
+              "title": "",
+              "text": "<p>Lleva la Originalidad de Señor K a donde Quieras con toda nuestra Línea de cafeteras.<\/p>",
+              "link_text": "",
+              "align_text": "center",
+              "narrow_column": true,
+              "enlarge_text": false
+            }
+          },
+          "18877676-7c8f-4597-8725-c523e4dc24cf": {
+            "type": "text-and-image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/cafeteria_8b034169-e89b-4525-841b-e1a200ae953e.jpg",
+              "image_width": 500,
+              "subtitle": "",
+              "title": "Señor K en tu cafetería",
+              "text": "<p>Contamos con mas de 8 orígenes únicos para que sorprendas a tus clientes en tu cafetería. Realiza tu pedido con 4 días de anticipación para tostarlo en el momento y lo obtengas en su mejor versión!<\/p><p>Disponibles en formatos de 1 kilo, si es tu primer pedido exige la carta orígenes del Señor K junto a una pizarra paloma, tazas y merchandising.  Lleva la mejor especialidad a tu cafetería! <\/p><p><\/p>",
+              "button_label": "Contáctanos",
+              "button_link": "shopify:\/\/pages\/contacto",
+              "layout": "left"
+            }
+          },
+          "b49fbf1d-ee47-4631-88da-28500cad2f2d": {
+            "type": "featured-collection",
+            "settings": {
+              "title": "Contrata tu plan en comodato, arriendo o compra",
+              "collection": "cafeteras",
+              "per_row": 3,
+              "rows": 2,
+              "view_all": false
+            }
+          },
+          "6d896490-c611-4355-8892-8d9de0a50e8e": {
+            "type": "text-and-image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/oficina.jpg",
+              "image_width": 500,
+              "subtitle": "",
+              "title": "Señor K en tu oficina",
+              "text": "<p>Prende tu oficina con la intensidad y energía de nuestros planes disponibles a la medida los cuales adaptamos a tus necesidades, Incluyen: Cafetera nespresso o vending, cápsulas o café de grano, carta de café, despacho gratuito, descuentos en compras personales para toda la oficina  <\/p><p>Todos los planes los adaptamos a tu consumo para que no pagues de mas  Pregunta por tu plan a la medida<\/p><p><\/p>",
+              "button_label": "Contáctanos",
+              "button_link": "shopify:\/\/pages\/contacto",
+              "layout": "right"
+            }
+          },
+          "989659b1-d324-45af-a19c-67d447b3fa28": {
+            "type": "featured-collection",
+            "settings": {
+              "title": "Contrata tu plan de cápsulas y lleva una cafetera de regalo",
+              "collection": "comodatos-nespresso",
+              "per_row": 3,
+              "rows": 1,
+              "view_all": false
+            }
+          },
+          "c10fb68c-20df-4dc6-8719-25009311eeec": {
+            "type": "text-and-image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/restaurant.jpg",
+              "image_width": 500,
+              "subtitle": "",
+              "title": "Señor K en tu restaurant",
+              "text": "<p>El ultimo sabor es el ultimo recuerdo de tu restaurant. Que sea inolvidable. Tenemos todo lo que necesitas para que la cafetería sea un atributo.<\/p><p>Contamos con: cápsulas nespresso biodegradables, cafe de grano, café de grano molido cafeteras de espresso, vending y nespresso.<\/p><p>Toda buena historia tiene un gran final que la tuya no sea la excepción junto a los mas de 8 orígenes que tenemos para ti, todos tostados, molido y envasados en Chile! Exige tu carta de café personalizada.<\/p><p><\/p>",
+              "button_label": "Contáctanos",
+              "layout": "left"
+            }
+          },
+          "dd87fee8-b3db-4507-8416-c228200a3e1e": {
+            "type": "contact-form",
+            "settings": {
+              "title": "Contáctanos",
+              "show_phone": false,
+              "narrow_column": true
+            }
+          },
+          "0beb243f-65d1-4674-b4d1-a894c70bbe9d": {
+            "type": "image-row",
+            "settings": {
+              "image_1": "shopify:\/\/shop_images\/cafeteria_1.jpg",
+              "image_2": "shopify:\/\/shop_images\/cafeteria_4.jpg",
+              "image_3": "shopify:\/\/shop_images\/cafeteria_2.jpg",
+              "image_4": "shopify:\/\/shop_images\/cafeteria_3.jpg",
+              "enable_gutter": false,
+              "enable_zoom": true
+            }
+          }
+        },
+        "block_order": [
+          "790af639-c43c-499e-834d-410618a54bc4",
+          "a48412b6-75e5-4805-bd79-edd6701be132",
+          "18877676-7c8f-4597-8725-c523e4dc24cf",
+          "b49fbf1d-ee47-4631-88da-28500cad2f2d",
+          "6d896490-c611-4355-8892-8d9de0a50e8e",
+          "989659b1-d324-45af-a19c-67d447b3fa28",
+          "c10fb68c-20df-4dc6-8719-25009311eeec",
+          "dd87fee8-b3db-4507-8416-c228200a3e1e",
+          "0beb243f-65d1-4674-b4d1-a894c70bbe9d"
+        ],
+        "settings": {
+          "page_title_enable": false,
+          "page_content_enable": false,
+          "overlaid_header": true
+        }
+      },
+      "page-sections-regalos-template": {
+        "type": "page-sections-regalos-template",
+        "blocks": {
+          "bbf8c48b-f65e-4069-9f86-d2b446749889": {
+            "type": "image-hero",
+            "settings": {
+              "title": "Regalos Corporativos",
+              "title_size": 48,
+              "subheading": "",
+              "link_text": "",
+              "text_align": "vertical-center horizontal-center",
+              "image": "shopify:\/\/shop_images\/REGALOS_header_9128ab6e-d869-4736-92b2-d1d7e270f1f1.jpg",
+              "focal_point": "20% 100%",
+              "section_height": "550px",
+              "mobile_height": "auto",
+              "parallax": true
+            }
+          },
+          "ae385a54-9dcf-49e3-b6b9-03ce37feef8e": {
+            "type": "custom-html",
+            "settings": {
+              "full_width": false,
+              "space_around": false,
+              "code": "<img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/2466\/7899\/files\/cultura_final.gif?v=1616612762\" width=\"150px\" height=\"15%\" absolute style=\"margin-top:-80px;\nposition:absolute; z-index:10;\nleft: 0; \n  right: 0; \n  margin-left: auto; \n  margin-right: auto;\">\n<br>"
+            }
+          },
+          "7dc3fbe5-0f4c-4fb0-ab64-1849c687dd8f": {
+            "type": "rich-text",
+            "settings": {
+              "title": "Regalos corporativos cafeteros",
+              "text": "<p>Contáctanos para hacer un regalo corporativo cafetero, ya sean cápsulas, café de grano u otro. Con gusto te daremos opciones que se adapte a tus necesidades.<\/p>",
+              "link_text": "",
+              "align_text": "center",
+              "narrow_column": true,
+              "enlarge_text": false
+            }
+          },
+          "f3798cbd-d504-4243-976d-fb4b98ac078b": {
+            "type": "contact-form",
+            "settings": {
+              "title": "",
+              "show_phone": false,
+              "narrow_column": true
+            }
+          },
+          "eea04951-4090-4230-b6c9-45ebefd7bd6d": {
+            "type": "text-and-image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/coffeekids_chile.jpg",
+              "image_width": 500,
+              "subtitle": "",
+              "title": "TU EMPRESA EN APOYO A LOS CAFICULTORES",
+              "text": "<p>Al adquirir regalos corporativos con Señor K estarás contribuyendo directamente en programas sociales de coffee kids, por una cultura cafetera justa y sustentable.<\/p>",
+              "button_label": "",
+              "layout": "left"
+            }
+          },
+          "0f175550-3ed7-45b5-b112-417c625aa080": {
+            "type": "image-row",
+            "settings": {
+              "image_1": "shopify:\/\/shop_images\/regalos4.jpg",
+              "image_2": "shopify:\/\/shop_images\/regalos.jpg",
+              "image_3": "shopify:\/\/shop_images\/regalos3.jpg",
+              "image_4": "shopify:\/\/shop_images\/regalos2.jpg",
+              "enable_gutter": false,
+              "enable_zoom": false
+            }
+          }
+        },
+        "block_order": [
+          "bbf8c48b-f65e-4069-9f86-d2b446749889",
+          "ae385a54-9dcf-49e3-b6b9-03ce37feef8e",
+          "7dc3fbe5-0f4c-4fb0-ab64-1849c687dd8f",
+          "f3798cbd-d504-4243-976d-fb4b98ac078b",
+          "eea04951-4090-4230-b6c9-45ebefd7bd6d",
+          "0f175550-3ed7-45b5-b112-417c625aa080"
+        ],
+        "settings": {
+          "page_title_enable": false,
+          "page_content_enable": false,
+          "overlaid_header": true
+        }
+      }
+    },
+    "content_for_index": [
+      "1499790529450",
+      "16165535095edd088a",
+      "16165890775478dca0",
+      "16165925800c0250ce",
+      "161659365970a3a0ca",
+      "1616602850f6c37a5e",
+      "1499790633921",
+      "1616593439b45ed24d",
+      "16165897914e8077a9",
+      "16166113480961ddc8",
+      "1566999869051",
+      "1499789718857",
+      "1499790731541",
+      "161660343548c5ad6c",
+      "16165519726b35ba9b",
+      "1616601894756ab593",
+      "1619636240ca0372e3",
+      "161660195053f77078",
+      "1620138999f86d02e9"
+    ]
+  },
+  "presets": {
+    "Classic": {
+      "color_borders": "#e8e8e1",
+      "color_button": "#111111",
+      "color_button_text": "#ffffff",
+      "color_drawer_background": "#ffffff",
+      "color_drawer_text": "#000000",
+      "color_drawer_border": "#e8e8e1",
+      "color_drawer_button": "#111111",
+      "color_drawer_button_text": "#ffffff",
+      "color_footer": "#111111",
+      "color_footer_text": "#ffffff",
+      "color_image_1": "#000000",
+      "color_image_1_opacity": 62,
+      "color_image_2": "#000000",
+      "color_image_2_opacity": 0,
+      "color_small_image_bg": "#ffffff",
+      "color_large_image_bg": "#111111",
+      "type_header_spacing": "0",
+      "type_header_font_family": "itc_avant_garde_gothic_n7",
+      "type_header_base_size": 35,
+      "type_header_line_height": 1.2,
+      "type_header_accent_transform": true,
+      "type_base_font_family": "futura_n4",
+      "type_base_spacing": "25",
+      "type_base_size": 17,
+      "type_base_line_height": 1.6,
+      "type_base_accent_transform": true,
+      "icon_weight": "3px",
+      "icon_linecaps": "miter",
+      "animate_page_transitions": true,
+      "animate_page_transition_style": "page-slow-fade",
+      "animate_sections": true,
+      "animate_sections_background_style": "zoom-fade",
+      "animate_sections_text_style": "rise-up",
+      "animate_images": true,
+      "animate_images_style": "zoom-fade",
+      "animate_buttons": true,
+      "animate_underlines": true,
+      "quick_shop_text": "Quick view",
+      "cart_type": "drawer",
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "checkout_header_image": "",
+      "checkout_logo_image": "",
+      "checkout_logo_position": "left",
+      "checkout_logo_size": "medium",
+      "checkout_body_background_image": "",
+      "checkout_body_background_color": "#ffffff",
+      "checkout_input_background_color_mode": "white",
+      "checkout_sidebar_background_image": "",
+      "checkout_sidebar_background_color": "#fafafa",
+      "checkout_heading_font": "Helvetica Neue",
+      "checkout_body_font": "Helvetica Neue",
+      "checkout_accent_color": "#111111",
+      "checkout_button_color": "#111111",
+      "checkout_error_color": "#ff6d6d",
+      "color_image_bg": "#000000",
+      "breadcrumb": true,
+      "color_input": "#ffffff",
+      "checkout_banner_background_color": "#ffffff",
+      "checkout_call_to_action_color": "#a26b25",
+      "checkout_use_header_image": false,
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {
+            "main_menu_link_list": "main-menu",
+            "sticky_index": true,
+            "sticky_collection": false,
+            "show_announcement": true
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "1494292481350": {
+              "type": "logo_social",
+              "settings": {
+                "container_width": 20
+              }
+            },
+            "1494292485313": {
+              "type": "menu",
+              "settings": {
+                "menu": "main-menu",
+                "container_width": 20
+              }
+            },
+            "1494292487693": {
+              "type": "newsletter",
+              "settings": {
+                "container_width": 33
+              }
+            },
+            "1494301487049": {
+              "type": "menu",
+              "settings": {
+                "menu": "footer",
+                "container_width": 20
+              }
+            }
+          },
+          "block_order": [
+            "1494301487049",
+            "1494292485313",
+            "1494292487693",
+            "1494292481350"
+          ],
+          "settings": {}
+        },
+        "collection-template": {
+          "type": "collection-template",
+          "settings": {
+            "collection_image_enable": true,
+            "collection_sort_enable": false,
+            "per_row": 4
+          }
+        },
+        "product-template": {
+          "type": "product-template",
+          "settings": {
+            "social_enable": true,
+            "image_size": "medium"
+          }
+        },
+        "article-template": {
+          "type": "article-template",
+          "settings": {
+            "blog_show_tags": true,
+            "blog_show_date": true,
+            "blog_show_comments": true,
+            "blog_show_author": false,
+            "social_sharing_blog": true
+          }
+        },
+        "1498163293234": {
+          "type": "featured-content",
+          "settings": {}
+        },
+        "1498501481980": {
+          "type": "fading-images",
+          "blocks": {
+            "1498501481980-0": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "focal_point": "center center",
+                "slide_title1": "Beautifully animated",
+                "slide_title2": "titles and images"
+              }
+            },
+            "1498501481980-1": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "focal_point": "center center",
+                "slide_title1": "Use this section",
+                "slide_title2": "to impress"
+              }
+            },
+            "1498501481980-2": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "focal_point": "center center",
+                "slide_title1": "And highlight",
+                "slide_title2": "important details"
+              }
+            }
+          },
+          "block_order": [
+            "1498501481980-0",
+            "1498501481980-1",
+            "1498501481980-2"
+          ],
+          "settings": {
+            "slide_speed": 5,
+            "color_overlay": "#000000",
+            "color_overlay_opacity": 30
+          }
+        },
+        "blog-template": {
+          "type": "blog-template",
+          "settings": {
+            "blog_show_tag_filter": true,
+            "blog_show_rss": false,
+            "blog_show_tags": true,
+            "blog_show_date": true,
+            "blog_show_comments": true,
+            "blog_show_author": false
+          }
+        },
+        "1566999869051": {
+          "type": "featured-collection-switcher",
+          "settings": {}
+        },
+        "1499789718857": {
+          "type": "featured-collections",
+          "blocks": {
+            "1499789718857-0": {
+              "type": "collection",
+              "settings": {
+                "collection": "",
+                "size": "wide"
+              }
+            },
+            "1499789718857-1": {
+              "type": "collection",
+              "settings": {
+                "collection": "",
+                "size": "square-small"
+              }
+            },
+            "1499789718857-2": {
+              "type": "collection",
+              "settings": {
+                "collection": "",
+                "size": "square-small"
+              }
+            },
+            "1499789718857-3": {
+              "type": "collection",
+              "settings": {
+                "collection": "",
+                "size": "square-small"
+              }
+            },
+            "1499789718857-4": {
+              "type": "collection",
+              "settings": {
+                "collection": "",
+                "size": "square-small"
+              }
+            },
+            "1499789718857-5": {
+              "type": "collection",
+              "settings": {
+                "collection": "",
+                "size": "wide"
+              }
+            }
+          },
+          "block_order": [
+            "1499789718857-0",
+            "1499789718857-1",
+            "1499789718857-2",
+            "1499789718857-3",
+            "1499789718857-4",
+            "1499789718857-5"
+          ],
+          "settings": {
+            "title": "",
+            "divider": false
+          }
+        },
+        "1499790529450": {
+          "type": "hero-video",
+          "settings": {
+            "title": "Bring your\nbrand to life.",
+            "title_size": 80,
+            "subheading": "",
+            "link_text": "Watch",
+            "link": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "section_height": "650px"
+          }
+        },
+        "1499790633921": {
+          "type": "background-image-text",
+          "settings": {
+            "subtitle": "Impressive",
+            "title": "Large image and text",
+            "text": "<p>Pair large text with a full-width image to draw attention to an important detail of your brand or product line.<\/p>",
+            "button_label": "",
+            "button_link": "",
+            "image": "",
+            "layout": "left",
+            "height": 650
+          }
+        },
+        "1499790731541": {
+          "type": "collection-callout",
+          "settings": {
+            "collection": "",
+            "subtitle": "Brand new",
+            "title": "Collection callout",
+            "text": "Use this section to easily call attention to one of your collections. We'll show photos of the first 5 products.",
+            "cta_text1": "Shop Jackets",
+            "cta_link1": "",
+            "cta_text2": "Shop All",
+            "cta_link2": "",
+            "divider": false
+          }
+        },
+        "product-sections-template": {
+          "type": "product-sections-template",
+          "blocks": {
+            "product-image-row": {
+              "type": "image-row",
+              "settings": {}
+            },
+            "product-text-and-image": {
+              "type": "text-and-image",
+              "settings": {}
+            },
+            "product-background-image-text": {
+              "type": "background-image-text",
+              "settings": {
+                "layout": "right"
+              }
+            },
+            "product-text-columns": {
+              "type": "text-columns",
+              "settings": {}
+            },
+            "product-hero-video": {
+              "type": "hero-video",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "product-image-row",
+            "product-text-and-image",
+            "product-background-image-text",
+            "product-text-columns",
+            "product-hero-video"
+          ],
+          "settings": {}
+        },
+        "page-sections-template": {
+          "type": "page-sections-template",
+          "blocks": {
+            "page-fading-images": {
+              "type": "fading-images",
+              "settings": {}
+            },
+            "page-rich-text": {
+              "type": "rich-text",
+              "settings": {
+                "title": "",
+                "enlarge_text": true
+              }
+            },
+            "page-text-columns": {
+              "type": "text-columns",
+              "settings": {}
+            },
+            "page-background-image-text": {
+              "type": "background-image-text",
+              "settings": {
+                "layout": "right"
+              }
+            },
+            "page-featured-collection": {
+              "type": "featured-collection",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "page-fading-images",
+            "page-rich-text",
+            "page-text-columns",
+            "page-background-image-text",
+            "page-featured-collection"
+          ],
+          "settings": {}
+        }
+      },
+      "content_for_index": [
+        "1499790529450",
+        "1566999869051",
+        "1498163293234",
+        "1499789718857",
+        "1498501481980",
+        "1499790731541",
+        "1499790633921"
+      ]
+    },
+    "Elegant": {
+      "color_borders": "#e8e8e1",
+      "color_button": "#353956",
+      "color_button_text": "#ffffff",
+      "color_footer": "#17172c",
+      "color_footer_text": "#ffffff",
+      "color_drawer_background": "#ffffff",
+      "color_drawer_text": "#17172c",
+      "color_drawer_border": "#e8e8e1",
+      "color_drawer_button": "#353956",
+      "color_drawer_button_text": "#ffffff",
+      "color_modal_overlays": "#17172c",
+      "color_image_2": "#17172c",
+      "color_image_2_opacity": 0,
+      "color_image_1": "#17172c",
+      "color_image_1_opacity": 32,
+      "color_small_image_bg": "#f4f4f4",
+      "color_large_image_bg": "#17172c",
+      "type_header_spacing": "0",
+      "type_header_font_family": "bauer_bodoni_n7",
+      "type_header_base_size": 42,
+      "type_header_line_height": 1.3,
+      "type_base_font_family": "futura_n4",
+      "type_base_spacing": "25",
+      "type_base_size": 17,
+      "type_base_line_height": 1.6,
+      "icon_weight": "3px",
+      "icon_linecaps": "miter",
+      "animate_page_transitions": true,
+      "animate_page_transition_style": "page-slow-fade",
+      "animate_sections": true,
+      "animate_sections_background_style": "zoom-fade",
+      "animate_sections_text_style": "rise-up",
+      "animate_images": true,
+      "animate_images_style": "zoom-fade",
+      "animate_buttons": true,
+      "animate_underlines": true,
+      "quick_shop_text": "Quick view",
+      "cart_type": "drawer",
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "checkout_header_image": "",
+      "checkout_logo_image": "",
+      "checkout_logo_position": "left",
+      "checkout_logo_size": "medium",
+      "checkout_body_background_image": "",
+      "checkout_body_background_color": "#ffffff",
+      "checkout_input_background_color_mode": "white",
+      "checkout_sidebar_background_image": "",
+      "checkout_sidebar_background_color": "#fafafa",
+      "checkout_heading_font": "Helvetica Neue",
+      "checkout_body_font": "Helvetica Neue",
+      "checkout_accent_color": "#111111",
+      "checkout_button_color": "#111111",
+      "checkout_error_color": "#ff6d6d",
+      "color_image_bg": "#000000",
+      "breadcrumb": true,
+      "color_input": "#ffffff",
+      "checkout_banner_background_color": "#ffffff",
+      "checkout_call_to_action_color": "#a26b25",
+      "checkout_use_header_image": false,
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {
+            "main_menu_link_list": "main-menu",
+            "sticky_index": true,
+            "sticky_collection": false,
+            "show_announcement": true
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "1494292481350": {
+              "type": "logo_social",
+              "settings": {
+                "container_width": 20
+              }
+            },
+            "1494292485313": {
+              "type": "menu",
+              "settings": {
+                "menu": "main-menu",
+                "container_width": 20
+              }
+            },
+            "1494292487693": {
+              "type": "newsletter",
+              "settings": {
+                "container_width": 33
+              }
+            },
+            "1494301487049": {
+              "type": "menu",
+              "settings": {
+                "menu": "footer",
+                "container_width": 20
+              }
+            }
+          },
+          "block_order": [
+            "1494292481350",
+            "1494301487049",
+            "1494292485313",
+            "1494292487693"
+          ],
+          "settings": {}
+        },
+        "collection-template": {
+          "type": "collection-template",
+          "settings": {
+            "collection_image_enable": true,
+            "collection_sort_enable": false,
+            "per_row": 4
+          }
+        },
+        "product-template": {
+          "type": "product-template",
+          "settings": {
+            "social_enable": true,
+            "image_size": "medium"
+          }
+        },
+        "article-template": {
+          "type": "article-template",
+          "settings": {
+            "blog_show_tags": true,
+            "blog_show_date": true,
+            "blog_show_comments": true,
+            "blog_show_author": false,
+            "social_sharing_blog": true
+          }
+        },
+        "1498163293234": {
+          "type": "featured-content",
+          "settings": {}
+        },
+        "1498501481980": {
+          "type": "fading-images",
+          "blocks": {
+            "1498501481980-0": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "focal_point": "center center",
+                "slide_title1": "Beautifully animated",
+                "slide_title2": "titles and images"
+              }
+            },
+            "1498501481980-1": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "focal_point": "center center",
+                "slide_title1": "Use this section",
+                "slide_title2": "to impress"
+              }
+            },
+            "1498501481980-2": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "focal_point": "center center",
+                "slide_title1": "And highlight",
+                "slide_title2": "important details"
+              }
+            }
+          },
+          "block_order": [
+            "1498501481980-0",
+            "1498501481980-1",
+            "1498501481980-2"
+          ],
+          "settings": {
+            "slide_speed": 5,
+            "color_overlay": "#000000",
+            "color_overlay_opacity": 30
+          }
+        },
+        "blog-template": {
+          "type": "blog-template",
+          "settings": {
+            "blog_show_tag_filter": true,
+            "blog_show_rss": false,
+            "blog_show_tags": true,
+            "blog_show_date": true,
+            "blog_show_comments": true,
+            "blog_show_author": false
+          }
+        },
+        "1566999869051": {
+          "type": "featured-collection-switcher",
+          "settings": {}
+        },
+        "1499789718857": {
+          "type": "featured-collections",
+          "blocks": {
+            "1499789718857-0": {
+              "type": "collection",
+              "settings": {
+                "collection": "",
+                "size": "wide"
+              }
+            },
+            "1499789718857-1": {
+              "type": "collection",
+              "settings": {
+                "collection": "",
+                "size": "square-small"
+              }
+            },
+            "1499789718857-2": {
+              "type": "collection",
+              "settings": {
+                "collection": "",
+                "size": "square-small"
+              }
+            },
+            "1499789718857-3": {
+              "type": "collection",
+              "settings": {
+                "collection": "",
+                "size": "square-small"
+              }
+            },
+            "1499789718857-4": {
+              "type": "collection",
+              "settings": {
+                "collection": "",
+                "size": "square-small"
+              }
+            },
+            "1499789718857-5": {
+              "type": "collection",
+              "settings": {
+                "collection": "",
+                "size": "wide"
+              }
+            }
+          },
+          "block_order": [
+            "1499789718857-0",
+            "1499789718857-1",
+            "1499789718857-2",
+            "1499789718857-3",
+            "1499789718857-4",
+            "1499789718857-5"
+          ],
+          "settings": {
+            "title": "",
+            "divider": false
+          }
+        },
+        "1499790529450": {
+          "type": "hero-video",
+          "settings": {
+            "title": "Bring your\nbrand to life.",
+            "title_size": 80,
+            "subheading": "",
+            "link_text": "Watch",
+            "link": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "section_height": "650px"
+          }
+        },
+        "1499790633921": {
+          "type": "background-image-text",
+          "settings": {
+            "subtitle": "Impressive",
+            "title": "Large image and text",
+            "text": "<p>Pair large text with a full-width image to draw attention to an important detail of your brand or product line.<\/p>",
+            "button_label": "",
+            "button_link": "",
+            "image": "",
+            "layout": "left",
+            "height": 650
+          }
+        },
+        "1499790731541": {
+          "type": "collection-callout",
+          "settings": {
+            "collection": "",
+            "subtitle": "Brand new",
+            "title": "Collection callout",
+            "text": "Use this section to easily call attention to one of your collections. We'll show photos of the first 5 products.",
+            "cta_text1": "Shop Jackets",
+            "cta_link1": "",
+            "cta_text2": "Shop All",
+            "cta_link2": "",
+            "divider": false
+          }
+        }
+      },
+      "content_for_index": [
+        "1499790529450",
+        "1566999869051",
+        "1498163293234",
+        "1499789718857",
+        "1498501481980",
+        "1499790731541",
+        "1499790633921"
+      ]
+    },
+    "Minimal": {
+      "color_borders": "#f0f1f3",
+      "color_button": "#111111",
+      "color_button_text": "#ffffff",
+      "color_footer": "#f0f1f3",
+      "color_footer_text": "#2c2c2c",
+      "color_drawer_background": "#ffffff",
+      "color_drawer_text": "#000000",
+      "color_drawer_border": "#f0f1f3",
+      "color_drawer_button": "#111111",
+      "color_drawer_button_text": "#ffffff",
+      "color_modal_overlays": "#aeb1b8",
+      "color_image_2": "#000000",
+      "color_image_2_opacity": 0,
+      "color_image_1": "#000000",
+      "color_image_1_opacity": 26,
+      "color_small_image_bg": "#ffffff",
+      "color_large_image_bg": "#dedfe1",
+      "type_header_spacing": "50",
+      "type_header_font_family": "chivo_n7",
+      "type_header_base_size": 34,
+      "type_header_line_height": 1.2,
+      "type_header_accent_transform": true,
+      "type_base_font_family": "neuzeit_office_n4",
+      "type_base_spacing": "25",
+      "type_base_size": 16,
+      "type_base_line_height": 1.6,
+      "type_base_accent_transform": true,
+      "icon_weight": "2px",
+      "icon_linecaps": "round",
+      "animate_page_transitions": true,
+      "animate_page_transition_style": "page-slide-reveal-down",
+      "animate_sections": true,
+      "animate_sections_background_style": "zoom-fade",
+      "animate_sections_text_style": "rise-up",
+      "animate_images": true,
+      "animate_images_style": "fade-in",
+      "animate_buttons": true,
+      "animate_underlines": true,
+      "quick_shop_text": "Quick view",
+      "cart_type": "drawer",
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "checkout_header_image": "",
+      "checkout_logo_image": "",
+      "checkout_logo_position": "left",
+      "checkout_logo_size": "medium",
+      "checkout_body_background_image": "",
+      "checkout_body_background_color": "#ffffff",
+      "checkout_input_background_color_mode": "white",
+      "checkout_sidebar_background_image": "",
+      "checkout_sidebar_background_color": "#fafafa",
+      "checkout_heading_font": "Helvetica Neue",
+      "checkout_body_font": "Helvetica Neue",
+      "checkout_accent_color": "#111111",
+      "checkout_button_color": "#111111",
+      "checkout_error_color": "#ff6d6d",
+      "color_image_bg": "#000000",
+      "breadcrumb": true,
+      "color_input": "#ffffff",
+      "checkout_banner_background_color": "#ffffff",
+      "checkout_call_to_action_color": "#a26b25",
+      "checkout_use_header_image": false,
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {
+            "main_menu_link_list": "main-menu",
+            "sticky_index": false,
+            "sticky_collection": false,
+            "show_announcement": true
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "1494292481350": {
+              "type": "logo_social",
+              "settings": {
+                "container_width": 20
+              }
+            },
+            "1494292485313": {
+              "type": "menu",
+              "settings": {
+                "menu": "main-menu",
+                "container_width": 20
+              }
+            },
+            "1494292487693": {
+              "type": "newsletter",
+              "settings": {
+                "container_width": 33
+              }
+            },
+            "1494301487049": {
+              "type": "menu",
+              "settings": {
+                "menu": "footer",
+                "container_width": 20
+              }
+            }
+          },
+          "block_order": [
+            "1494292481350",
+            "1494301487049",
+            "1494292485313",
+            "1494292487693"
+          ],
+          "settings": {}
+        },
+        "collection-template": {
+          "type": "collection-template",
+          "settings": {
+            "collection_image_enable": true,
+            "collection_sort_enable": false,
+            "per_row": 4
+          }
+        },
+        "product-template": {
+          "type": "product-template",
+          "settings": {
+            "social_enable": true,
+            "image_size": "medium"
+          }
+        },
+        "article-template": {
+          "type": "article-template",
+          "settings": {
+            "blog_show_tags": true,
+            "blog_show_date": true,
+            "blog_show_comments": true,
+            "blog_show_author": false,
+            "social_sharing_blog": true
+          }
+        },
+        "1498163293234": {
+          "type": "featured-content",
+          "settings": {}
+        },
+        "1498501481980": {
+          "type": "fading-images",
+          "blocks": {
+            "1498501481980-0": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "focal_point": "center center",
+                "slide_title1": "Beautifully animated",
+                "slide_title2": "titles and images"
+              }
+            },
+            "1498501481980-1": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "focal_point": "center center",
+                "slide_title1": "Use this section",
+                "slide_title2": "to impress"
+              }
+            },
+            "1498501481980-2": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "focal_point": "center center",
+                "slide_title1": "And highlight",
+                "slide_title2": "important details"
+              }
+            }
+          },
+          "block_order": [
+            "1498501481980-0",
+            "1498501481980-1",
+            "1498501481980-2"
+          ],
+          "settings": {
+            "slide_speed": 5,
+            "color_overlay": "#000000",
+            "color_overlay_opacity": 30
+          }
+        },
+        "blog-template": {
+          "type": "blog-template",
+          "settings": {
+            "blog_show_tag_filter": true,
+            "blog_show_rss": false,
+            "blog_show_tags": true,
+            "blog_show_date": true,
+            "blog_show_comments": true,
+            "blog_show_author": false
+          }
+        },
+        "1566999869051": {
+          "type": "featured-collection-switcher",
+          "settings": {}
+        },
+        "1499789718857": {
+          "type": "featured-collections",
+          "blocks": {
+            "1499789718857-0": {
+              "type": "collection",
+              "settings": {
+                "collection": "",
+                "size": "wide"
+              }
+            },
+            "1499789718857-1": {
+              "type": "collection",
+              "settings": {
+                "collection": "",
+                "size": "square-small"
+              }
+            },
+            "1499789718857-2": {
+              "type": "collection",
+              "settings": {
+                "collection": "",
+                "size": "square-small"
+              }
+            },
+            "1499789718857-3": {
+              "type": "collection",
+              "settings": {
+                "collection": "",
+                "size": "square-small"
+              }
+            },
+            "1499789718857-4": {
+              "type": "collection",
+              "settings": {
+                "collection": "",
+                "size": "square-small"
+              }
+            },
+            "1499789718857-5": {
+              "type": "collection",
+              "settings": {
+                "collection": "",
+                "size": "wide"
+              }
+            }
+          },
+          "block_order": [
+            "1499789718857-0",
+            "1499789718857-1",
+            "1499789718857-2",
+            "1499789718857-3",
+            "1499789718857-4",
+            "1499789718857-5"
+          ],
+          "settings": {
+            "title": "",
+            "divider": false
+          }
+        },
+        "1499790529450": {
+          "type": "hero-video",
+          "settings": {
+            "title": "Bring your\nbrand to life.",
+            "title_size": 80,
+            "subheading": "",
+            "link_text": "Watch",
+            "link": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "section_height": "650px"
+          }
+        },
+        "1499790633921": {
+          "type": "background-image-text",
+          "settings": {
+            "subtitle": "Impressive",
+            "title": "Large image and text",
+            "text": "<p>Pair large text with a full-width image to draw attention to an important detail of your brand or product line.<\/p>",
+            "button_label": "",
+            "button_link": "",
+            "image": "",
+            "layout": "left",
+            "height": 650
+          }
+        },
+        "1499790731541": {
+          "type": "collection-callout",
+          "settings": {
+            "collection": "",
+            "subtitle": "Brand new",
+            "title": "Collection callout",
+            "text": "Use this section to easily call attention to one of your collections. We'll show photos of the first 5 products.",
+            "cta_text1": "Shop Jackets",
+            "cta_link1": "",
+            "cta_text2": "Shop All",
+            "cta_link2": "",
+            "divider": false
+          }
+        }
+      },
+      "content_for_index": [
+        "1499790529450",
+        "1566999869051",
+        "1498163293234",
+        "1499789718857",
+        "1498501481980",
+        "1499790731541",
+        "1499790633921"
+      ]
+    }
+  }
+}

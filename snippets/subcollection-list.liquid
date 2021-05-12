@@ -1,0 +1,20 @@
+{% for sub_link in links %}
+  {% if sub_link.url == '#' %}{% continue %}{% endif %}
+
+  {%- assign tag_count = tag_count | plus: 1 -%}
+  {% if tag_count == tag_limit %}
+    </ul>
+    <div id="TagList-{{ section.id }}" class="collapsible-content collapsible-content--all">
+      <ul class="tags tags--vertical collapsible-content__inner collapsible-content__inner--no-translate">
+  {% endif %}
+
+  {%- assign use_ajax = false -%}
+  {% if sub_link.type == 'collection_link' and sub_link.levels == 0 %}
+    {%- assign use_ajax = true -%}
+  {% endif %}
+  <li {% if sub_link.current %}class="tag--active"{% endif %}>
+    <a href="{{ sub_link.url }}" class="{% if use_ajax %}js-no-transition{% else %}no-ajax{% endif %}">
+      {{ sub_link.title }}
+    </a>
+  </li>
+{%- endfor -%}

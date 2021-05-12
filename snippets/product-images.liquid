@@ -1,0 +1,133 @@
+{%- assign featured_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media -%}
+
+{%- unless product.empty? -%}
+  <div
+    data-product-images
+    data-zoom="{{ settings.product_zoom_enable }}"
+    data-has-slideshow="{% if product.media.size > 1 %}true{% else %}false{% endif %}">
+
+    <div class="product__photos product__photos--{{ thumbnail_position }}">
+
+      <div class="product__main-photos" data-aos data-product-single-media-group>
+        <div id="ProductPhotos-{{ section_id }}" class="product-slideshow">
+          {%- for media in product.media -%}
+            {%- render 'media',
+              section_id: section_id,
+              media: media,
+              featured_media: featured_media,
+              loopIndex0: forloop.index0,
+              loopIndex: forloop.index,
+              product_zoom_size: product_zoom_size,
+              product_image_size: product_image_size,
+              isModal: isModal,
+              video_looping: video_looping,
+              video_style: video_style
+            -%}
+          {%- endfor -%}
+        </div>
+
+        {%- assign first_3d_model = product.media | where: 'media_type', 'model' | first -%}
+
+        {%- if first_3d_model -%}
+          <button
+            aria-label="{{ 'products.product.view_in_space_label' | t }}"
+            class="product-single__view-in-space"
+            data-shopify-xr
+            data-shopify-model3d-id="{{ first_3d_model.id }}"
+            data-shopify-title="{{ product.title }}"
+            data-shopify-xr-hidden
+          >
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-3d" viewBox="18.24 17.35 24.52 28.3"><path fill="#3A3A3A" d="M30.5 17.35l-12.26 7.07v14.16l12.26 7.07 12.26-7.08V24.42L30.5 17.35zM20.24 37.42V25.58l10.26-5.93 10.13 5.85-10.13 5.88v12l-10.26-5.96z"/></svg>
+            <span class='product-single__view-in-space-text'>
+              {{ 'products.product.view_in_space' | t }}
+            </span>
+          </button>
+        {%- endif -%}
+
+        <div class="product__photo-dots product__photo-dots--{{ section_id }}"></div>
+      </div>
+
+      <div
+        id="ProductThumbs-{{ section_id }}"
+        class="product__thumbs product__thumbs--{{ thumbnail_position }}{% if product.media.size == 1 %} hide{% endif %}"
+        data-position="{{ thumbnail_position }}"
+        data-aos>
+        {%- if thumbnail_arrows -%}
+          <button type="button" class="product__thumb-arrow product__thumb-arrow--prev hide">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-left" viewBox="0 0 284.49 498.98"><path d="M249.49 0a35 35 0 0 1 24.75 59.75L84.49 249.49l189.75 189.74a35.002 35.002 0 1 1-49.5 49.5L10.25 274.24a35 35 0 0 1 0-49.5L224.74 10.25A34.89 34.89 0 0 1 249.49 0z"/></svg>
+          </button>
+        {%- endif -%}
+        <div class="product__thumbs--scroller">
+          {%- if product.media.size > 1 -%}
+            {%- for media in product.media -%}
+              {%- liquid
+                assign image_set = false
+                assign image_set_group = ''
+                if media.alt contains '#'
+                  assign image_set_full = media.alt | split: '#' | last
+                  if image_set_full contains '_'
+                    assign image_set = true
+                    assign image_set_group = image_set_full | split: '_' | first
+                  endif
+                endif
+              -%}
+              <div class="product__thumb-item"
+                data-index="{{ forloop.index0 }}"
+                {% if image_set %}
+                  data-set-name="{{image_set_group}}"
+                  data-group="{{image_set_full}}"
+                {% endif %}>
+                <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: media.preview_image.aspect_ratio }}%;">
+                  <a
+                    href="{{ media.preview_image | img_url: product_zoom_size }}"
+                    class="product__thumb product__thumb-{{ section_id }} js-no-transition"
+                    data-index="{{ forloop.index0 }}"
+                    data-id="{{ media.id }}">
+                    {%- if media.media_type == 'video' or media.media_type == 'external_video' -%}
+                      <span class="product__thumb-icon">
+                        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-play" viewBox="18.24 17.35 24.52 28.3"><path fill="#323232" d="M22.1 19.151v25.5l20.4-13.489-20.4-12.011z"/></svg>
+                      </span>
+                    {%- endif -%}
+                    {%- if media.media_type == 'model' -%}
+                      <span class="product__thumb-icon">
+                        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-3d" viewBox="18.24 17.35 24.52 28.3"><path fill="#3A3A3A" d="M30.5 17.35l-12.26 7.07v14.16l12.26 7.07 12.26-7.08V24.42L30.5 17.35zM20.24 37.42V25.58l10.26-5.93 10.13 5.85-10.13 5.88v12l-10.26-5.96z"/></svg>
+                      </span>
+                    {%- endif -%}
+
+                    {%- assign img_url = media.preview_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                    <img class="appear-delay-{{ forloop.index | times: 3 }} lazyload"
+                        data-src="{{ img_url }}"
+                        data-widths="[100, 360, 540]"
+                        data-aspectratio="{{ media.preview_image.aspect_ratio }}"
+                        data-sizes="auto"
+                        alt="{{ media.alt | escape | split: '#' | first }}">
+                  </a>
+                </div>
+              </div>
+            {%- endfor -%}
+          {%- endif -%}
+        </div>
+        {%- if thumbnail_arrows -%}
+          <button type="button" class="product__thumb-arrow product__thumb-arrow--next">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-right" viewBox="0 0 284.49 498.98"><path d="M35 498.98a35 35 0 0 1-24.75-59.75l189.74-189.74L10.25 59.75a35.002 35.002 0 0 1 49.5-49.5l214.49 214.49a35 35 0 0 1 0 49.5L59.75 488.73A34.89 34.89 0 0 1 35 498.98z"/></svg>
+          </button>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+  <script type="application/json" id="ModelJson-{{ section_id }}">
+    {{ product.media | where: 'media_type', 'model' | json }}
+  </script>
+{%- else -%}
+  <div class="product__photos">
+    <div class="product__main-photos" style="width: 100%">
+      <div id="ProductPhotos-{{ section_id }}">
+        <div class="product-main-slide" data-index="{{ forloop.index0 }}">
+          <a href="#">
+            {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+{%- endunless -%}

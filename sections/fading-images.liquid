@@ -1,0 +1,406 @@
+<div
+  data-section-id="{{ section.id }}"
+  data-section-type="fading-images"
+  data-interval="{{ section.settings.slide_speed | times: 1000 }}"
+  data-count="{{ section.blocks.size }}">
+
+  {%- style -%}
+    .fading-images--{{ section.id }} .fading-images-overlay__title {
+      background-color: {{ section.settings.title_bg_color }};
+      color: {{ section.settings.title_color }};
+      font-size: {{ section.settings.title_size | times: 0.5 }}px;
+    }
+    @media only screen and (min-width: 769px) {
+      .fading-images--{{ section.id }} .fading-images-overlay__title {
+        font-size: {{ section.settings.title_size }}px;
+      }
+    }
+    .fading-images--{{ section.id }}.fading-images-overlay__overlay::before {
+      background-color: {{ section.settings.color_overlay }};
+      opacity: {{ section.settings.color_overlay_opacity | divided_by: 100.0 }};
+    }
+    .fading-images--{{ section.id }} .active-image {
+      animation-duration: {{ section.settings.slide_speed | times: 1000 }}ms;
+    }
+    .fading-images--{{ section.id }} .active-image.compensation {
+      animation-duration: {{ section.settings.slide_speed | times: 1000 | plus: 400 }}ms;
+    }
+    .fading-images--{{ section.id }} .finished-image {
+      animation-duration: 1000ms;
+    }
+  {%- endstyle -%}
+
+  {%- assign natural_height = false -%}
+  {%- assign natural_mobile_height = false -%}
+  {% if section.settings.desktop_height == 'natural' %}
+    {% comment %}
+      Get first image's aspect ratio
+    {% endcomment %}
+    {%- for block in section.blocks limit: 1 -%}
+      {%- if block.settings.image != blank -%}
+        {%- assign natural_height = true -%}
+        {%- capture natural_height_ratio -%}{{ 100 | divided_by: block.settings.image.aspect_ratio }}%{%- endcapture -%}
+      {%- endif -%}
+      {%- if section.settings.mobile_height == 'auto' -%}
+        {%- assign natural_mobile_height = true -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+
+  {%- if natural_height -%}
+    {%- style -%}
+      .hero-natural--{{ section.id }} {
+        position: relative;
+        height: 0;
+        padding-bottom: {{ natural_height_ratio }};
+      }
+    {%- endstyle -%}
+  {%- endif -%}
+
+  <div class="{% if natural_height %}hero-natural--{{ section.id }}{% endif %}">
+    <div
+      {% if natural_height %}
+        data-natural="true"
+      {% endif %}
+      data-mobile-natural="{{ natural_mobile_height }}"
+      class="hero hero--{{ section.id }} hero--{{ section.settings.desktop_height }} hero--mobile--{{ section.settings.mobile_height }} fading-images fading-images--{{ section.id }} fading-images-overlay__overlay loading">
+      {%- if section.settings.link -%}
+        <a href="{{ section.settings.link }}" class="hero__slide-link">
+      {%- endif -%}
+
+      <div class="hero__text-wrap hero__text-wrap--absolute">
+        <div class="page-width text-center">
+          <div class="hero__text-content {{ section.settings.text_align }}">
+            <div class="fading-images-overlay__titles{% if section.settings.title_font == 'heading' %} fading-images-overlay__titles--heading-style{% endif %}">
+              <div class="animation-cropper">
+                <div class="fading-images-overlay__title fading-images-overlay__title--1"></div>
+              </div>
+              {%- if section.settings.title_lines == "2" -%}
+                <div class="animation-cropper">
+                  <div class="fading-images-overlay__title fading-images-overlay__title--2"></div>
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {%- for block in section.blocks -%}
+        {%- if block.settings.image != blank -%}
+          {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+          <img class="fading-images__item fading-images__item--{{ block.id }} lazyload"
+            src="{{ block.settings.image | img_url: '300x' }}"
+            data-src="{{ img_url }}"
+            data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+            data-sizes="auto"
+            data-slide-index="{{ forloop.index }}"
+            data-slide-title1="{{ block.settings.slide_title1 }}"
+            data-slide-title2="{{ block.settings.slide_title2 }}"
+            alt="{{ block.settings.image.alt | escape }}"
+            style="object-position: {{ block.settings.focal_point }};">
+        {%- else -%}
+          {%- capture placeholder -%}lifestyle-{% cycle 1, 2 %}{%- endcapture -%}
+          <div class="fading-images__item fading-images__item--{{ block.id }} lazyloaded"
+            data-slide-index="{{ forloop.index }}"
+            data-slide-title1="{{ block.settings.slide_title1 }}"
+            data-slide-title2="{{ block.settings.slide_title2 }}">
+              {{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+
+      {%- if section.settings.link -%}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+
+</div>
+
+{% schema %}
+  {
+    "name": "Fading image hero",
+    "class": "index-section--hero",
+    "max_blocks": 6,
+    "settings": [
+      {
+        "type": "select",
+        "id": "title_lines",
+        "label": "Title style",
+        "default": "2",
+        "options": [
+          {
+            "label": "1 line",
+            "value": "1"
+          },
+          {
+            "label": "2 lines",
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "title_font",
+        "label": "Title font",
+        "default": "body",
+        "options": [
+          {
+            "value": "body",
+            "label": "Body"
+          },
+          {
+            "value": "heading",
+            "label": "Heading"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "title_size",
+        "label": "Title size",
+        "default": 45,
+        "min": 30,
+        "max": 100,
+        "unit": "px"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Text color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "title_bg_color",
+        "label": "Text background color",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "select",
+        "id": "text_align",
+        "label": "Text alignment",
+        "default": "vertical-center horizontal-center",
+        "options": [
+          {
+            "value": "vertical-center horizontal-left",
+            "label": "Center left"
+          },
+          {
+            "value": "vertical-center horizontal-center",
+            "label": "Center"
+          },
+          {
+            "value": "vertical-center horizontal-right",
+            "label": "Center right"
+          },
+          {
+            "value": "vertical-bottom horizontal-left",
+            "label": "Bottom left"
+          },
+          {
+            "value": "vertical-bottom horizontal-center",
+            "label": "Bottom center"
+          },
+          {
+            "value": "vertical-bottom horizontal-right",
+            "label": "Bottom right"
+          }
+        ]
+      },
+      {
+        "type": "url",
+        "id": "link",
+        "label": "Section link"
+      },
+      {
+        "type": "range",
+        "id": "slide_speed",
+        "label": "Change images every",
+        "default": 5,
+        "min": 3,
+        "max": 10,
+        "step": 1,
+        "unit": "s"
+      },
+      {
+        "type": "color",
+        "id": "color_overlay",
+        "label": "Overlay",
+        "default": "#000"
+      },
+      {
+        "type": "range",
+        "id": "color_overlay_opacity",
+        "label": "Opacity",
+        "default": 30,
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "%"
+      },
+      {
+        "type": "select",
+        "id": "desktop_height",
+        "label": "Desktop height",
+        "default": "650px",
+        "options": [
+          {
+            "label": "Natural",
+            "value": "natural"
+          },
+          {
+            "label": "450px",
+            "value": "450px"
+          },
+          {
+            "label": "550px",
+            "value": "550px"
+          },
+          {
+            "label": "650px",
+            "value": "650px"
+          },
+          {
+            "label": "750px",
+            "value": "750px"
+          },
+          {
+            "label": "Full screen",
+            "value": "100vh"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "mobile_height",
+        "label": "Mobile height",
+        "default": "auto",
+        "info": "Not used if desktop height is set to natural",
+        "options": [
+          {
+            "label": "Auto",
+            "value": "auto"
+          },
+          {
+            "label": "250px",
+            "value": "250px"
+          },
+          {
+            "label": "300px",
+            "value": "300px"
+          },
+          {
+            "label": "400px",
+            "value": "400px"
+          },
+          {
+            "label": "500px",
+            "value": "500px"
+          },
+          {
+            "label": "Full screen",
+            "value": "100vh"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "select",
+            "id": "focal_point",
+            "label": "Focal point",
+            "info": "Used to keep the subject of your photo in view. Not used if desktop height set to natural.",
+            "default": "center center",
+            "options": [
+              {
+                "value": "20% 0",
+                "label": "Top left"
+              },
+              {
+                "value": "top center",
+                "label": "Top center"
+              },
+              {
+                "value": "80% 0",
+                "label": "Top right"
+              },
+              {
+                "value": "20% 50%",
+                "label": "Left"
+              },
+              {
+                "value": "center center",
+                "label": "Center"
+              },
+              {
+                "value": "80% 50%",
+                "label": "Right"
+              },
+              {
+                "value": "20% 100%",
+                "label": "Bottom left"
+              },
+              {
+                "value": "bottom center",
+                "label": "Bottom center"
+              },
+              {
+                "value": "80% 100%",
+                "label": "Bottom right"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "slide_title1",
+            "label": "Title line 1"
+          },
+          {
+            "type": "text",
+            "id": "slide_title2",
+            "label": "Title line 2"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Fading image hero",
+        "category": "Image",
+        "blocks": [
+          {
+            "type": "image",
+            "settings": {
+              "slide_title1": "Beautifully animated",
+              "slide_title2": "titles and images"
+            }
+          },
+          {
+            "type": "image",
+            "settings": {
+              "slide_title1": "Use this section",
+              "slide_title2": "to impress customers"
+            }
+          },
+          {
+            "type": "image",
+            "settings": {
+              "slide_title1": "And highlight",
+              "slide_title2": "important details"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

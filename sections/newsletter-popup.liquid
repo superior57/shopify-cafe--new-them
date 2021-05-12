@@ -1,0 +1,180 @@
+{%- if section.settings.mode != 'disabled' -%}
+
+<div
+  id="NewsletterPopup-{{ section.id }}"
+  class="modal modal--square modal--mobile-friendly"
+  data-section-id="{{ section.id }}"
+  data-section-type="newsletter-popup"
+  data-delay-days="{{ section.settings.popup_days }}"
+  data-delay-seconds="{{ section.settings.popup_seconds }}"
+  data-test-mode="{% if section.settings.mode == 'testing' %}true{% else %}false{% endif %}">
+  <div class="modal__inner">
+    <div class="modal__centered medium-up--text-center">
+      <div class="modal__centered-content">
+
+        <div class="newsletter">
+          {%- if section.settings.popup_title != blank -%}
+            <h2 class="h1">{{ section.settings.popup_title }}</h2>
+          {%- endif -%}
+
+          {%- if section.settings.popup_image -%}
+            <div class="image-wrap small--hide" style="height: 0; padding-bottom: {{ 100 | divided_by: section.settings.popup_image.aspect_ratio }}%;">
+              {%- assign img_url = section.settings.popup_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+              <img class="lazyload lazypreload" role="presentation"
+                  data-src="{{ img_url }}"
+                  data-widths="[540, 720, 900, 1080]"
+                  data-aspectratio="{{ section.settings.popup_image.aspect_ratio }}"
+                  data-sizes="auto"
+                  alt="{{ section.settings.popup_image.alt }}">
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.popup_text != blank -%}
+            <div class="rte">
+              {{ section.settings.popup_text }}
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.enable_newsletter -%}
+            <div class="popup-cta">
+              {%- render 'newsletter-form', section_id: section.id, snippet_context: 'popup' -%}
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.enable_button -%}
+          <div class="popup-cta">
+            <a href="{{ section.settings.button_link }}" class="btn">
+              {{ section.settings.button_label }}
+            </a>
+          </div>
+          {%- endif -%}
+
+         <button type="button" class="text-close js-modal-close">{{ section.settings.close_text }}</button>
+        </div>
+      </div>
+
+      <button type="button" class="modal__close js-modal-close text-link">
+        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64"><path d="M19 17.61l27.12 27.13m0-27.12L19 44.74"/></svg>
+        <span class="icon__fallback-text">{{ 'general.accessibility.close_modal' | t | json }}</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+{%- endif -%}
+
+{% schema %}
+  {
+    "name": "Popup",
+    "class": "index-section--hidden",
+    "settings": [
+      {
+        "type": "select",
+        "id": "mode",
+        "label": "Display mode",
+        "default": "disabled",
+        "options": [
+          {
+            "value": "enabled",
+            "label": "Enabled"
+          },
+          {
+            "value": "testing",
+            "label": "Test mode"
+          },
+          {
+            "value": "disabled",
+            "label": "Disabled"
+          }
+        ],
+        "info": "Test mode displays your popup each time even after dismissing it. Switch to Enabled once you are happy with how your popup looks."
+      },
+      {
+        "type": "range",
+        "id": "popup_seconds",
+        "label": "Delay",
+        "info": "Delay is disabled in theme editor for visibility",
+        "default": 5,
+        "min": 2,
+        "max": 60,
+        "step": 1,
+        "unit": "sec"
+      },
+      {
+        "type": "range",
+        "id": "popup_days",
+        "label": "Frequency",
+        "default": 30,
+        "info": "Number of days before a dismissed popup reappears",
+        "min": 2,
+        "max": 30,
+        "step": 1,
+        "unit": "day"
+      },
+      {
+        "type": "header",
+        "content": "Content"
+      },
+      {
+        "type": "text",
+        "id": "popup_title",
+        "label": "Heading",
+        "default": "Sign up and save"
+      },
+      {
+        "type": "image_picker",
+        "id": "popup_image",
+        "label": "Image",
+        "info": "Does not appear on mobile in order to meet Google's [interstitial guidelines](https://webmasters.googleblog.com/2016/08/helping-users-easily-access-content-on.html) for improved SEO"
+      },
+      {
+        "type": "richtext",
+        "id": "popup_text",
+        "label": "Text",
+        "default": "<p>Entice customers to sign up for your mailing list with discounts or exclusive offers. Include an image for extra impact.</p>"
+      },
+      {
+        "type": "text",
+        "id": "close_text",
+        "label": "Close button text",
+        "default": "No thanks"
+      },
+      {
+        "type": "header",
+        "content": "Newsletter"
+      },
+      {
+        "type": "paragraph",
+        "content": "Every sign up will create a Customer on your store. [View customers](/admin/customers?query=&accepts_marketing=1)."
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_newsletter",
+        "label": "Enable newsletter",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Button"
+      },
+      {
+        "type": "text",
+        "id": "button_label",
+        "label": "Button label",
+        "default": "Optional button"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button link"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_button",
+        "label": "Enable button",
+        "default": false
+      }
+    ],
+    "blocks" : []
+  }
+{% endschema %}

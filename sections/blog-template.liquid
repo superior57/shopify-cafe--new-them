@@ -1,0 +1,160 @@
+{%- paginate blog.articles by 5 -%}
+
+<div data-section-id="{{ section.id }}" data-section-type="blog">
+  <div class="page-width page-content">
+
+    {%- render 'breadcrumbs' -%}
+
+    <header class="section-header">
+      <h1 class="section-header__title">
+        {{ blog.title }}
+
+        {%- if section.settings.blog_show_tag_filter -%}
+          {%- if blog.tags.size > 0 -%}
+            <select id="BlogTagFilter">
+              <option value="/blogs/{{ blog.handle }}">All</option>
+              {%- for tag in blog.all_tags -%}
+                {% if tag contains "_" %}{%- assign tag_starts_with = tag | slice: 0 -%}{% if tag_starts_with == "_" %}{% if tag_count %}{%- assign tag_count = tag_count | minus: 1 | at_least: 0 -%}{% endif %}{% continue %}{% endif %}{% endif %}
+                <option value="/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}" {% if current_tags contains tag %}selected{% endif %}>{{ tag }}</option>
+              {%- endfor -%}
+            </select>
+          {%- endif -%}
+        {%- endif -%}
+
+        {%- if section.settings.blog_show_rss -%}
+          <a href="{{ shop.url }}{{ blog.url }}.atom" class="rss-link">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-rss" viewBox="0 0 20 20"><path fill="#444" d="M5.903 16.586a2.489 2.489 0 1 1-4.977 0 2.489 2.489 0 0 1 4.977 0zM12.956 19.075H9.43c0-4.688-3.817-8.505-8.505-8.505V7.044c6.638 0 12.031 5.393 12.031 12.031z"/><path fill="#444" d="M15.445 19.075c0-8.028-6.493-14.52-14.52-14.52V.925c10.019 0 18.15 8.131 18.15 18.15h-3.63z"/></svg>
+            <span class="icon__fallback-text">RSS</span>
+          </a>
+        {%- endif -%}
+      </h1>
+    </header>
+
+    {%- assign is_even_post = false -%}
+    {%- for article in blog.articles -%}
+      <article class="article article--layout" data-aos>
+        <div class="article__image-wrap{% if article.image == blank %} article__image-wrap--empty{% endif %}{% if is_even_post %} article__image-wrap--right{% endif %}">
+          {%- if article.image -%}
+            <div class="article__image image-wrap">
+              {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+              <img class="image-fit lazyload"
+                  data-src="{{ img_url }}"
+                  data-widths="[720, 900, 1080]"
+                  data-aspectratio="{{ article.image.aspect_ratio }}"
+                  data-sizes="auto"
+                  alt="{{ article.image.alt | escape }}">
+              <noscript>
+                <img class="image-fit lazyloaded" src="{{ article.image | img_url: '600x' }}" alt="{{ article.title | escape }}">
+              </noscript>
+            </div>
+          {%- endif -%}
+        </div>
+
+        <div class="article__content{% unless is_even_post %} article__content--right{% endunless %} ">
+          <div class="article__content-meta">
+            <div class="article__date">
+              {%- assign first_item = true -%}
+              {%- if section.settings.blog_show_tags and article.tags.size > 0 -%}
+                {%- for tag in article.tags -%}
+                  {% if tag contains "_" %}{%- assign tag_starts_with = tag | slice: 0 -%}{% if tag_starts_with == "_" %}{% if tag_count %}{%- assign tag_count = tag_count | minus: 1 | at_least: 0 -%}{% endif %}{% continue %}{% endif %}{% endif %}
+                  {%- unless first_item -%} &middot; {%- endunless -%}
+                  {%- assign first_item = false -%}
+                  <a href="{{ blog.url }}/tagged/{{ tag | handle }}">
+                    {{ tag }}
+                  </a>
+                {%- endfor -%}
+              {%- endif -%}
+              {%- if section.settings.blog_show_comments and article.comments_count > 0 -%}
+                {%- unless first_item -%} &middot; {%- endunless -%}
+                {%- assign first_item = false -%}
+                <a href="{{ article.url }}#comments">
+                  {{ 'blogs.comments.with_count' | t: count: article.comments_count }}
+                </a>
+              {%- endif -%}
+              {%- if section.settings.blog_show_date -%}
+                {%- unless first_item -%} &middot; {%- endunless -%}
+                {%- assign first_item = false -%}
+                {{ article.published_at | time_tag: format: 'month_day_year' }}
+              {%- endif -%}
+            </div>
+
+            <h2 class="h3 article__h3">
+              <a href="{{ article.url }}">{{ article.title }}</a>
+            </h2>
+
+            {%- if section.settings.blog_show_author -%}
+              <div class="article__author">by {{ article.author }}</div>
+            {%- endif -%}
+          </div>
+
+          <div class="rte rte--block">
+            {%- if article.excerpt.size > 0 -%}
+              {{ article.excerpt }}
+            {%- else -%}
+              {{ article.content | strip_html | truncatewords: 40 }}
+            {%- endif -%}
+          </div>
+
+          <a href="{{ article.url }}" class="btn">
+            {{ 'blogs.article.read_more' | t }}
+          </a>
+        </div>
+      </article>
+
+      {% comment %}Set the next post as an even one{% endcomment %}
+      {%- liquid
+        if is_even_post
+          assign is_even_post = false
+        else
+          assign is_even_post = true
+        endif
+      -%}
+    {%- endfor -%}
+
+    {%- if paginate.pages > 1 -%}
+      {%- render 'pagination', paginate: paginate -%}
+    {%- endif -%}
+  </div>
+</div>
+
+{%- endpaginate -%}
+
+{% schema %}
+  {
+    "name": "Blog pages",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "blog_show_tag_filter",
+        "label": "Show tag filter"
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_rss",
+        "label": "Show RSS link"
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_tags",
+        "label": "Show tags"
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_date",
+        "label": "Show date",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_comments",
+        "label": "Show comment count",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_author",
+        "label": "Show author"
+      }
+    ]
+  }
+{% endschema %}

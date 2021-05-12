@@ -1,0 +1,24 @@
+{%- assign newsletter_form_id = 'newsletter-' | append: section_id -%}
+{%- form 'customer', id: newsletter_form_id -%}
+  {%- if form.posted_successfully? -%}
+    <div class="note note--success">{{ 'general.newsletter_form.newsletter_confirmation' | t }}</div>
+  {%- endif -%}
+  {%- if form.errors and form.context == snippet_context -%}
+    {{ form.errors | default_errors }}
+  {%- endif -%}
+
+  <label for="Email-{{ section_id }}" class="hidden-label">{{ 'general.newsletter_form.newsletter_email' | t }}</label>
+  <input type="hidden" name="contact[tags]" value="prospect,newsletter">
+  <input type="hidden" name="contact[context]" value="{{ snippet_context }}">
+  <div class="input-group newsletter__input-group">
+    <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" name="contact[email]" id="Email-{{ section_id }}" class="input-group-field newsletter__input" autocorrect="off" autocapitalize="off">
+    <span class="input-group-btn">
+      <button type="submit" class="btn" name="commit">
+        <span class="form__submit--large">{{ 'general.newsletter_form.submit' | t }}</span>
+        <span class="form__submit--small">
+          <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon--wide icon-arrow-right" viewBox="0 0 50 15"><path d="M0 9.63V5.38h35V0l15 7.5L35 15V9.63z"/></svg>
+        </span>
+      </button>
+    </span>
+  </div>
+{%- endform -%}

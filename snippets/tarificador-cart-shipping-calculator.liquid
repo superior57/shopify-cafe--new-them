@@ -1,0 +1,50 @@
+<div id="tarificadorCartShippingCalculatorWrapper" class="hidden" style="display: flex; flex-direction: column">
+    <h4 style="text-align: center; margin: 0">Comuna de envío</h4>
+    <div style="display: flex; flex-direction: column">
+        <select style="min-height: 40px !important" id="provincesInput" name="checkout[shipping_address][province]">
+            <option value="">Cargando...</option>
+        </select>
+        <select style="min-height: 40px !important; margin-top: 10px;" class="hidden" id="citiesInput" name="checkout[shipping_address][city]">
+            <option value="">Debe seleccionar una región</option>
+        </select>
+
+        <div id="shippingEstimatePrice"></div>
+    </div>
+</div>
+
+<style>
+	#provincesInput,
+	#citiesInput {
+		border: 1px solid #dcdcdc;
+	}
+
+	.hidden {
+		visibility: hidden;
+	}
+
+	#shippingEstimatePrice div:nth-child(2) {
+		color: green;
+		font-weight: bold;
+	}
+</style>
+
+<script>
+	window.HACIENDOLA = window.HACIENDOLA || {};
+	window.HACIENDOLA.TARIFICADOR = window.HACIENDOLA.TARIFICADOR || {};
+	window.HACIENDOLA.TARIFICADOR.shopUrl = '{{shop.permanent_domain}}';
+	// ACÁ ES IMPORTANTE PONER EL VALOR DEL ID DEL ELEMENTO HTML Q CORRESPONDE AL BOTÓN DE IR AL CHECKOUT
+	// POR LO GENERAL ES EL <input type="submit">
+	window.HACIENDOLA.TARIFICADOR.goToCheckoutButtonName = 'checkout';
+	window.HACIENDOLA.TARIFICADOR.cartCheckoutFormId = 'CartPageForm';
+	window.HACIENDOLA.TARIFICADOR.forceSelection = true;
+	window.HACIENDOLA.TARIFICADOR.showRates = true;
+    window.HACIENDOLA.TARIFICADOR.personalize = () => {}
+	window.HACIENDOLA.TARIFICADOR.regionsWithCommunes = [];
+	window.HACIENDOLA.TARIFICADOR.lastRates = [];
+	window.HACIENDOLA.TARIFICADOR.ignoredRatesCode = [];
+	window.HACIENDOLA.TARIFICADOR.printLastRates = () => console.log(window.HACIENDOLA.TARIFICADOR.lastRates);
+
+	// FUNCIONES
+
+	const _0x1dd6=['&checkout[shipping_address][city]=','</p>\x0a\x09\x09\x09\x09\x09\x09\x09\x09<p\x20style=\x22margin:0\x22>$','classList','Debe\x20seleccionar\x20región\x20y\x20comuna\x20de\x20envío','action','shippingEstimatePrice','showRates','<option\x20value=\x220\x22>Seleccione\x20comuna</option>','/cart?checkout[shipping_address][country]=Chile&checkout[shipping_address][province]=','<option\x20value=\x220\x22>Seleccione\x20región</option>','error','2dGhDtB','</option>','change','findIndex','116954LXaWuE','</p>','price','personalize','36486ZznLhH','json','citiesInput','<p\x20style=\x22margin:\x200;\x20font-weight:\x20bold;\x22>','replace','regionsWithCommunes','value','509463gNXeaR','32qrZaEb','HACIENDOLA','11896QFnHku','<p\x20style=\x22margin:\x200;\x20font-weight:\x20bold;\x22>Tarifas\x20de\x20envío\x20disponibles:\x20</p>','forEach','then','<option\x20value=\x22','name','lastRates','ignoredRatesCode','<p\x20style=\x22color:#000;\x22>No\x20hay\x20tarifas\x20de\x20envío\x20disponibles\x20para\x20este\x20carrito</p>','stopPropagation','3tmjNjS','/cart/shipping_rates.json?shipping_address[city]=','TARIFICADOR','shipping_rates','getElementById','code','options','</p>\x0a\x09\x09\x09\x09\x09\x09\x09</div>\x0a\x09\x09\x09\x09\x09\x09','207ujStve','<p\x20style=\x22color:#000;\x22>Calculando\x20envío...</span></p>','hidden','shopUrl','&shipping_address[country]=Chile&shipping_address[province]=','selectedIndex','651604KSTNsE','remove','length','innerHTML','forceSelection','split','7QOMTkg','62845bRgcxh','228mQlmST','addEventListener','find','preventDefault','regionShopifyCode','text','toFixed','provincesInput','tarificadorCartShippingCalculatorWrapper','log','\x0a\x09\x09\x09\x09\x09\x09\x09<div\x20style=\x22display:\x20flex;\x20justify-content:\x20space-between;\x22>\x0a\x09\x09\x09\x09\x09\x09\x09\x09<p\x20style=\x22margin:0\x22>'];function _0x5cd7(_0x214bc6,_0x4f6015){_0x214bc6=_0x214bc6-0x126;let _0x1dd6fc=_0x1dd6[_0x214bc6];return _0x1dd6fc;}const _0x43d280=_0x5cd7;(function(_0x5b95b1,_0x3513ab){const _0x3e9905=_0x5cd7;while(!![]){try{const _0x30eb32=parseInt(_0x3e9905(0x15c))+parseInt(_0x3e9905(0x13d))*-parseInt(_0x3e9905(0x13c))+parseInt(_0x3e9905(0x158))*parseInt(_0x3e9905(0x154))+-parseInt(_0x3e9905(0x136))+-parseInt(_0x3e9905(0x130))*-parseInt(_0x3e9905(0x13e))+parseInt(_0x3e9905(0x166))*-parseInt(_0x3e9905(0x164))+-parseInt(_0x3e9905(0x128))*-parseInt(_0x3e9905(0x163));if(_0x30eb32===_0x3513ab)break;else _0x5b95b1['push'](_0x5b95b1['shift']());}catch(_0x35eb62){_0x5b95b1['push'](_0x5b95b1['shift']());}}}(_0x1dd6,0x5b41c),number_format=(_0x22716b,_0x4bcc08)=>{const _0x5d43ee=_0x5cd7;_0x22716b+='',_0x22716b=parseFloat(_0x22716b[_0x5d43ee(0x160)](/[^0-9\.]/g,'')),_0x4bcc08=_0x4bcc08||0x0;if(isNaN(_0x22716b)||_0x22716b===0x0)return parseFloat(0x0)[_0x5d43ee(0x144)](_0x4bcc08);_0x22716b=''+_0x22716b[_0x5d43ee(0x144)](_0x4bcc08);const _0x18d73d=_0x22716b[_0x5d43ee(0x13b)]('.'),_0x2da0f2=/(\d+)(\d{3})/;while(_0x2da0f2['test'](_0x18d73d[0x0]))_0x18d73d[0x0]=_0x18d73d[0x0][_0x5d43ee(0x160)](_0x2da0f2,'$1'+'.'+'$2');return _0x18d73d['join']('.');},regionSelectChangeHandler=()=>{const _0xa9da36=_0x5cd7,_0x3521b3=document[_0xa9da36(0x12c)](_0xa9da36(0x15e)),_0x1f9298=document['getElementById']('provincesInput')[_0xa9da36(0x162)];document['getElementById'](_0xa9da36(0x14e))[_0xa9da36(0x139)]='',_0x3521b3[_0xa9da36(0x139)]='',console[_0xa9da36(0x147)](_0x1f9298),console['log'](window[_0xa9da36(0x165)][_0xa9da36(0x12a)][_0xa9da36(0x161)]);const _0x48040d=window[_0xa9da36(0x165)][_0xa9da36(0x12a)][_0xa9da36(0x161)][_0xa9da36(0x140)](_0x847323=>_0x847323[_0xa9da36(0x142)]===_0x1f9298);let _0x5d07c0=_0xa9da36(0x150);_0x48040d['communes']['forEach'](_0x580dc3=>_0x5d07c0+=_0xa9da36(0x16a)+_0x580dc3['communeName']+'\x22>'+_0x580dc3['communeName']+_0xa9da36(0x155)),_0x3521b3['innerHTML']=_0x5d07c0,_0x3521b3[_0xa9da36(0x14b)][_0xa9da36(0x137)](_0xa9da36(0x132));},communaSelectChangeHandler=()=>{const _0x3133d0=_0x5cd7;if(!window[_0x3133d0(0x165)][_0x3133d0(0x12a)][_0x3133d0(0x14f)])return;const _0x3bd675=document['getElementById'](_0x3133d0(0x15e)),_0x100ef3=document[_0x3133d0(0x12c)](_0x3133d0(0x145)),_0x262a26=_0x3bd675[_0x3133d0(0x12e)][_0x3bd675['selectedIndex']][_0x3133d0(0x143)],_0x1b1d93=_0x100ef3['options'][_0x100ef3['selectedIndex']]['value'];document[_0x3133d0(0x12c)](_0x3133d0(0x14e))[_0x3133d0(0x139)]=_0x3133d0(0x131),fetch(_0x3133d0(0x129)+_0x262a26+_0x3133d0(0x134)+_0x1b1d93+'&shipping_address[zip]=CL')[_0x3133d0(0x169)](_0x489a77=>_0x489a77[_0x3133d0(0x15d)]())['then'](_0xa4926=>{const _0x171889=_0x3133d0;if(_0xa4926[_0x171889(0x153)]){document['getElementById'](_0x171889(0x14e))[_0x171889(0x139)]=_0x171889(0x15f)+_0xa4926[_0x171889(0x153)][0x0]+_0x171889(0x159);return;}const _0x5cbb71=_0xa4926[_0x171889(0x12b)];window[_0x171889(0x165)][_0x171889(0x12a)][_0x171889(0x16c)]=_0x5cbb71;let _0x118041='';_0x5cbb71[_0x171889(0x138)]===0x0?document[_0x171889(0x12c)](_0x171889(0x14e))[_0x171889(0x139)]=_0x171889(0x126):(_0x118041=_0x171889(0x167),_0x5cbb71[_0x171889(0x168)](_0x5f23e4=>{const _0x40429f=_0x171889,_0x50780a=window[_0x40429f(0x165)]['TARIFICADOR'][_0x40429f(0x16d)][_0x40429f(0x157)](_0xa2ad12=>_0xa2ad12===_0x5f23e4[_0x40429f(0x12d)])!==-0x1;!_0x50780a&&(_0x118041+=_0x40429f(0x148)+_0x5f23e4[_0x40429f(0x16b)]+_0x40429f(0x14a)+number_format(_0x5f23e4[_0x40429f(0x15a)])+_0x40429f(0x12f));})),document[_0x171889(0x12c)](_0x171889(0x14e))['innerHTML']=_0x118041;});},document['getElementById'](_0x43d280(0x15e))[_0x43d280(0x13f)](_0x43d280(0x156),communaSelectChangeHandler),document[_0x43d280(0x12c)](_0x43d280(0x145))[_0x43d280(0x13f)](_0x43d280(0x156),regionSelectChangeHandler),fetch('https://prod.haciendola.dev/backend/tarificador/api/regions/getShopEnabledRegions/'+window[_0x43d280(0x165)][_0x43d280(0x12a)][_0x43d280(0x133)])[_0x43d280(0x169)](_0x2c9631=>_0x2c9631['json']())[_0x43d280(0x169)](_0x37107d=>{const _0x239afc=_0x43d280;window['HACIENDOLA'][_0x239afc(0x12a)]['regionsWithCommunes']=_0x37107d,window['HACIENDOLA'][_0x239afc(0x12a)][_0x239afc(0x15b)]();const _0x1e4dc9=_0x37107d['reduce']((_0x2f6d0a,_0x518efd)=>_0x2f6d0a+'<option\x20value='+_0x518efd['regionShopifyCode']+'>'+_0x518efd['regionName']+_0x239afc(0x155),_0x239afc(0x152));document[_0x239afc(0x12c)](_0x239afc(0x145))[_0x239afc(0x139)]=_0x1e4dc9,_0x37107d[_0x239afc(0x138)]===0x1?(document[_0x239afc(0x12c)](_0x239afc(0x145))[_0x239afc(0x162)]=_0x37107d[0x0][_0x239afc(0x142)],document[_0x239afc(0x12c)](_0x239afc(0x145))['disabled']=!![],regionSelectChangeHandler()):document[_0x239afc(0x12c)](_0x239afc(0x145))[_0x239afc(0x14b)][_0x239afc(0x137)](_0x239afc(0x132)),document[_0x239afc(0x12c)](_0x239afc(0x146))[_0x239afc(0x14b)][_0x239afc(0x137)](_0x239afc(0x132)),document['getElementsByName'](window['HACIENDOLA']['TARIFICADOR']['goToCheckoutButtonName'])[_0x239afc(0x168)](_0xb98f34=>{const _0x3d210c=_0x239afc;_0xb98f34[_0x3d210c(0x13f)]('click',_0x201bfc=>{const _0xe0502b=_0x3d210c,_0x47672e=document[_0xe0502b(0x12c)](_0xe0502b(0x15e)),_0x5216e2=document['getElementById']('provincesInput');if(_0x47672e['selectedIndex']===0x0&&window['HACIENDOLA'][_0xe0502b(0x12a)][_0xe0502b(0x13a)])return _0x201bfc[_0xe0502b(0x127)](),_0x201bfc[_0xe0502b(0x141)](),alert(_0xe0502b(0x14c)),![];if(_0x47672e[_0xe0502b(0x135)]>0x0){const _0x11e766=_0x47672e['options'][_0x47672e[_0xe0502b(0x135)]]['text'],_0x4927e3=_0x5216e2[_0xe0502b(0x12e)][_0x5216e2[_0xe0502b(0x135)]][_0xe0502b(0x162)];document[_0xe0502b(0x12c)](window[_0xe0502b(0x165)]['TARIFICADOR']['cartCheckoutFormId'])[_0xe0502b(0x14d)]=_0xe0502b(0x151)+_0x4927e3+_0xe0502b(0x149)+_0x11e766;}});});}));
+</script>

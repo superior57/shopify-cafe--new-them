@@ -1,0 +1,33 @@
+<div class="pagination">
+  {% if paginate.previous %}
+    <span class="prev">
+      <a href="{{ paginate.previous.url | replace: 'view=ajax', '' }}{{ hash }}" title="{{ 'general.pagination.previous' | t }}">
+        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-left" viewBox="0 0 284.49 498.98"><path d="M249.49 0a35 35 0 0 1 24.75 59.75L84.49 249.49l189.75 189.74a35.002 35.002 0 1 1-49.5 49.5L10.25 274.24a35 35 0 0 1 0-49.5L224.74 10.25A34.89 34.89 0 0 1 249.49 0z"/></svg>
+        <span class="icon__fallback-text">{{ 'general.pagination.previous' | t }}</span>
+      </a>
+    </span>
+  {% endif %}
+
+  {% for part in paginate.parts %}
+    {% if part.is_link %}
+      <span class="page">
+        <a href="{{ part.url | replace: 'view=ajax', '' }}{{ hash }}">{{ part.title }}</a>
+      </span>
+    {% else %}
+      {% if part.title == paginate.current_page %}
+        <span class="page current">{{ part.title }}</span>
+      {% else %}
+        <span class="page">{{ part.title }}</span>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+
+  {% if paginate.next %}
+    <span class="next">
+      <a href="{{ paginate.next.url | replace: 'view=ajax', '' }}{{ hash }}" title="{{ 'general.pagination.next' | t }}">
+        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-right" viewBox="0 0 284.49 498.98"><path d="M35 498.98a35 35 0 0 1-24.75-59.75l189.74-189.74L10.25 59.75a35.002 35.002 0 0 1 49.5-49.5l214.49 214.49a35 35 0 0 1 0 49.5L59.75 488.73A34.89 34.89 0 0 1 35 498.98z"/></svg>
+        <span class="icon__fallback-text">{{ 'general.pagination.next' | t }}</span>
+      </a>
+    </span>
+  {% endif %}
+</div>

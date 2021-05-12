@@ -1,0 +1,41 @@
+{% if block.settings.show_footer_title %}
+  <p class="footer__title small--hide">{{ block.settings.title }}</p>
+  <button type="button" class="footer__title collapsible-trigger collapsible-trigger-btn medium-up--hide" aria-controls="Footer-{{ block.id }}">
+    {{ block.settings.title }}
+    {%- render 'collapsible-icons' -%}
+  </button>
+{% endif %}
+<div
+  {% if block.settings.show_footer_title %}
+    id="Footer-{{ block.id }}" class="collapsible-content collapsible-content--small is-open"
+  {% endif %}>
+  <div class="collapsible-content__inner">
+    <div class="footer__collapsible footer_collapsible--disabled">
+      {% if block.settings.richtext != blank %}
+        {{ block.settings.richtext }}
+      {% endif %}
+
+      {% form 'customer', id: 'newsletter-footer' %}
+        {% if form.posted_successfully? %}
+          <div class="note note--success">{{ 'general.newsletter_form.newsletter_confirmation' | t }}</div>
+        {% endif %}
+        {% if form.context == 'footer' %}
+          {% if form.errors %}
+            {{ form.errors | default_errors }}
+          {% endif %}
+        {% endif %}
+
+        <label for="Email-{{ block.id }}" class="hidden-label">{{ 'general.newsletter_form.newsletter_email' | t }}</label>
+        <input type="hidden" name="contact[tags]" value="prospect,newsletter">
+        <input type="hidden" name="contact[context]" value="footer">
+        <div class="footer__newsletter">
+          <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" name="contact[email]" id="Email-{{ block.id }}" class="footer__newsletter-input" autocorrect="off" autocapitalize="off">
+          <button type="submit" class="footer__newsletter-btn" name="commit">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-email" viewBox="0 0 64 64"><path d="M63 52H1V12h62zM1 12l25.68 24h9.72L63 12M21.82 31.68L1.56 51.16m60.78.78L41.27 31.68"/></svg>
+            <span class="icon__fallback-text">{{ 'general.newsletter_form.submit' | t }}</span>
+          </button>
+        </div>
+      {% endform %}
+    </div>
+  </div>
+</div>

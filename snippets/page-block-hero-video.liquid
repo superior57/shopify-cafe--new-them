@@ -1,0 +1,124 @@
+{%- style -%}
+  .hero--{{ block.id }} .hero__title {
+    font-size: {{ block.settings.title_size | times: 0.5 }}px;
+  }
+  @media only screen and (min-width: 769px) {
+    .hero--{{ block.id }} .hero__title {
+      font-size: {{ block.settings.title_size }}px;
+    }
+  }
+
+  {% if block.settings.overlay_opacity > 0 %}
+    .hero--{{ block.id }} .hero__text-wrap:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 3;
+      background-color: #000;
+      opacity: {{ block.settings.overlay_opacity | divided_by: 100.0 }};
+    }
+  {% endif %}
+{%- endstyle -%}
+
+<div
+  data-subsection
+  data-section-id="{{ block.id }}"
+  data-section-type="video-section"
+  data-mobile-natural="false"
+  class="video-parent-section hero hero--{{ block.id }} hero--{{ block.settings.section_height }} hero--mobile--{{ block.settings.mobile_height }}"
+  data-aos="hero__animation">
+
+  <div class="hero__media hero__media--{{ block.id }}">
+
+    {% if block.settings.video_url contains 'youtube.com/watch' %}
+      {%- assign video_id = block.settings.video_url | split: 'v=' -%}
+      {%- assign video_id = video_id[1] | split: '&' | first -%}
+      <div
+        id="YouTubeVideo-{{ block.id }}"
+        class="video-div"
+        data-type="youtube"
+        data-video-id="{{ video_id }}"></div>
+    {% endif %}
+
+    {% if block.settings.video_url contains 'youtu.be/' %}
+      {%- assign video_id = block.settings.video_url | split: '.be/' -%}
+      {%- assign video_id = video_id[1] | split: '&' | first -%}
+      <div
+        id="YouTubeVideo-{{ block.id }}"
+        class="video-div"
+        data-type="youtube"
+        data-video-id="{{ video_id }}"></div>
+    {% endif %}
+
+    {% if block.settings.video_url contains 'vimeo.com' %}
+      {%- assign video_id = block.settings.video_url | split: '.com/' -%}
+      {%- assign video_id = video_id[1] | split: '/' | first -%}
+      <div
+        id="Vimeo-{{ block.id }}"
+        class="video-div"
+        data-type="vimeo"
+        data-video-id="{{ video_id }}"></div>
+    {% endif %}
+
+    {% if block.settings.video_url contains '.mp4' or block.settings.video_url contains '.MP4' %}
+      <video
+        id="Mp4Video-{{ block.id }}"
+        class="video-div"
+        data-type="mp4"
+        src="{{ block.settings.video_url }}"
+        loop muted playsinline autoplay></video>
+    {% endif %}
+
+  </div>
+
+  <div class="hero__text-wrap{% if block.settings.section_height == '16-9' %} hero__text-wrap--absolute{% endif %}">
+    <div class="page-width">
+      <div class="hero__text-content {{ block.settings.text_align }}">
+        {% unless block.settings.title == blank %}
+          <h2 class="h1 hero__title">
+            <div class="animation-cropper"><div class="animation-contents">
+            {{ block.settings.title | newline_to_br }}
+            </div></div>
+          </h2>
+        {% endunless %}
+        {% if block.settings.subheading or block.settings.link %}
+          {% unless block.settings.subheading == blank %}
+            <div class="hero__subtitle">
+              <div class="animation-cropper"><div class="animation-contents">
+                {{ block.settings.subheading | escape }}
+              </div></div>
+            </div>
+          {% endunless %}
+          {% if block.settings.link_text != blank %}
+            {%- assign link_href = block.settings.link -%}
+            {% if block.settings.link == blank %}
+              {%- assign link_href = block.settings.video_url -%}
+            {% endif %}
+
+            {%- assign youtube_video_link = false -%}
+            {%- if link_href contains 'youtube.com/watch' or link_href contains 'youtu.be/' -%}
+              {%- assign youtube_video_link = true -%}
+            {%- endif -%}
+
+            <div class="hero__link">
+              <div class="animation-cropper">
+                <div class="animation-contents">
+                  <a href="{{ link_href }}" class="btn btn--inverse js-no-transition{% if youtube_video_link %} btn--no-animate{% endif %}">
+                    {%- if youtube_video_link -%}
+                      <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-play" viewBox="18.24 17.35 24.52 28.3"><path fill="#323232" d="M22.1 19.151v25.5l20.4-13.489-20.4-12.011z"/></svg>
+                    {%- endif -%}
+                    {{ block.settings.link_text }}
+                  </a>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+</div>

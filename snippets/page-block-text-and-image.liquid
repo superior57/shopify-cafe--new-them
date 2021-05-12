@@ -1,0 +1,54 @@
+<div class="index-section">
+  <div class="page-width">
+    {% capture image_layout %}
+      <div class="feature-row__item">
+        <div style="margin: 0 auto; max-width: {{ block.settings.image_width }}px;">
+          {% if block.settings.image != blank %}
+            {% if block.settings.button_label != blank and block.settings.button_link != blank %}<a href="{{ block.settings.button_link }}" aria-label="{{ block.settings.button_label | escape }}">{% endif %}
+            <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: block.settings.image.aspect_ratio }}%;">
+              {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+              <img class="feature-row__image lazyload"
+                  data-src="{{ img_url }}"
+                  data-widths="[180, 360, 540, 720, 900, 1080]"
+                  data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+                  data-sizes="auto"
+                  alt="{{ block.settings.image.alt }}">
+            </div>
+            {% if block.settings.button_label != blank and block.settings.button_link != blank %}</a>{% endif %}
+          {% else %}
+            <div class="image-wrap">
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endcapture %}
+
+    <div class="feature-row" data-aos>
+      {% if block.settings.layout == 'left' %}
+        {{ image_layout }}
+      {% endif %}
+
+      <div class="feature-row__item feature-row__text feature-row__text--{{ block.settings.layout }} larger-text">
+        {% if block.settings.subtitle != blank %}
+          <p class="subtitle">{{ block.settings.subtitle }}</p>
+        {% endif %}
+        {%- if block.settings.title != blank -%}
+          <h2 class="h3">{{ block.settings.title | escape }}</h2>
+        {% endif %}
+        {% if block.settings.text != blank %}
+          <div class="rte featured-row__subtext">{{ block.settings.text }}</div>
+        {% endif %}
+        {% if block.settings.button_label != blank %}
+          <a href="{{ block.settings.button_link }}" class="btn">
+            {{ block.settings.button_label }}
+          </a>
+        {% endif %}
+      </div>
+
+      {% if block.settings.layout == 'right' %}
+        {{ image_layout }}
+      {% endif %}
+    </div>
+  </div>
+</div>

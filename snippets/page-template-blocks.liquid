@@ -1,0 +1,56 @@
+{% comment %}
+  This file handles each block available on product.sections or page.sections templates.
+  Each block is a near identical duplicate of a section also available on the home page.
+  Exception is sections that had blocks become hard coded options.
+{% endcomment %}
+<div class="page-blocks" data-section-id="{{ section.id }}">
+  {%- for block in section.blocks -%}
+    <div {{ block.shopify_attributes }}>
+      {%- liquid
+        case block.type
+
+          when 'contact-form'
+            render 'page-block-contact-form', block: block
+
+          when 'custom-html'
+            render 'page-block-custom-html', block: block
+
+          when 'background-image-text'
+            render 'page-block-background-image-text', block: block
+
+          when 'hero-video'
+            render 'page-block-hero-video', block: block
+
+          when 'image-hero'
+            render 'page-block-image-hero', block: block
+
+          when 'image-row'
+            render 'page-block-image-row', block: block
+
+          when 'rich-text'
+            render 'page-block-rich-text', block: block, section_class: 'page-section--faq'
+
+          when 'text-and-image'
+            render 'page-block-text-and-image', block: block
+
+          when 'text-columns'
+            render 'page-block-text-columns', block: block
+
+          when 'testimonials'
+            render 'page-block-testimonials', block: block
+
+          when 'map'
+            render 'page-block-map', block: block
+
+          when 'featured-collection'
+            render 'page-block-featured-collection', block: block
+
+          when 'fading-images'
+            render 'page-block-fading-images', block: block
+
+        endcase
+      -%}
+
+    </div>
+  {%- endfor -%}
+</div>

@@ -1,0 +1,204 @@
+{%- if section.settings.image != blank -%}
+  {%- style -%}
+    @media screen and (max-width: 768px) {
+      .background-media-text--{{ section.id }} {
+        background-image: url({{ section.settings.image | img_url: '1x1' }});
+      }
+    }
+  {%- endstyle -%}
+{%- endif -%}
+
+<div
+  data-section-id="{{ section.id }}"
+  data-section-type="background-image"
+  class="background-media-text background-media-text--{{ section.id }} background-media-text--{{ section.settings.height }} loaded"
+  data-aos="background-media-text__animation"
+  {% if section.settings.parallax %}data-parallax="true"{% endif %}>
+
+  <div class="background-media-text__container">
+    {%- if section.settings.parallax -%}
+      <div class="parallax-container">
+        <div class="parallax-image">
+    {%- endif -%}
+
+      {%- if section.settings.image != blank -%}
+        {%- assign img_url = section.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        <img
+          class="image-fit background-media-text__image background-media-text__image--{{ section.id }} lazyload"
+          src=""
+          data-src="{{ img_url }}"
+          data-aspectratio="{{ section.settings.image.aspect_ratio }}"
+          data-widths="[720, 900, 1080, 1800, 2400]"
+          data-sizes="auto"
+          alt="{{ section.settings.image.alt | escape }}"
+          style="object-position: {{ section.settings.focal_point }}">
+        <noscript>
+          <img
+            class="image-fit background-media-text__image background-media-text__image--{{ section.id }} lazyloaded"
+            src="{{ section.settings.image | img_url: '1800x' }}"
+            alt="{{ section.settings.image.alt }}">
+        </noscript>
+      {%- else -%}
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+
+    {%- if section.settings.parallax -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- if section.settings.subtitle != blank or section.settings.title != blank or section.settings.text != blank -%}
+    <div class="background-media-text__inner">
+      <div class="background-media-text__aligner background-media-text--{{ section.settings.layout }}">
+        <div class="animation-cropper">
+          <div class="animation-contents">
+            <div class="background-media-text__text larger-text">
+              {%- if section.settings.subtitle -%}
+                <p class="subtitle">{{ section.settings.subtitle }}</p>
+              {%- endif -%}
+              {%- if section.settings.title != blank -%}
+                <h2 class="h3">{{ section.settings.title | escape }}</h2>
+              {%- endif -%}
+              {%- if section.settings.text != blank -%}
+                <div class="rte background-media-text__subtext">{{ section.settings.text }}</div>
+              {%- endif -%}
+              {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+                <a href="{{ section.settings.button_link }}" class="btn">
+                  {{ section.settings.button_label }}
+                </a>
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+<div class="background-media-text__spacer background-media-text--{{ section.settings.height }}"></div>
+
+{% schema %}
+  {
+    "name": "Large image with text box",
+    "class": "index-section--flush",
+    "settings": [
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subheading",
+        "default": "Impressive"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Large image with text box"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text",
+        "default": "<p>Pair large text with a full-width image to draw attention to an important detail of your brand or product line.</p>"
+      },
+      {
+        "type": "text",
+        "id": "button_label",
+        "label": "Button label"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button link"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "select",
+        "id": "focal_point",
+        "label": "Image focal point",
+        "info": "Used to keep the subject of your photo in view.",
+        "default": "center",
+        "options": [
+          {
+            "value": "20% 0",
+            "label": "Top left"
+          },
+          {
+            "value": "top",
+            "label": "Top"
+          },
+          {
+            "value": "80% 0",
+            "label": "Top right"
+          },
+          {
+            "value": "20% 50%",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Middle"
+          },
+          {
+            "value": "80% 50%",
+            "label": "Right"
+          },
+          {
+            "value": "20% 100%",
+            "label": "Bottom left"
+          },
+          {
+            "value": "bottom",
+            "label": "Bottom"
+          },
+          {
+            "value": "80% 100%",
+            "label": "Bottom right"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "layout",
+        "label": "Layout",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "Text on left"
+          },
+          {
+            "value": "right",
+            "label": "Text on right"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "height",
+        "label": "Section height",
+        "default": 550,
+        "min": 450,
+        "max": 750,
+        "step": 100,
+        "unit": "px"
+      },
+      {
+        "type": "checkbox",
+        "id": "parallax",
+        "label": "Enable parallax",
+        "default": true
+      }
+    ],
+    "presets": [
+      {
+        "name": "Large image with text box",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}
